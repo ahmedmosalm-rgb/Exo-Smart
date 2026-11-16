@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مولد عروض أسعار Exo Smart Kit | شركة روائع الجمال الحديثة</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cairo & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand-teal: #1D6E7F;
+      --brand-teal-dark: #155563;
+      --brand-magenta: #9E2A63;
+      --brand-light: #F3F8F9;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #eef2f6;
+      color: #1e293b;
+    }
+
+    .font-en {
+      font-family: 'Inter', sans-serif;
+    }
+
+    .font-ar {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Strict A4 Sheet Container (Single Page, Zero Overflow, Zero Duplication) */
+    .a4-sheet {
+      width: 210mm;
+      height: 297mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      background-color: #ffffff;
+      background-size: 210mm 297mm;
+      background-repeat: no-repeat;
+      background-position: center center;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+      box-sizing: border-box;
+      padding: 10mm 14mm 32mm 14mm;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* When External Official Letterhead Image is Active */
+    .a4-sheet.has-external-letterhead .built-in-letterhead,
+    .a4-sheet.has-external-letterhead .watermark-container,
+    .a4-sheet.has-external-letterhead .corporate-footer {
+      display: none !important;
+    }
+
+    .a4-sheet.has-external-letterhead {
+      padding-top: var(--custom-top-offset, 48mm) !important;
+      padding-bottom: 28mm !important;
+    }
+
+    /* Editable Inputs Inside Quotation Table */
+    .quote-input {
+      background: rgba(248, 250, 252, 0.85);
+      border: 1px dashed #cbd5e1;
+      border-radius: 5px;
+      padding: 3px 4px;
+      transition: all 0.15s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .quote-input:hover {
+      border-color: var(--brand-teal);
+      background: #f0f9ff;
+    }
+
+    .quote-input:focus {
+      outline: none;
+      border: 1.5px solid var(--brand-teal);
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(29, 110, 127, 0.12);
+    }
+
+    /* Clean Official Preview Mode */
+    .preview-clean .quote-input {
+      background: transparent !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+      padding: 2px 2px;
+    }
+
+    .preview-clean .no-preview {
+      display: none !important;
+    }
+
+    /* Watermark matching Picture1.jpg (Bottom-Left above footer) */
+    .watermark-container {
+      position: absolute;
+      bottom: 24mm;
+      left: 8mm;
+      width: 105mm;
+      height: 74mm;
+      opacity: 0.13;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Corporate Footer pinned at bottom of A4 */
+    .corporate-footer {
+      position: absolute;
+      bottom: 8mm;
+      left: 14mm;
+      right: 14mm;
+      border-top: 1.5px solid #1D6E7F;
+      padding-top: 2.5mm;
+      z-index: 10;
+    }
+
+    /* PRINT STYLES - Strict Single A4 Portrait Page (Zero Blank First Page) */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      html, body {
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #ffffff !important;
+        display: block !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .no-print {
+        display: none !important;
+      }
+
+      .workspace-container {
+        display: block !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+      }
+
+      .print-wrapper {
+        display: block !important;
+        position: static !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #ffffff !important;
+        overflow: hidden !important;
+      }
+
+      #a4Container,
+      .a4-sheet {
+        position: relative !important;
+        transform: none !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        min-height: 297mm !important;
+        max-height: 297mm !important;
+        overflow: hidden !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .a4-sheet:not(.has-external-letterhead) {
+        padding: 10mm 14mm 32mm 14mm !important;
+      }
+
+      .a4-sheet.has-external-letterhead {
+        padding: var(--custom-top-offset, 48mm) 14mm 28mm 14mm !important;
+      }
+
+      .corporate-footer {
+        position: absolute !important;
+        bottom: 8mm !important;
+        left: 14mm !important;
+        right: 14mm !important;
+      }
+
+      .quote-input {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        color: inherit !important;
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type=number] {
+        -moz-appearance: textfield;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP ACTION TOOLBAR (Hidden in Print) -->
+  <header class="no-print bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
+    <div class="max-w-[1600px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-sm" style="background: linear-gradient(135deg, #1D6E7F, #9E2A63);">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">
+            مولد عروض الأسعار — <span class="text-[#1D6E7F] font-en">Exo Smart Kit</span>
+          </h1>
+          <p class="text-xs text-slate-500">شركة روائع الجمال الحديثة • قالب A4 الرسمي بالإنجليزية</p>
+        </div>
+      </div>
+
+      <!-- Toolbar Actions -->
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- Zoom Controls -->
+        <div class="hidden xl:flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
+          <button onclick="adjustZoom(-0.1)" class="px-2.5 py-1 text-slate-600 hover:bg-white rounded-lg text-sm font-bold transition" title="تصغير">-</button>
+          <span id="zoomLabel" class="px-2 text-xs font-bold text-slate-700 font-en">100%</span>
+          <button onclick="adjustZoom(0.1)" class="px-2.5 py-1 text-slate-600 hover:bg-white rounded-lg text-sm font-bold transition" title="تكبير">+</button>
+        </div>
+
+        <!-- Clean Official Preview Toggle -->
+        <button id="previewToggleBtn" onclick="togglePreviewMode()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-bold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition shadow-sm">
+          <svg class="w-4 h-4 text-[#1D6E7F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          <span id="previewToggleText">معاينة رسمية نهائية</span>
+        </button>
+
+        <!-- Print / Save PDF Button -->
+        <button onclick="printQuotation()" class="flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold text-white shadow-md hover:opacity-95 transition cursor-pointer" style="background: linear-gradient(135deg, #1D6E7F 0%, #155563 100%);">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+          </svg>
+          <span>Print / Save as PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <div class="workspace-container flex-1 max-w-[1600px] w-full mx-auto flex flex-col lg:flex-row gap-6 p-4 lg:p-6">
+
+    <!-- ARABIC CONTROL SIDEBAR (Hidden in Print) -->
+    <aside class="no-print w-full lg:w-[400px] xl:w-[420px] shrink-0 space-y-4">
+
+      <!-- 0. Official Letterhead Background Uploader Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+            خلفية الورقة الرسمية (Letterhead)
+          </h2>
+          <span id="letterheadStatusBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600">
+            الترويسة الرقمية المدمجة
+          </span>
+        </div>
+
+        <p class="text-[11px] text-slate-600 leading-relaxed">
+          ارفع صورة الورقة الرسمية (<span class="font-en font-bold">JPG / PNG</span>) أو ضعها بجانب الملف باسم <span class="font-en font-bold text-[#1D6E7F]">letterhead.jpg</span> أو <span class="font-en font-bold text-[#1D6E7F]">Picture1.jpg</span> ليتم تحميلها تلقائياً.
+        </p>
+
+        <div class="flex items-center gap-2">
+          <label class="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-[#1D6E7F] hover:bg-[#155563] text-white font-bold text-xs cursor-pointer transition shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+            </svg>
+            <span>رفع صورة الورقة الرسمية (JPG / PNG)</span>
+            <input type="file" id="letterheadFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleLetterheadUpload(event)" class="hidden">
+          </label>
+
+          <button id="clearLetterheadBtn" onclick="clearExternalLetterhead()" class="hidden py-2.5 px-3 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 transition" title="إزالة الصورة والعودة للترويسة الرقمية">
+            إلغاء
+          </button>
+        </div>
+
+        <!-- Top Content Offset Slider (Shown when external letterhead is active) -->
+        <div id="offsetControlBox" class="hidden pt-2 border-t border-slate-100 space-y-1.5">
+          <div class="flex items-center justify-between text-xs">
+            <label for="topOffsetSlider" class="font-bold text-slate-700">إزاحة المحتوى من الأعلى (Top Offset):</label>
+            <span id="topOffsetValueLabel" class="font-en font-extrabold text-[#1D6E7F] bg-[#F3F8F9] px-2 py-0.5 rounded-md">48 mm</span>
+          </div>
+          <input type="range" id="topOffsetSlider" min="30" max="75" value="48" step="1" oninput="updateTopOffset(this.value)" class="w-full accent-[#1D6E7F] cursor-pointer">
+          <div class="flex justify-between text-[10px] text-slate-400 font-en">
+            <span>30mm</span>
+            <span>48mm (Default)</span>
+            <span>75mm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1. Segment & Pricing Presets Card -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-4">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#9E2A63]"></span>
+            إعدادات الفئة والبونص الافتراضي
+          </h2>
+          <button onclick="resetSegmentDefaults()" class="text-xs font-bold text-[#1D6E7F] hover:underline bg-[#F3F8F9] px-2.5 py-1 rounded-lg">
+            استعادة الافتراضي
+          </button>
+        </div>
+
+        <!-- Dropdown: Dermatology Clinics vs Hospitals -->
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">اختر نوع الجهة (يحدد البونص الافتراضي):</label>
+          <select id="segmentSelect" onchange="handleSegmentChange()" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D6E7F]/20 transition">
+            <option value="clinics">عيادات الجلدية (Dermatology Clinics)</option>
+            <option value="hospitals">المستشفيات (Hospitals)</option>
+          </select>
+          <p id="segmentHint" class="text-[11px] text-slate-600 mt-2 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200/70">
+            الافتراضي للعيادات: (7 بوكس + 3 فري + 2 SK Box) و (15 بوكس + 10 فري + 2 SK Box).
+          </p>
+        </div>
+
+        <!-- Base Price & Global Discount -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">سعر البوكس الأساسي (SAR)</label>
+            <div class="relative">
+              <input type="number" id="globalUnitPrice" value="2000" min="0" step="50" oninput="applyGlobalUnitPrice(this.value)" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:outline-none font-en">
+              <span class="absolute left-3 top-2.5 text-[11px] font-bold text-slate-400">SAR</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">تطبيق خصم عام (%)</label>
+            <div class="relative">
+              <input type="number" id="globalDiscount" value="0" min="0" max="100" step="0.5" oninput="applyGlobalDiscount(this.value)" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:outline-none font-en">
+              <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-400">%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Row & VAT Note Controls -->
+        <div class="pt-1 flex items-center justify-between gap-2">
+          <button onclick="addOfferRow()" class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#F3F8F9] hover:bg-[#e4f1f4] text-[#1D6E7F] font-bold text-xs border border-[#1D6E7F]/20 transition">
+            <span>+ إضافة سطر جديد للجدول</span>
+          </button>
+          <label class="flex items-center gap-2 cursor-pointer bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 select-none">
+            <input type="checkbox" id="vatNoteToggle" onchange="syncMetadata()" class="rounded text-[#1D6E7F] focus:ring-[#1D6E7F] w-4 h-4">
+            <span>ملاحظة شامل الضريبة</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 2. Client & Quotation Details Card (Inputs in English for A4 Sheet) -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+            <span class="w-2.5 h-2.5 rounded-full bg-[#1D6E7F]"></span>
+            بيانات العميل وعرض السعر (English)
+          </h2>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">اسم العميل / المنشأة (To / Client Name)</label>
+          <input type="text" id="clientNameInput" dir="ltr" value="Elite Dermatology & Aesthetic Clinics" oninput="syncMetadata()" placeholder="Enter Client or Hospital Name..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">عناية الدكتور (Attention / Doctor)</label>
+            <input type="text" id="attentionInput" dir="ltr" value="Dr. Medical Director / Procurement" oninput="syncMetadata()" placeholder="Doctor or Dept..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">المدينة (City)</label>
+            <input type="text" id="cityInput" dir="ltr" value="Riyadh" oninput="syncMetadata()" placeholder="Riyadh" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">رقم المرجع (Ref No.)</label>
+            <input type="text" id="quoteRefInput" dir="ltr" value="Q-2026-104" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">التاريخ (Date)</label>
+            <input type="date" id="quoteDateInput" dir="ltr" onchange="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الموقّع (Signatory Name)</label>
+            <input type="text" id="signatoryNameInput" dir="ltr" value="Ahmed Musallam" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">المسمى الوظيفي (Title)</label>
+            <input type="text" id="signatoryTitleInput" dir="ltr" value="Sales Manager" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-600 mb-1">الشروط والأحكام (Terms & Conditions)</label>
+          <textarea id="termsInput" dir="ltr" rows="3" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs leading-relaxed text-slate-700 font-en focus:border-[#1D6E7F] focus:outline-none">• Prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+• Quotation validity: 15 days from the date of issue.
+• Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</textarea>
+        </div>
+      </div>
+
+      <!-- 3. Live Effective Cost Analyzer Card -->
+      <div class="bg-gradient-to-br from-[#1D6E7F] to-[#14505d] rounded-2xl p-5 text-white shadow-md space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-sm flex items-center gap-2">
+            <svg class="w-4 h-4 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+            تحليل تكلفة البوكس الفعلية للعميل
+          </h3>
+          <span class="text-[10px] bg-white/15 px-2 py-0.5 rounded-full">حساب تبادلي فوري</span>
+        </div>
+        <div id="liveSummaryList" class="space-y-2 text-xs">
+          <!-- Populated dynamically by JS -->
+        </div>
+        <p class="text-[11px] text-teal-100/80 pt-1 border-t border-white/10">
+          * تعديل <strong>نسبة الخصم %</strong> يُحدّث <strong>Net Total</strong> فوراً، وتعديل <strong>Net Total</strong> يُحدّث <strong>نسبة الخصم %</strong> تلقائياً.
+        </p>
+      </div>
+
+    </aside>
+
+    <!-- CENTER/LEFT: SINGLE A4 PAPER LIVE PREVIEW -->
+    <main class="print-wrapper flex-1 flex flex-col items-center justify-start overflow-x-auto pb-12">
+
+      <!-- Helper Banner Above A4 (No-print) -->
+      <div class="no-print w-full max-w-[210mm] mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 bg-white/80 backdrop-blur px-4 py-2 rounded-xl border border-slate-200/80">
+        <span class="flex items-center gap-1.5 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          معاينة ورقة A4 الرسمية — انقر على أي رقم داخل الجدول للتعديل المباشر
+        </span>
+        <span class="text-slate-400 font-en">A4 Portrait (210mm × 297mm)</span>
+      </div>
+
+      <!-- ========================================================================= -->
+      <!-- OFFICIAL SINGLE-PAGE A4 QUOTATION SHEET (100% ENGLISH BODY + BILINGUAL LH) -->
+      <!-- ========================================================================= -->
+      <div id="a4Container" class="a4-sheet" dir="ltr" style="--custom-top-offset: 48mm;">
+
+        <!-- 1. FAINT WATERMARK EMBLEM AT BOTTOM-LEFT (Hidden when external letterhead is active) -->
+        <div class="watermark-container">
+          <svg viewBox="0 0 420 300" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <!-- Burgundy/Magenta Leaf/Petal Emblem -->
+            <g fill="#9E2A63">
+              <path d="M88,162 C48,148 22,115 32,72 C68,85 95,118 92,158 Z" />
+              <path d="M85,168 C42,175 12,158 5,125 C40,122 72,138 86,165 Z" opacity="0.85" />
+            </g>
+            <!-- Stylized Calligraphy "روائع" in Teal -->
+            <g fill="#1D6E7F">
+              <path d="M365,145 C378,165 375,205 335,228 C318,238 298,242 285,238 C315,226 342,205 348,175 C351,160 346,148 340,140 L362,135 Z" />
+              <path d="M292,130 C312,130 322,145 318,165 C313,192 285,222 242,235 C225,240 208,240 196,236 C230,224 268,200 282,175 C270,176 258,166 260,152 C262,138 276,130 292,130 Z M288,144 C280,144 275,150 276,157 C277,163 283,167 290,166 C298,165 302,158 301,151 C299,146 294,144 288,144 Z" />
+              <path d="M235,72 L252,68 L244,175 C243,186 234,192 224,190 L228,82 Z" />
+              <path d="M198,125 C208,125 214,134 212,146 L208,172 L162,172 C142,172 132,162 135,146 C138,132 152,124 168,126 C158,133 153,142 155,150 C157,157 166,159 178,159 L192,159 L195,132 Z" />
+              <path d="M168,170 C135,175 112,198 118,225 C124,252 162,265 215,255 C172,276 115,268 98,235 C84,206 105,172 148,162 Z" />
+              <path d="M192,102 C184,102 180,108 185,113 C189,116 196,115 201,113 L198,119 C188,122 177,119 175,111 C173,102 182,95 194,96 Z" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- 2. SINGLE TOP OFFICIAL COMPANY LETTERHEAD (Hidden when external letterhead is active) -->
+        <header class="built-in-letterhead relative z-10 pb-2 mb-3 border-b border-slate-200/80">
+          <div class="grid grid-cols-12 items-center gap-2">
+            <!-- Left: English Company Name & Unified Number -->
+            <div class="col-span-5 text-left font-en">
+              <h2 class="text-[13.5px] font-extrabold tracking-tight leading-snug" style="color: #1D6E7F;">
+                RAWAI ALJAMAL ALHADITHA CO.
+              </h2>
+              <p class="text-[11.5px] font-bold text-slate-800 mt-1">
+                Unified Number : 7051727662
+              </p>
+            </div>
+
+            <!-- Center: Official RAWAI Logo Emblem -->
+            <div class="col-span-2 flex flex-col items-center justify-center">
+              <svg viewBox="0 0 220 135" class="w-[102px] h-auto" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#9E2A63">
+                  <path d="M46,66 C24,58 10,40 16,16 C36,24 50,42 48,64 Z" />
+                  <path d="M44,70 C21,74 5,64 1,46 C20,44 37,53 45,68 Z" opacity="0.88" />
+                </g>
+                <g fill="#1D6E7F">
+                  <path d="M194,56 C201,67 199,88 178,100 C169,105 158,107 151,105 C167,99 182,88 185,72 C187,64 184,58 181,53 L192,50 Z" />
+                  <path d="M155,48 C166,48 171,56 169,67 C166,81 151,97 128,104 C119,107 110,107 104,105 C122,98 142,85 150,72 C143,73 137,67 138,60 C139,52 146,48 155,48 Z M153,55 C149,55 146,59 147,62 C147,66 150,68 154,67 C158,67 161,63 160,59 C159,56 156,55 153,55 Z" />
+                  <path d="M124,16 L133,14 L129,72 C128,78 124,81 118,80 L120,22 Z" />
+                  <path d="M105,45 C110,45 113,50 112,56 L110,70 L85,70 C75,70 69,65 71,56 C73,49 80,45 89,46 C83,49 81,54 82,58 C83,62 88,63 94,63 L101,63 L103,49 Z" />
+                  <path d="M89,69 C71,72 59,84 62,98 C65,113 86,120 114,114 C91,126 60,121 51,104 C44,88 55,70 78,65 Z" />
+                  <path d="M101,33 C97,33 95,36 98,39 C100,40 104,40 106,39 L105,42 C99,44 93,42 92,38 C91,33 96,29 102,30 Z" />
+                </g>
+                <text x="110" y="121" text-anchor="middle" fill="#1D6E7F" font-family="Inter, sans-serif" font-weight="800" font-size="18" letter-spacing="1.5">RAWAI</text>
+                <text x="110" y="131" text-anchor="middle" fill="#1D6E7F" font-family="Inter, sans-serif" font-weight="700" font-size="6.3" letter-spacing="0.7">ALJAMAL ALHADITHA COMPANY</text>
+              </svg>
+            </div>
+
+            <!-- Right: Arabic Company Name & Unified Number -->
+            <div class="col-span-5 text-right font-ar" dir="rtl">
+              <h1 class="text-[17px] font-extrabold tracking-tight leading-snug" style="color: #1D6E7F;">
+                شركة روائع الجمال الحديثة
+              </h1>
+              <p class="text-[12.5px] font-bold text-slate-800 mt-0.5">
+                الرقم الوطني الموحد : <span class="font-en tracking-wide">7051727662</span>
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <!-- 3. MAIN QUOTATION CONTENT (100% ENGLISH) -->
+        <div class="relative z-10 flex flex-col">
+
+          <!-- Document Title Banner -->
+          <div class="flex items-center justify-between bg-[#F3F8F9]/95 border-l-4 border-[#1D6E7F] px-4 py-1.5 rounded-r-lg mb-3">
+            <div>
+              <h3 class="text-[16px] font-extrabold text-[#1D6E7F] tracking-wide uppercase">
+                PRICE QUOTATION
+              </h3>
+              <p class="text-[11px] text-slate-600 font-semibold">
+                Product Line: <span class="text-[#9E2A63] font-bold">Exo Smart Kit</span> &bull; Segment: <span id="displaySegmentBadge" class="text-slate-800 font-bold">Dermatology Clinics</span>
+              </p>
+            </div>
+            <div class="text-right text-xs space-y-0.5">
+              <div>
+                <span class="font-bold text-slate-500">Ref No.: </span>
+                <span id="displayQuoteRef" class="font-extrabold text-[#1D6E7F]">Q-2026-104</span>
+              </div>
+              <div>
+                <span class="font-bold text-slate-500">Date: </span>
+                <span id="displayQuoteDate" class="font-bold text-slate-800">2026-11-16</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer & Quotation Meta Grid -->
+          <div class="grid grid-cols-12 gap-3 mb-3 text-xs">
+            <!-- Client Info Box -->
+            <div class="col-span-8 border border-slate-200 rounded-xl p-2 bg-white/85 space-y-0.5">
+              <div class="flex items-center gap-2">
+                <span class="text-slate-500 font-bold w-32 shrink-0">To / Client Name:</span>
+                <span id="displayClientName" class="font-extrabold text-slate-900 text-[12.5px]">Elite Dermatology & Aesthetic Clinics</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-500 font-bold w-32 shrink-0">Attention / Doctor:</span>
+                <span id="displayAttention" class="font-semibold text-slate-800">Dr. Medical Director / Procurement</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-500 font-bold w-32 shrink-0">City:</span>
+                <span id="displayCity" class="font-semibold text-slate-700">Riyadh</span>
+              </div>
+            </div>
+
+            <!-- Segment & Currency Box -->
+            <div class="col-span-4 border border-slate-200 rounded-xl p-2 bg-white/85 space-y-0.5">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-bold">Segment:</span>
+                <span id="displaySegmentShort" class="font-bold text-[#9E2A63]">Dermatology Clinics</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-bold">Currency:</span>
+                <span class="font-bold text-slate-800">SAR</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span class="text-slate-500 font-bold">Validity:</span>
+                <span class="font-bold text-slate-800">15 Days</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Introductory Line -->
+          <p class="text-xs text-slate-700 leading-relaxed mb-2.5 font-medium">
+            We are pleased to submit our special price quotation for <strong class="text-[#9E2A63]">Exo Smart Kit</strong> as detailed below:
+          </p>
+
+          <!-- Interactive Editable Quotation Table (NO Package Column, Dynamic SK Box Bonus Column + Total Qty) -->
+          <div class="mb-3">
+            <table class="w-full border-collapse text-[11px]">
+              <thead id="quotationTableHead">
+                <!-- Dynamically rendered by JS -->
+              </thead>
+              <tbody id="quotationTableBody" class="divide-y divide-slate-200 bg-white/90">
+                <!-- Dynamically rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Terms & Conditions Box -->
+          <div class="bg-slate-50/85 border border-slate-200/90 rounded-xl p-2.5 mb-3">
+            <h4 class="text-[11px] font-extrabold text-[#1D6E7F] mb-1 uppercase tracking-wide">Terms & Conditions:</h4>
+            <p id="displayTerms" class="text-[10.5px] text-slate-700 whitespace-pre-line leading-relaxed">• Prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+• Quotation validity: 15 days from the date of issue.
+• Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</p>
+          </div>
+
+          <!-- Single Clean Signature Block -->
+          <div class="flex justify-between items-end pt-1 px-1 text-xs">
+            <div>
+              <p class="font-semibold text-slate-700">Best Regards,</p>
+              <p id="displaySignatoryName" class="font-extrabold text-[#1D6E7F] text-[13px] mt-0.5">Ahmed Musallam</p>
+              <p id="displaySignatoryTitle" class="font-bold text-slate-600 text-[11px]">Sales Manager &mdash; Sales Department</p>
+              <p class="font-extrabold text-slate-800 text-[11px]">RAWAI ALJAMAL ALHADITHA CO.</p>
+              <div class="mt-5 border-b border-dashed border-slate-300 w-48"></div>
+              <span class="text-[9.5px] text-slate-400">Authorized Signature & Official Stamp</span>
+            </div>
+
+            <div class="border border-dashed border-slate-300 rounded-xl px-4 py-2 text-center w-52 bg-white/60">
+              <span class="block text-[10px] font-bold text-slate-500 uppercase">Client Acceptance (PO)</span>
+              <div class="mt-5 border-b border-slate-300"></div>
+              <span class="text-[9px] text-slate-400">Authorized Signature / Stamp</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4. SINGLE CORPORATE FOOTER PINNED AT BOTTOM OF A4 SHEET (Hidden when external letterhead is active) -->
+        <footer class="corporate-footer">
+          <div class="flex justify-between items-start text-[10.5px] leading-relaxed" style="color: #1D6E7F;">
+            <!-- Left: English Address & Contact -->
+            <div class="text-left font-en font-medium">
+              <p>Kingdom of Saudi Arabia - Jeddah</p>
+              <p>Prince Sultan St.- Al Murjana Tower - 7th Floor</p>
+              <p>Email: Info@rawaiaa.com &nbsp;Mobile: 0564340705</p>
+            </div>
+
+            <!-- Right: Arabic Address & Contact -->
+            <div class="text-right font-ar font-semibold" dir="rtl">
+              <p>المملكة العربية السعودية - جدة</p>
+              <p>شارع الأمير سلطان - برج المرجانة - الدور السابع</p>
+              <p>
+                البريد الإلكتروني : <span class="font-en">Info@rawaiaa.com</span>
+                &nbsp;جوال : <span class="font-en">0564340705</span>
+              </p>
+            </div>
+          </div>
+        </footer>
+
+      </div>
+      <!-- END OF SINGLE A4 SHEET -->
+
+    </main>
+  </div>
+
+  <!-- INTERACTIVE QUOTATION ENGINE -->
+  <script>
+    // Segment Presets
+    const SEGMENT_PRESETS = {
+      clinics: {
+        label: 'Dermatology Clinics',
+        hint: 'الافتراضي للعيادات: (7 بوكس + 3 فري + 2 SK Box) و (15 بوكس + 10 فري + 2 SK Box).',
+        rows: [
+          {
+            id: 1,
+            product: 'Exo Smart Kit',
+            paidQty: 7,
+            freeBonus: 3,
+            skBonus: 2,
+            unitPrice: 2000,
+            discountPercent: 0
+          },
+          {
+            id: 2,
+            product: 'Exo Smart Kit',
+            paidQty: 15,
+            freeBonus: 10,
+            skBonus: 2,
+            unitPrice: 2000,
+            discountPercent: 0
+          }
+        ]
+      },
+      hospitals: {
+        label: 'Hospitals',
+        hint: 'الافتراضي للمستشفيات: (30 بوكس + 10 فري)، (50 بوكس + 20 فري)، و (100 بوكس + 100 فري) مع إخفاء عمود SK Box Bonus تلقائياً.',
+        rows: [
+          {
+            id: 1,
+            product: 'Exo Smart Kit',
+            paidQty: 30,
+            freeBonus: 10,
+            skBonus: 0,
+            unitPrice: 2000,
+            discountPercent: 0
+          },
+          {
+            id: 2,
+            product: 'Exo Smart Kit',
+            paidQty: 50,
+            freeBonus: 20,
+            skBonus: 0,
+            unitPrice: 2000,
+            discountPercent: 0
+          },
+          {
+            id: 3,
+            product: 'Exo Smart Kit',
+            paidQty: 100,
+            freeBonus: 100,
+            skBonus: 0,
+            unitPrice: 2000,
+            discountPercent: 0
+          }
+        ]
+      }
+    };
+
+    // Application State
+    let offerRows = [];
+    let currentZoom = 1.0;
+    let isCleanPreview = false;
+    let lastHadSkColumn = true;
+
+    // Check if any row has skBonus > 0
+    function hasAnySkBonus() {
+      return offerRows.some(r => (Number(r.skBonus) || 0) > 0);
+    }
+
+    // Format Currency with 2 decimals
+    function formatCurrency(num) {
+      if (isNaN(num) || num === null) return '0.00';
+      return Number(num).toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function round2(num) {
+      return Math.round((Number(num) + Number.EPSILON) * 100) / 100;
+    }
+
+    // Compute Row Totals
+    function computeRow(row) {
+      const paid = Math.max(0, Number(row.paidQty) || 0);
+      const free = Math.max(0, Number(row.freeBonus) || 0);
+      const sk = Math.max(0, Number(row.skBonus) || 0);
+      const price = Math.max(0, Number(row.unitPrice) || 0);
+      const disc = Math.min(100, Math.max(0, Number(row.discountPercent) || 0));
+
+      const totalBoxes = paid + free + sk;
+      const grossTotal = round2(paid * price);
+      const netTotal = round2(grossTotal * (1 - disc / 100));
+      const effectiveCostPerBox = totalBoxes > 0 ? round2(netTotal / totalBoxes) : 0;
+
+      return {
+        totalBoxes,
+        grossTotal,
+        netTotal,
+        effectiveCostPerBox
+      };
+    }
+
+    // Initialize on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('quoteDateInput').value = today;
+      syncMetadata();
+      loadSegmentPreset('clinics');
+      autoDetectLocalLetterhead();
+    });
+
+    // =========================================================================
+    // EXTERNAL LETTERHEAD IMAGE HANDLERS (Auto-detect & Manual Upload)
+    // =========================================================================
+    function applyExternalLetterhead(imageUrl, sourceLabel) {
+      const a4 = document.getElementById('a4Container');
+      a4.style.backgroundImage = `url("${imageUrl}")`;
+      a4.classList.add('has-external-letterhead');
+
+      const badge = document.getElementById('letterheadStatusBadge');
+      badge.textContent = sourceLabel || 'ورقة رسمية مرفقة';
+      badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800';
+
+      document.getElementById('clearLetterheadBtn').classList.remove('hidden');
+      document.getElementById('offsetControlBox').classList.remove('hidden');
+    }
+
+    function clearExternalLetterhead() {
+      const a4 = document.getElementById('a4Container');
+      a4.style.backgroundImage = '';
+      a4.classList.remove('has-external-letterhead');
+
+      const fileInput = document.getElementById('letterheadFileInput');
+      if (fileInput) fileInput.value = '';
+
+      const badge = document.getElementById('letterheadStatusBadge');
+      badge.textContent = 'الترويسة الرقمية المدمجة';
+      badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600';
+
+      document.getElementById('clearLetterheadBtn').classList.add('hidden');
+      document.getElementById('offsetControlBox').classList.add('hidden');
+    }
+
+    function handleLetterheadUpload(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        applyExternalLetterhead(e.target.result, `مرفق: ${file.name.slice(0, 18)}`);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function autoDetectLocalLetterhead() {
+      const candidates = ['letterhead.jpg', 'letterhead.png', 'Picture1.jpg', 'Picture1.png'];
+      let index = 0;
+
+      function tryNext() {
+        if (index >= candidates.length) return;
+        const candidate = candidates[index++];
+        const img = new Image();
+        img.onload = function() {
+          applyExternalLetterhead(candidate, `تلقائي: ${candidate}`);
+        };
+        img.onerror = function() {
+          tryNext();
+        };
+        img.src = candidate;
+      }
+
+      tryNext();
+    }
+
+    function updateTopOffset(mmVal) {
+      const val = Number(mmVal) || 48;
+      const a4 = document.getElementById('a4Container');
+      a4.style.setProperty('--custom-top-offset', `${val}mm`);
+      document.getElementById('topOffsetValueLabel').textContent = `${val} mm`;
+    }
+
+    // =========================================================================
+    // SEGMENT & ROW ENGINE
+    // =========================================================================
+    function handleSegmentChange() {
+      const selected = document.getElementById('segmentSelect').value;
+      loadSegmentPreset(selected);
+    }
+
+    function resetSegmentDefaults() {
+      const selected = document.getElementById('segmentSelect').value;
+      document.getElementById('globalUnitPrice').value = 2000;
+      document.getElementById('globalDiscount').value = 0;
+      loadSegmentPreset(selected);
+    }
+
+    function loadSegmentPreset(segmentKey) {
+      const preset = SEGMENT_PRESETS[segmentKey];
+      const basePrice = Math.max(0, Number(document.getElementById('globalUnitPrice').value) || 2000);
+      const baseDisc = Math.min(100, Math.max(0, Number(document.getElementById('globalDiscount').value) || 0));
+
+      document.getElementById('segmentHint').textContent = preset.hint;
+      document.getElementById('displaySegmentBadge').textContent = preset.label;
+      document.getElementById('displaySegmentShort').textContent = preset.label;
+
+      offerRows = preset.rows.map((r, idx) => ({
+        ...r,
+        id: Date.now() + idx,
+        unitPrice: basePrice,
+        discountPercent: baseDisc
+      }));
+
+      renderQuotationTable();
+    }
+
+    function applyGlobalUnitPrice(val) {
+      const newPrice = Math.max(0, Number(val) || 0);
+      offerRows.forEach(r => r.unitPrice = newPrice);
+      renderQuotationTable();
+    }
+
+    function applyGlobalDiscount(val) {
+      const newDisc = Math.min(100, Math.max(0, Number(val) || 0));
+      offerRows.forEach(r => r.discountPercent = newDisc);
+      renderQuotationTable();
+    }
+
+    function addOfferRow() {
+      const basePrice = Math.max(0, Number(document.getElementById('globalUnitPrice').value) || 2000);
+      offerRows.push({
+        id: Date.now(),
+        product: 'Exo Smart Kit',
+        paidQty: 10,
+        freeBonus: 5,
+        skBonus: 0,
+        unitPrice: basePrice,
+        discountPercent: 0
+      });
+      renderQuotationTable();
+    }
+
+    function removeOfferRow(id) {
+      if (offerRows.length <= 1) return;
+      offerRows = offerRows.filter(r => r.id !== id);
+      renderQuotationTable();
+    }
+
+    // Update Standard Cell Field (Recalculates Total Qty & Net Total)
+    function updateRowField(id, field, rawValue) {
+      const row = offerRows.find(r => r.id === id);
+      if (!row) return;
+
+      if (field === 'product') {
+        row.product = rawValue;
+      } else {
+        const numVal = Math.max(0, parseFloat(rawValue) || 0);
+        if (field === 'discountPercent') {
+          row.discountPercent = Math.min(100, round2(numVal));
+        } else {
+          row[field] = numVal;
+        }
+      }
+
+      // If SK Box Bonus column visibility toggles between hidden and visible
+      const showSkNow = hasAnySkBonus();
+      if (field === 'skBonus' && showSkNow !== lastHadSkColumn) {
+        const activeId = document.activeElement ? document.activeElement.id : null;
+        renderQuotationTable();
+        if (activeId) {
+          const el = document.getElementById(activeId);
+          if (el) {
+            el.focus();
+            el.select();
+          }
+        }
+        return;
+      }
+
+      const m = computeRow(row);
+      const totalQtyCell = document.getElementById(`total-qty-${id}`);
+      if (totalQtyCell) {
+        totalQtyCell.textContent = m.totalBoxes;
+      }
+
+      const netInput = document.getElementById(`net-input-${id}`);
+      if (netInput) {
+        netInput.value = m.netTotal.toFixed(2);
+      }
+
+      updateLiveSidebarSummary();
+    }
+
+    // Bidirectional Sync: User edits Net Total -> Recalculate Discount (%)
+    function updateRowNetTotal(id, rawNetValue) {
+      const row = offerRows.find(r => r.id === id);
+      if (!row) return;
+
+      const grossTotal = (Number(row.paidQty) || 0) * (Number(row.unitPrice) || 0);
+      let enteredNet = Math.max(0, parseFloat(rawNetValue) || 0);
+
+      if (grossTotal > 0) {
+        if (enteredNet > grossTotal) {
+          enteredNet = grossTotal;
+        }
+        const computedDisc = round2((1 - (enteredNet / grossTotal)) * 100);
+        row.discountPercent = Math.min(100, Math.max(0, computedDisc));
+      } else {
+        row.discountPercent = 0;
+      }
+
+      const discInput = document.getElementById(`disc-input-${id}`);
+      if (discInput) {
+        discInput.value = row.discountPercent;
+      }
+
+      updateLiveSidebarSummary();
+    }
+
+    // Render Table (NO Package Column, Dynamic SK Box Bonus Column + Total Qty)
+    function renderQuotationTable() {
+      const thead = document.getElementById('quotationTableHead');
+      const tbody = document.getElementById('quotationTableBody');
+      const showSkCol = hasAnySkBonus();
+      lastHadSkColumn = showSkCol;
+
+      thead.innerHTML = `
+        <tr class="text-white text-center font-bold" style="background-color: #1D6E7F;">
+          <th class="py-2 px-1 border border-[#165765] rounded-tl-lg w-[4%]">#</th>
+          <th class="py-2 px-1.5 border border-[#165765] ${showSkCol ? 'w-[20%]' : 'w-[24%]'}">Product Description</th>
+          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Paid Qty<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
+          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Free Bonus<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
+          ${showSkCol ? `
+            <th class="py-2 px-1 border border-[#165765] w-[10%]">SK Box Bonus<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
+          ` : ''}
+          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Total Qty<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
+          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[11%]' : 'w-[12%]'}">Unit Price<br><span class="text-[8.5px] font-normal opacity-90">(SAR)</span></th>
+          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Discount<br><span class="text-[8.5px] font-normal opacity-90">(%)</span></th>
+          <th class="py-2 px-1.5 border border-[#165765] rounded-tr-lg ${showSkCol ? 'w-[15%]' : 'w-[16%]'}">Net Total<br><span class="text-[8.5px] font-normal opacity-90">(SAR)</span></th>
+          <th class="no-print no-preview py-2 px-1 bg-slate-700 w-[3%]" title="Remove Row">&times;</th>
+        </tr>
+      `;
+
+      tbody.innerHTML = '';
+
+      offerRows.forEach((row, index) => {
+        const m = computeRow(row);
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-[#F3F8F9]/60 transition-colors text-center';
+
+        tr.innerHTML = `
+          <!-- 1. Row Index (#) -->
+          <td class="py-2 px-1 border border-slate-200 font-bold text-slate-600 bg-slate-50/60">
+            ${index + 1}
+          </td>
+
+          <!-- 2. Product Description -->
+          <td class="py-2 px-1 border border-slate-200 font-bold text-slate-800">
+            <input type="text" value="${escapeHtml(row.product)}"
+              oninput="updateRowField(${row.id}, 'product', this.value)"
+              class="quote-input w-full text-center font-bold text-slate-800 text-[11px]" />
+          </td>
+
+          <!-- 3. Paid Qty (Box) -->
+          <td class="py-2 px-1 border border-slate-200">
+            <input type="number" min="0" step="1" value="${row.paidQty}"
+              oninput="updateRowField(${row.id}, 'paidQty', this.value)"
+              class="quote-input w-full text-center font-bold text-slate-900 text-[11px]" />
+          </td>
+
+          <!-- 4. Free Bonus (Box) -->
+          <td class="py-2 px-1 border border-slate-200 bg-emerald-50/40">
+            <input type="number" min="0" step="1" value="${row.freeBonus}"
+              oninput="updateRowField(${row.id}, 'freeBonus', this.value)"
+              class="quote-input w-full text-center font-bold text-emerald-700 text-[11px]" />
+          </td>
+
+          <!-- 5. Conditional SK Box Bonus -->
+          ${showSkCol ? `
+            <td class="py-2 px-1 border border-slate-200 bg-pink-50/40">
+              <input id="sk-input-${row.id}" type="number" min="0" step="1" value="${row.skBonus}"
+                oninput="updateRowField(${row.id}, 'skBonus', this.value)"
+                class="quote-input w-full text-center font-bold text-[#9E2A63] text-[11px]" />
+            </td>
+          ` : ''}
+
+          <!-- 6. Total Qty (Box) -->
+          <td id="total-qty-${row.id}" class="py-2 px-1 border border-slate-200 font-extrabold text-slate-800 bg-slate-50/70 text-[11px]">
+            ${m.totalBoxes}
+          </td>
+
+          <!-- 7. Unit Price (SAR) -->
+          <td class="py-2 px-1 border border-slate-200">
+            <input type="number" min="0" step="50" value="${row.unitPrice}"
+              oninput="updateRowField(${row.id}, 'unitPrice', this.value)"
+              class="quote-input w-full text-center font-semibold text-slate-800 text-[11px]" />
+          </td>
+
+          <!-- 8. Discount (%) -->
+          <td class="py-2 px-1 border border-slate-200">
+            <input id="disc-input-${row.id}" type="number" min="0" max="100" step="0.5" value="${row.discountPercent}"
+              oninput="updateRowField(${row.id}, 'discountPercent', this.value)"
+              class="quote-input w-full text-center font-bold text-[#9E2A63] text-[11px]" />
+          </td>
+
+          <!-- 9. Net Total (SAR) - Bidirectional with Discount (%) -->
+          <td class="py-2 px-1 border border-slate-200 bg-[#F3F8F9]/90">
+            <input id="net-input-${row.id}" type="number" min="0" step="10" value="${m.netTotal.toFixed(2)}"
+              oninput="updateRowNetTotal(${row.id}, this.value)"
+              class="quote-input w-full text-center font-extrabold text-[#1D6E7F] text-[11.5px]" />
+          </td>
+
+          <!-- 10. Action Delete Row (Hidden in Print & Clean Preview) -->
+          <td class="no-print no-preview py-2 px-1 border border-slate-200">
+            <button onclick="removeOfferRow(${row.id})" class="text-rose-500 hover:text-rose-700 font-bold text-sm px-1" title="Remove">
+              &times;
+            </button>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+
+      updateLiveSidebarSummary();
+    }
+
+    // Update Arabic Sidebar Cost Analyzer
+    function updateLiveSidebarSummary() {
+      const container = document.getElementById('liveSummaryList');
+      container.innerHTML = offerRows.map((row, index) => {
+        const m = computeRow(row);
+        const parts = [`${row.paidQty} Paid`, `${row.freeBonus} Free`];
+        if ((Number(row.skBonus) || 0) > 0) {
+          parts.push(`${row.skBonus} SK`);
+        }
+
+        return `
+          <div class="bg-white/10 rounded-xl p-2.5 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-white">السطر #${index + 1} (${parts.join(' + ')} = ${m.totalBoxes} Box)</div>
+              <div class="text-[11px] text-teal-100">
+                الإجمالي: <span class="font-en font-bold">${formatCurrency(m.netTotal)} SAR</span>
+                ${row.discountPercent > 0 ? `<span class="text-pink-200">(خصم ${row.discountPercent}%)</span>` : ''}
+              </div>
+            </div>
+            <div class="text-left bg-white/15 px-2.5 py-1 rounded-lg">
+              <div class="text-[10px] text-teal-100">تكلفة البوكس</div>
+              <div class="font-en font-extrabold text-sm text-white">${formatCurrency(m.effectiveCostPerBox)} <span class="text-[10px] font-normal">SAR</span></div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Sync English Metadata Inputs to A4 Paper
+    function syncMetadata() {
+      document.getElementById('displayClientName').textContent = document.getElementById('clientNameInput').value || '—';
+      document.getElementById('displayAttention').textContent = document.getElementById('attentionInput').value || '—';
+      document.getElementById('displayCity').textContent = document.getElementById('cityInput').value || 'Riyadh';
+      document.getElementById('displayQuoteRef').textContent = document.getElementById('quoteRefInput').value || 'Q-2026-104';
+      document.getElementById('displayQuoteDate').textContent = document.getElementById('quoteDateInput').value || '';
+      document.getElementById('displaySignatoryName').textContent = document.getElementById('signatoryNameInput').value || 'Ahmed Musallam';
+
+      const titleVal = document.getElementById('signatoryTitleInput').value || 'Sales Manager';
+      document.getElementById('displaySignatoryTitle').innerHTML = `${escapeHtml(titleVal)} &mdash; Sales Department`;
+
+      let termsText = document.getElementById('termsInput').value || '';
+      const vatIncluded = document.getElementById('vatNoteToggle').checked;
+      if (vatIncluded) {
+        termsText = termsText.replace('exclude 15% VAT', 'include 15% VAT');
+      } else {
+        termsText = termsText.replace('include 15% VAT', 'exclude 15% VAT');
+      }
+      document.getElementById('displayTerms').textContent = termsText;
+    }
+
+    // Toggle Clean Official Preview Mode
+    function togglePreviewMode() {
+      isCleanPreview = !isCleanPreview;
+      const a4 = document.getElementById('a4Container');
+      const btnText = document.getElementById('previewToggleText');
+
+      if (isCleanPreview) {
+        a4.classList.add('preview-clean');
+        btnText.textContent = 'العودة لوضع التعديل';
+      } else {
+        a4.classList.remove('preview-clean');
+        btnText.textContent = 'معاينة رسمية نهائية';
+      }
+    }
+
+    // Zoom A4 Sheet
+    function adjustZoom(delta) {
+      currentZoom = Math.min(1.3, Math.max(0.6, round2(currentZoom + delta)));
+      const a4 = document.getElementById('a4Container');
+      a4.style.transform = `scale(${currentZoom})`;
+      a4.style.transformOrigin = 'top center';
+      document.getElementById('zoomLabel').textContent = `${Math.round(currentZoom * 100)}%`;
+    }
+
+    // Print / Save as PDF
+    function printQuotation() {
+      const a4 = document.getElementById('a4Container');
+      const prevTransform = a4.style.transform;
+      a4.style.transform = 'scale(1)';
+
+      setTimeout(() => {
+        window.print();
+        a4.style.transform = prevTransform;
+      }, 100);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+  </script>
+</body>
+</html>
