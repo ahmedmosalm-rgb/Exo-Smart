@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>مولد عروض أسعار Exo Smart Kit | شركة روائع الجمال الحديثة</title>
+  <title>مولد عروض أسعار Cell HD Exo Smart Kit | شركة روائع الجمال الحديثة</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Cairo (Arabic Controls) & Inter (English A4 Quotation) -->
@@ -192,7 +192,7 @@
         </div>
         <div>
           <h1 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">
-            مولد عروض الأسعار — <span class="text-[#1D6E7F] font-en">Exo Smart Kit</span>
+            مولد عروض الأسعار — <span class="text-[#1D6E7F] font-en">Cell HD Exo Smart Kit</span>
           </h1>
           <p class="text-xs text-slate-500">شركة روائع الجمال الحديثة • قالب A4 الرسمي على letterhead.jpg</p>
         </div>
@@ -414,8 +414,48 @@
           <!-- Populated dynamically by JS -->
         </div>
         <p class="text-[11px] text-teal-100/80 pt-1 border-t border-white/10">
-          * تعديل <strong>نسبة الخصم %</strong> يُحدّث <strong>Net Total</strong> فوراً، وتعديل <strong>Net Total</strong> يُحدّث <strong>نسبة الخصم %</strong> تلقائياً.
+          * <strong>SK Box</strong> هدية ترويجية بقيمة <strong>0 SAR</strong> ولا تدخل في حسبة السعر أو متوسط تكلفة البوكس الفعلية.
         </p>
+      </div>
+
+      <!-- 5. Local Quotation Archive & Instant Excel/CSV Export (No Security Warnings) -->
+      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+            سجل العروض وتصدير Excel
+          </h2>
+          <span id="savedQuotesCountBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+            0 محفوظ
+          </span>
+        </div>
+
+        <p class="text-[11px] text-slate-600 leading-relaxed">
+          يتم حفظ كل عرض تلقائياً في متصفحك عند الطباعة أو بالضغط على حفظ، مع إمكانية تصدير السجل كملف <strong>Excel / CSV</strong> بضغطة واحدة.
+        </p>
+
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="saveCurrentQuoteToLog(true)" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition cursor-pointer">
+            <span>💾 حفظ في السجل</span>
+          </button>
+          <button onclick="exportQuotesToExcelCSV()" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition cursor-pointer">
+            <span>📊 تصدير Excel</span>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px]">
+          <button onclick="toggleArchiveDrawer()" class="font-bold text-[#1D6E7F] hover:underline">
+            عرض / استرجاع العروض السابقة
+          </button>
+          <button onclick="clearSavedQuotesLog()" class="font-bold text-rose-500 hover:underline">
+            مسح السجل
+          </button>
+        </div>
+
+        <!-- Collapsible Saved Quotes List -->
+        <div id="archiveListContainer" class="hidden max-h-48 overflow-y-auto space-y-1.5 pt-2 border-t border-slate-100">
+          <!-- Populated dynamically -->
+        </div>
       </div>
 
     </aside>
@@ -447,7 +487,7 @@
                 PRICE QUOTATION
               </h3>
               <p class="text-[11px] text-slate-600 font-semibold">
-                Product Line: <span class="text-[#9E2A63] font-bold">Exo Smart Kit</span> &bull; Category: <span id="displaySegmentBadge" class="text-slate-800 font-bold">Dermatology Clinic</span>
+                Product Line: <span class="text-[#9E2A63] font-bold">Cell HD Exo Smart Kit</span> &bull; Category: <span id="displaySegmentBadge" class="text-slate-800 font-bold">Dermatology Clinic</span>
               </p>
             </div>
             <div class="text-right text-xs space-y-0.5">
@@ -499,10 +539,10 @@
 
           <!-- Introductory Line -->
           <p class="text-xs text-slate-700 leading-relaxed mb-3 font-medium">
-            We are pleased to submit our special price quotation for <strong class="text-[#9E2A63]">Exo Smart Kit</strong> as detailed below:
+            We are pleased to submit our special price quotation for <strong class="text-[#9E2A63]">Cell HD Exo Smart Kit</strong> as detailed below:
           </p>
 
-          <!-- Interactive Editable Quotation Table (NO Package Column, Dynamic SK Box Bonus Column + Total Qty) -->
+          <!-- Interactive Editable Quotation Table (NO Package Column, Dynamic SK Box Bonus Column + Total Exo Qty) -->
           <div class="mb-3.5">
             <table class="w-full border-collapse text-[11px]">
               <thead id="quotationTableHead">
@@ -558,7 +598,7 @@
         rows: [
           {
             id: 1,
-            product: 'Exo Smart Kit (5 Vials / Box)',
+            product: 'Cell HD Exo Smart Kit',
             paidQty: 7,
             freeBonus: 3,
             skBonus: 2,
@@ -567,7 +607,7 @@
           },
           {
             id: 2,
-            product: 'Exo Smart Kit (5 Vials / Box)',
+            product: 'Cell HD Exo Smart Kit',
             paidQty: 15,
             freeBonus: 10,
             skBonus: 2,
@@ -582,7 +622,7 @@
         rows: [
           {
             id: 1,
-            product: 'Exo Smart Kit (5 Vials / Box)',
+            product: 'Cell HD Exo Smart Kit',
             paidQty: 30,
             freeBonus: 10,
             skBonus: 0,
@@ -591,7 +631,7 @@
           },
           {
             id: 2,
-            product: 'Exo Smart Kit (5 Vials / Box)',
+            product: 'Cell HD Exo Smart Kit',
             paidQty: 50,
             freeBonus: 20,
             skBonus: 0,
@@ -600,7 +640,7 @@
           },
           {
             id: 3,
-            product: 'Exo Smart Kit (5 Vials / Box)',
+            product: 'Cell HD Exo Smart Kit',
             paidQty: 100,
             freeBonus: 100,
             skBonus: 0,
@@ -616,6 +656,8 @@
     let currentZoom = 1.0;
     let isCleanPreview = false;
     let lastHadSkColumn = true;
+    const STORAGE_KEY_QUOTES = 'rawai_cell_hd_exo_quotations_v1';
+    const STORAGE_KEY_REF = 'rawai_cell_hd_exo_last_ref_v1';
 
     // Check if any row has skBonus > 0
     function hasAnySkBonus() {
@@ -635,7 +677,7 @@
       return Math.round((Number(num) + Number.EPSILON) * 100) / 100;
     }
 
-    // Compute Row Totals
+    // Compute Row Totals (SK Box is 0 SAR and excluded from Exo Box totals & effective cost)
     function computeRow(row) {
       const paid = Math.max(0, Number(row.paidQty) || 0);
       const free = Math.max(0, Number(row.freeBonus) || 0);
@@ -643,13 +685,15 @@
       const price = Math.max(0, Number(row.unitPrice) || 0);
       const disc = Math.min(100, Math.max(0, Number(row.discountPercent) || 0));
 
-      const totalBoxes = paid + free + sk;
+      // Total Exo Smart Kit Boxes strictly excludes SK Box (SK Box = 0 SAR gift)
+      const totalExoBoxes = paid + free;
       const grossTotal = round2(paid * price);
       const netTotal = round2(grossTotal * (1 - disc / 100));
-      const effectiveCostPerBox = totalBoxes > 0 ? round2(netTotal / totalBoxes) : 0;
+      const effectiveCostPerBox = totalExoBoxes > 0 ? round2(netTotal / totalExoBoxes) : 0;
 
       return {
-        totalBoxes,
+        totalExoBoxes,
+        skBoxes: sk,
         grossTotal,
         netTotal,
         effectiveCostPerBox
@@ -660,8 +704,15 @@
     window.addEventListener('DOMContentLoaded', () => {
       const today = new Date().toISOString().split('T')[0];
       document.getElementById('quoteDateInput').value = today;
+
+      const savedNextRef = localStorage.getItem(STORAGE_KEY_REF);
+      if (savedNextRef) {
+        document.getElementById('quoteRefInput').value = savedNextRef;
+      }
+
       syncMetadata();
       loadSegmentPreset('clinics');
+      refreshArchiveUI();
     });
 
     // =========================================================================
@@ -757,7 +808,7 @@
       const defaultSk = hasAnySkBonus() ? 1 : 0;
       offerRows.push({
         id: Date.now(),
-        product: 'Exo Smart Kit (5 Vials / Box)',
+        product: 'Cell HD Exo Smart Kit',
         paidQty: 10,
         freeBonus: 5,
         skBonus: defaultSk,
@@ -817,7 +868,7 @@
       const m = computeRow(row);
       const totalQtyCell = document.getElementById(`total-qty-${id}`);
       if (totalQtyCell) {
-        totalQtyCell.textContent = m.totalBoxes;
+        totalQtyCell.textContent = m.totalExoBoxes;
       }
 
       const netInput = document.getElementById(`net-input-${id}`);
@@ -927,9 +978,9 @@
             </td>
           ` : ''}
 
-          <!-- 6. Total Qty (Box) -->
+          <!-- 6. Total Exo Qty (Box) - Excludes SK Box -->
           <td id="total-qty-${row.id}" class="py-2 px-1 border border-slate-200 font-extrabold text-slate-800 bg-slate-50/70 text-[11px]">
-            ${m.totalBoxes}
+            ${m.totalExoBoxes}
           </td>
 
           <!-- 7. Unit Price (SAR) -->
@@ -976,19 +1027,16 @@
 
       container.innerHTML = offerRows.map((row, index) => {
         const m = computeRow(row);
-        const parts = [`${row.paidQty} Paid`, `${row.freeBonus} Free`];
-        if ((Number(row.skBonus) || 0) > 0) {
-          parts.push(`${row.skBonus} SK Box`);
-        }
+        const skNote = (Number(row.skBonus) || 0) > 0 ? ` <span class="text-pink-200">(+ ${row.skBonus} SK Box Free)</span>` : '';
 
         return `
           <div dir="ltr" class="bg-white/10 rounded-xl p-2.5 flex items-center justify-between gap-2 border border-white/10 text-left font-en">
             <div>
               <div class="font-bold text-white text-xs">Option #${index + 1}</div>
-              <div class="text-[11px] text-teal-100 mt-0.5">${parts.join(' + ')} = <strong class="text-white">${m.totalBoxes} Total</strong></div>
+              <div class="text-[11px] text-teal-100 mt-0.5">${row.paidQty} Paid + ${row.freeBonus} Free = <strong class="text-white">${m.totalExoBoxes} Exo Boxes</strong>${skNote}</div>
             </div>
             <div class="text-right shrink-0">
-              <div class="text-[10px] text-pink-200">Effective / Box</div>
+              <div class="text-[10px] text-pink-200">Effective / Exo Box</div>
               <div class="font-extrabold text-sm text-white">SAR ${formatCurrency(m.effectiveCostPerBox)}</div>
             </div>
           </div>
@@ -1084,14 +1132,14 @@
     }
 
     // Build Clean PDF Filename from Client Name
-    const ORIGINAL_PAGE_TITLE = 'مولد عروض أسعار Exo Smart Kit | شركة روائع الجمال الحديثة';
+    const ORIGINAL_PAGE_TITLE = 'مولد عروض أسعار Cell HD Exo Smart Kit | شركة روائع الجمال الحديثة';
 
     function getDynamicPdfTitle() {
       const rawClient = (document.getElementById('clientNameInput')?.value || '').trim();
       // Remove characters not allowed in Windows/Mac filenames
       const cleanClient = rawClient.replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim();
       const clientPart = cleanClient || 'Client';
-      return `Quotation - ${clientPart} - Exo Smart Kit`;
+      return `Quotation - ${clientPart} - Cell HD Exo Smart Kit`;
     }
 
     // Support both button click and Ctrl+P shortcut for automatic PDF file naming
@@ -1103,8 +1151,10 @@
       document.title = ORIGINAL_PAGE_TITLE;
     });
 
-    // Print / Save as PDF
+    // Print / Save as PDF + Auto-log to Local Archive
     function printQuotation() {
+      saveCurrentQuoteToLog(false);
+
       const a4 = document.getElementById('a4Container');
       const prevTransform = a4.style.transform;
       a4.style.transform = 'scale(1)';
@@ -1115,6 +1165,238 @@
         a4.style.transform = prevTransform;
         document.title = ORIGINAL_PAGE_TITLE;
       }, 100);
+    }
+
+    // =========================================================================
+    // LOCAL QUOTATION ARCHIVE & INSTANT EXCEL/CSV EXPORT
+    // =========================================================================
+    function getSavedQuotes() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY_QUOTES) || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function incrementRefNumber(currentRef) {
+      const match = String(currentRef).match(/^(.*?)(\d+)$/);
+      if (!match) return currentRef;
+      const prefix = match[1];
+      const numStr = match[2];
+      const nextNum = String(Number(numStr) + 1).padStart(numStr.length, '0');
+      return `${prefix}${nextNum}`;
+    }
+
+    function saveCurrentQuoteToLog(manualTrigger = false) {
+      const refNo = (document.getElementById('quoteRefInput').value || 'QT-2026-101').trim();
+      const dateVal = document.getElementById('quoteDateInput').value || new Date().toISOString().split('T')[0];
+      const clientName = (document.getElementById('clientNameInput').value || 'Client').trim();
+      const attention = (document.getElementById('attentionInput').value || '').trim();
+      const city = (document.getElementById('cityInput').value || 'Riyadh, KSA').trim();
+      const segment = document.getElementById('segmentSelect').value;
+      const categoryLabel = SEGMENT_PRESETS[segment]?.label || 'Dermatology Clinic';
+      const signatory = (document.getElementById('signatoryNameInput').value || 'Ahmed Musallam').trim();
+
+      const itemsSnapshot = offerRows.map((r, idx) => {
+        const m = computeRow(r);
+        return {
+          optionNo: idx + 1,
+          product: r.product,
+          paidQty: Number(r.paidQty) || 0,
+          freeBonus: Number(r.freeBonus) || 0,
+          skBonus: Number(r.skBonus) || 0,
+          totalExoBoxes: m.totalExoBoxes,
+          unitPrice: Number(r.unitPrice) || 0,
+          discountPercent: Number(r.discountPercent) || 0,
+          netTotal: m.netTotal,
+          effectiveCostPerBox: m.effectiveCostPerBox
+        };
+      });
+
+      const entry = {
+        uid: Date.now(),
+        savedAt: new Date().toLocaleString('en-GB'),
+        refNo,
+        date: dateVal,
+        clientName,
+        attention,
+        city,
+        segment,
+        categoryLabel,
+        signatory,
+        items: itemsSnapshot
+      };
+
+      const existing = getSavedQuotes();
+      // Replace if same Ref No. already saved, otherwise prepend
+      const filtered = existing.filter(q => q.refNo !== refNo);
+      filtered.unshift(entry);
+      localStorage.setItem(STORAGE_KEY_QUOTES, JSON.stringify(filtered));
+
+      // Increment Ref No. if saved manually or if it's a brand-new Ref No.
+      const isNewRef = !existing.some(q => q.refNo === refNo);
+      if (manualTrigger || isNewRef) {
+        const nextRef = incrementRefNumber(refNo);
+        localStorage.setItem(STORAGE_KEY_REF, nextRef);
+        if (manualTrigger) {
+          document.getElementById('quoteRefInput').value = nextRef;
+          syncMetadata();
+        }
+      }
+
+      refreshArchiveUI();
+
+      if (manualTrigger) {
+        const badge = document.getElementById('savedQuotesCountBadge');
+        badge.textContent = '✓ تم الحفظ!';
+        setTimeout(() => refreshArchiveUI(), 1400);
+      }
+    }
+
+    function refreshArchiveUI() {
+      const quotes = getSavedQuotes();
+      const badge = document.getElementById('savedQuotesCountBadge');
+      if (badge) {
+        badge.textContent = `${quotes.length} محفوظ`;
+      }
+
+      const listContainer = document.getElementById('archiveListContainer');
+      if (!listContainer) return;
+
+      if (quotes.length === 0) {
+        listContainer.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-2">لا توجد عروض محفوظة في السجل بعد.</p>`;
+        return;
+      }
+
+      listContainer.innerHTML = quotes.map(q => `
+        <div class="flex items-center justify-between gap-2 bg-slate-50 hover:bg-[#F3F8F9] p-2 rounded-lg border border-slate-200/80 text-xs">
+          <div class="min-w-0 flex-1">
+            <div class="font-bold text-slate-800 truncate font-en">${escapeHtml(q.clientName)}</div>
+            <div class="text-[10px] text-slate-500 font-en">${escapeHtml(q.refNo)} &bull; ${escapeHtml(q.date)}</div>
+          </div>
+          <button onclick="loadQuoteFromLog(${q.uid})" class="shrink-0 px-2 py-1 rounded bg-[#1D6E7F] text-white text-[10px] font-bold hover:opacity-90">
+            فتح
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function toggleArchiveDrawer() {
+      const container = document.getElementById('archiveListContainer');
+      if (container) {
+        container.classList.toggle('hidden');
+        refreshArchiveUI();
+      }
+    }
+
+    function loadQuoteFromLog(uid) {
+      const quotes = getSavedQuotes();
+      const found = quotes.find(q => q.uid === uid);
+      if (!found) return;
+
+      document.getElementById('quoteRefInput').value = found.refNo;
+      document.getElementById('quoteDateInput').value = found.date;
+      document.getElementById('clientNameInput').value = found.clientName;
+      document.getElementById('attentionInput').value = found.attention || '';
+      document.getElementById('cityInput').value = found.city || 'Riyadh, KSA';
+      document.getElementById('segmentSelect').value = found.segment || 'clinics';
+      document.getElementById('signatoryNameInput').value = found.signatory || 'Ahmed Musallam';
+
+      const preset = SEGMENT_PRESETS[found.segment || 'clinics'];
+      document.getElementById('segmentHint').textContent = preset.hint;
+      document.getElementById('displaySegmentBadge').textContent = preset.label;
+      document.getElementById('displaySegmentShort').textContent = preset.label;
+
+      offerRows = found.items.map((item, idx) => ({
+        id: Date.now() + idx,
+        product: item.product || 'Cell HD Exo Smart Kit',
+        paidQty: item.paidQty,
+        freeBonus: item.freeBonus,
+        skBonus: item.skBonus,
+        unitPrice: item.unitPrice,
+        discountPercent: item.discountPercent
+      }));
+
+      syncMetadata();
+      renderQuotationTable();
+    }
+
+    function clearSavedQuotesLog() {
+      localStorage.removeItem(STORAGE_KEY_QUOTES);
+      refreshArchiveUI();
+    }
+
+    function exportQuotesToExcelCSV() {
+      let quotes = getSavedQuotes();
+      // If log is empty, include current quote automatically so the file is never empty
+      if (quotes.length === 0) {
+        saveCurrentQuoteToLog(false);
+        quotes = getSavedQuotes();
+      }
+
+      const headers = [
+        'Saved Timestamp',
+        'Ref No.',
+        'Quotation Date',
+        'Client Name',
+        'Attention / Doctor',
+        'City',
+        'Category',
+        'Option #',
+        'Product Description',
+        'Paid Qty (Box)',
+        'Free Bonus (Box)',
+        'SK Box Bonus (0 SAR Gift)',
+        'Total Exo Qty (Paid + Free)',
+        'Unit Price (SAR)',
+        'Discount (%)',
+        'Net Total (SAR)',
+        'Effective Cost / Exo Box (SAR)',
+        'Signatory'
+      ];
+
+      const csvRows = [headers.join(',')];
+
+      quotes.forEach(q => {
+        q.items.forEach(item => {
+          const rowValues = [
+            q.savedAt,
+            q.refNo,
+            q.date,
+            q.clientName,
+            q.attention,
+            q.city,
+            q.categoryLabel,
+            `Option #${item.optionNo}`,
+            item.product,
+            item.paidQty,
+            item.freeBonus,
+            item.skBonus,
+            item.totalExoBoxes,
+            item.unitPrice.toFixed(2),
+            `${item.discountPercent}%`,
+            item.netTotal.toFixed(2),
+            item.effectiveCostPerBox.toFixed(2),
+            q.signatory
+          ].map(val => `"${String(val ?? '').replace(/"/g, '""')}"`);
+
+          csvRows.push(rowValues.join(','));
+        });
+      });
+
+      // UTF-8 BOM (\uFEFF) ensures Excel opens Arabic & English cleanly without garbled text
+      const csvContent = '\uFEFF' + csvRows.join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      const todayStr = new Date().toISOString().split('T')[0];
+      link.href = url;
+      link.download = `Cell_HD_Exo_Smart_Kit_Quotations_${todayStr}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
     }
 
     function escapeHtml(str) {
