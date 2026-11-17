@@ -4,36 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مولد عروض أسعار Cell HD Exo Smart Kit | شركة روائع الجمال الحديثة</title>
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cairo (Arabic Controls) & Inter (English A4 Quotation) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --brand-teal: #1D6E7F;
-      --brand-teal-dark: #155563;
-      --brand-magenta: #9E2A63;
-      --brand-light: #F3F8F9;
+      --teal: #1D6E7F;
+      --teal-dark: #155563;
+      --magenta: #9E2A63;
+      --tint: #F3F8F9;
     }
+    body { font-family: 'Cairo', sans-serif; background: #eef2f6; color: #1e293b; }
+    .font-en { font-family: 'Inter', sans-serif; }
 
-    body {
-      font-family: 'Cairo', sans-serif;
-      background-color: #eef2f6;
-      color: #1e293b;
-    }
-
-    .font-en {
-      font-family: 'Inter', sans-serif;
-    }
-
-    .font-ar {
-      font-family: 'Cairo', sans-serif;
-    }
-
-    /* Strict Single A4 Sheet Container Printed Over letterhead.jpg */
+    /* Single A4 Sheet Printed Permanently on letterhead.jpg */
     .a4-sheet {
       width: 210mm;
       height: 297mm;
@@ -45,182 +30,87 @@
       background-repeat: no-repeat;
       background-position: center center;
       position: relative;
-      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.14);
       box-sizing: border-box;
-      padding: var(--custom-top-offset, 46mm) 14mm 35mm 14mm;
+      padding: var(--top-offset, 46mm) 13mm 35mm 13mm;
       overflow: hidden;
-      transition: transform 0.2s ease;
       font-family: 'Inter', sans-serif;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
     }
 
-    /* Editable Inputs Inside Quotation Table */
-    .quote-input {
-      background: rgba(248, 250, 252, 0.9);
+    .q-input {
+      background: rgba(248, 250, 252, 0.92);
       border: 1px dashed #cbd5e1;
-      border-radius: 5px;
+      border-radius: 4px;
       padding: 3px 4px;
-      transition: all 0.15s ease;
       font-family: 'Inter', sans-serif;
+      transition: border-color 0.15s, background 0.15s;
     }
+    .q-input:hover { border-color: var(--teal); background: #f0f9ff; }
+    .q-input:focus { outline: none; border: 1.5px solid var(--teal); background: #fff; }
 
-    .quote-input:hover {
-      border-color: var(--brand-teal);
-      background: #f0f9ff;
-    }
+    .preview-clean .q-input { background: transparent !important; border-color: transparent !important; padding: 2px; }
+    .preview-clean .no-preview { display: none !important; }
 
-    .quote-input:focus {
-      outline: none;
-      border: 1.5px solid var(--brand-teal);
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(29, 110, 127, 0.12);
-    }
+    .a4-scale-stage { display: flex; justify-content: center; align-items: flex-start; width: 100%; }
 
-    /* Clean Official Preview Mode */
-    .preview-clean .quote-input {
-      background: transparent !important;
-      border-color: transparent !important;
-      box-shadow: none !important;
-      padding: 2px 2px;
-    }
-
-    .preview-clean .no-preview {
-      display: none !important;
-    }
-
-    /* PRINT STYLES - Strict Single A4 Portrait Page on letterhead.jpg */
     @media print {
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
+      @page { size: A4 portrait; margin: 0; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       html, body {
-        width: 210mm !important;
-        height: 297mm !important;
-        min-height: 297mm !important;
-        max-height: 297mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-        background: #ffffff !important;
-        display: block !important;
+        width: 210mm !important; height: 297mm !important;
+        margin: 0 !important; padding: 0 !important;
+        overflow: hidden !important; background: #fff !important;
       }
-
-      .no-print {
-        display: none !important;
+      .no-print { display: none !important; }
+      .workspace-container, .print-wrapper, .a4-scale-stage {
+        display: block !important; width: 210mm !important; height: 297mm !important;
+        margin: 0 !important; padding: 0 !important; overflow: hidden !important;
       }
-
-      .workspace-container {
-        display: block !important;
-        width: 210mm !important;
-        height: 297mm !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
+      #a4Container {
+        transform: none !important; margin: 0 !important; box-shadow: none !important;
+        width: 210mm !important; height: 297mm !important;
+        padding: var(--top-offset, 46mm) 13mm 35mm 13mm !important;
+        page-break-after: avoid !important; break-inside: avoid !important;
       }
-
-      .print-wrapper {
-        display: block !important;
-        position: static !important;
-        width: 210mm !important;
-        height: 297mm !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #ffffff !important;
-        overflow: hidden !important;
-      }
-
-      #a4Container,
-      .a4-sheet {
-        position: relative !important;
-        transform: none !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
-        width: 210mm !important;
-        height: 297mm !important;
-        min-height: 297mm !important;
-        max-height: 297mm !important;
-        padding: var(--custom-top-offset, 46mm) 14mm 35mm 14mm !important;
-        background-size: 100% 100% !important;
-        background-repeat: no-repeat !important;
-        background-position: center center !important;
-        overflow: hidden !important;
-        page-break-after: avoid !important;
-        page-break-before: avoid !important;
-        break-inside: avoid !important;
-      }
-
-      .quote-input {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        color: inherit !important;
-      }
-
+      .q-input { background: transparent !important; border: none !important; padding: 0 !important; }
       input[type=number]::-webkit-inner-spin-button,
-      input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-      input[type=number] {
-        -moz-appearance: textfield;
-      }
+      input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+      input[type=number] { -moz-appearance: textfield; }
     }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-  <!-- TOP ACTION TOOLBAR (Hidden in Print) -->
+  <!-- TOP BAR (Hidden in Print) -->
   <header class="no-print bg-white border-b border-slate-200 sticky top-0 z-30 shadow-sm">
-    <div class="max-w-[1600px] mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      <!-- Brand Title -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold shadow-sm" style="background: linear-gradient(135deg, #1D6E7F, #9E2A63);">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-          </svg>
+    <div class="max-w-[1600px] mx-auto px-3 sm:px-5 py-2.5 flex flex-wrap items-center justify-between gap-2.5">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold shadow-sm" style="background: linear-gradient(135deg, #1D6E7F, #9E2A63);">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
         </div>
         <div>
-          <h1 class="text-base sm:text-lg font-extrabold text-slate-800 leading-tight">
+          <h1 class="text-sm sm:text-base font-extrabold text-slate-800 leading-tight">
             مولد عروض الأسعار — <span class="text-[#1D6E7F] font-en">Cell HD Exo Smart Kit</span>
           </h1>
-          <p class="text-xs text-slate-500">شركة روائع الجمال الحديثة • قالب A4 الرسمي على letterhead.jpg</p>
+          <p class="text-[11px] text-slate-500">شركة روائع الجمال الحديثة • طباعة A4 رسمية على letterhead.jpg</p>
         </div>
       </div>
 
-      <!-- Toolbar Actions -->
       <div class="flex flex-wrap items-center gap-2">
-        <!-- Zoom Controls -->
-        <div class="hidden xl:flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
-          <button onclick="adjustZoom(-0.1)" class="px-2.5 py-1 text-slate-600 hover:bg-white rounded-lg text-sm font-bold transition" title="تصغير">-</button>
+        <div class="flex items-center bg-slate-100 rounded-xl p-1 border border-slate-200">
+          <button onclick="adjustZoom(-0.1)" class="px-2.5 py-1 text-slate-700 hover:bg-white rounded-lg text-sm font-bold">-</button>
           <span id="zoomLabel" class="px-2 text-xs font-bold text-slate-700 font-en">100%</span>
-          <button onclick="adjustZoom(0.1)" class="px-2.5 py-1 text-slate-600 hover:bg-white rounded-lg text-sm font-bold transition" title="تكبير">+</button>
+          <button onclick="adjustZoom(0.1)" class="px-2.5 py-1 text-slate-700 hover:bg-white rounded-lg text-sm font-bold">+</button>
+          <button onclick="fitA4ToScreen(true)" class="px-2 py-1 mr-1 text-[11px] font-bold text-[#1D6E7F] hover:bg-white rounded-lg">ملاءمة</button>
         </div>
 
-        <!-- Clean Official Preview Toggle -->
-        <button id="previewToggleBtn" onclick="togglePreviewMode()" class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-bold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 transition shadow-sm">
-          <svg class="w-4 h-4 text-[#1D6E7F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-          </svg>
+        <button id="previewToggleBtn" onclick="togglePreviewMode()" class="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-bold border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 shadow-sm">
           <span id="previewToggleText">معاينة رسمية نهائية</span>
         </button>
 
-        <!-- Print / Save PDF Button -->
-        <button onclick="printQuotation()" class="flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-bold text-white shadow-md hover:opacity-95 transition cursor-pointer" style="background: linear-gradient(135deg, #1D6E7F 0%, #155563 100%);">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-          </svg>
+        <button onclick="printQuotation()" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold text-white shadow-md hover:opacity-95 cursor-pointer" style="background: linear-gradient(135deg, #1D6E7F, #155563);">
           <span>Print / Save as PDF</span>
         </button>
       </div>
@@ -228,144 +118,78 @@
   </header>
 
   <!-- MAIN WORKSPACE -->
-  <div class="workspace-container flex-1 max-w-[1600px] w-full mx-auto flex flex-col lg:flex-row gap-6 p-4 lg:p-6">
+  <div class="workspace-container flex-1 max-w-[1600px] w-full mx-auto flex flex-col min-[920px]:flex-row gap-4 sm:gap-5 p-3 sm:p-5">
 
-    <!-- ARABIC CONTROL SIDEBAR (Hidden in Print) -->
-    <aside class="no-print w-full lg:w-[410px] xl:w-[430px] shrink-0 space-y-4">
+    <!-- ARABIC SIDEBAR CONTROLS -->
+    <aside class="no-print w-full min-[920px]:w-[400px] xl:w-[420px] shrink-0 space-y-4">
 
-      <!-- 1. Official Letterhead Position & Fallback Card -->
-      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
+      <!-- 1. Segment & Pricing Presets -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200/80 space-y-3.5">
         <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
-            الورقة الرسمية (letterhead.jpg)
-          </h2>
-          <span id="letterheadStatusBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-en">
-            letterhead.jpg
-          </span>
-        </div>
-
-        <p class="text-[11px] text-slate-600 leading-relaxed">
-          الورقة معتمدة بشكل دائم على ملف <span class="font-en font-bold text-[#1D6E7F]">letterhead.jpg</span> الموجود في نفس مجلد الصفحة. اضبط الإزاحة الرأسية أدناه لتوسيط العرض بدقة في المساحة البيضاء.
-        </p>
-
-        <!-- Top Content Offset Slider -->
-        <div class="pt-1 space-y-1.5">
-          <div class="flex items-center justify-between text-xs">
-            <label for="topOffsetSlider" class="font-bold text-slate-700">إزاحة المحتوى من الأعلى (Top Offset):</label>
-            <span id="topOffsetValueLabel" class="font-en font-extrabold text-[#1D6E7F] bg-[#F3F8F9] px-2 py-0.5 rounded-md">46 mm</span>
-          </div>
-          <input type="range" id="topOffsetSlider" min="30" max="75" value="46" step="1" oninput="updateTopOffset(this.value)" class="w-full accent-[#1D6E7F] cursor-pointer">
-          <div class="flex justify-between text-[10px] text-slate-400 font-en">
-            <span>30mm</span>
-            <span>46mm (Default)</span>
-            <span>75mm</span>
-          </div>
-        </div>
-
-        <!-- Optional Fallback Picker for Previewing Outside Folder -->
-        <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-          <label class="inline-flex items-center gap-1.5 text-[11px] font-bold text-slate-500 hover:text-[#1D6E7F] cursor-pointer transition">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
-            </svg>
-            <span>تحديد صورة بديلة للمعاينة المؤقتة...</span>
-            <input type="file" id="letterheadFileInput" accept="image/jpeg,image/png,image/webp" onchange="handleLetterheadUpload(event)" class="hidden">
-          </label>
-
-          <button id="resetLetterheadBtn" onclick="resetToDefaultLetterhead()" class="hidden text-[11px] font-bold text-rose-600 hover:underline">
-            العودة إلى letterhead.jpg
-          </button>
-        </div>
-      </div>
-
-      <!-- 2. Segment & Pricing Presets Card -->
-      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-sm sm:text-base">
             <span class="w-2.5 h-2.5 rounded-full bg-[#9E2A63]"></span>
             إعدادات الفئة والبونص الافتراضي
           </h2>
-          <button onclick="resetSegmentDefaults()" class="text-xs font-bold text-[#1D6E7F] hover:underline bg-[#F3F8F9] px-2.5 py-1 rounded-lg">
-            إعادة ضبط الافتراضي
-          </button>
+          <button onclick="resetSegmentDefaults()" class="text-xs font-bold text-[#1D6E7F] bg-[#F3F8F9] px-2.5 py-1 rounded-lg hover:underline">استعادة الافتراضي</button>
         </div>
 
-        <!-- Dropdown: Dermatology Clinics vs Hospitals -->
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1.5">اختر نوع الجهة (يحدد البونص الافتراضي):</label>
-          <select id="segmentSelect" onchange="handleSegmentChange()" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3.5 py-2.5 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1D6E7F]/20 transition">
+          <label class="block text-xs font-bold text-slate-600 mb-1">اختر نوع الجهة (يحدد البونص الافتراضي):</label>
+          <select id="segmentSelect" onchange="handleSegmentChange()" class="w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2.5 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:bg-white focus:outline-none">
             <option value="clinics">عيادات الجلدية (Dermatology Clinics)</option>
             <option value="hospitals">المستشفيات (Hospitals)</option>
           </select>
-          <p id="segmentHint" class="text-[11px] text-slate-600 mt-2 leading-relaxed bg-slate-50 p-2.5 rounded-lg border border-slate-200/70">
+          <p id="segmentHint" class="text-[11px] text-slate-600 mt-1.5 bg-slate-50 p-2 rounded-lg border border-slate-200/70">
             الافتراضي للعيادات: (7 بوكس + 3 فري + 2 SK Box) و (15 بوكس + 10 فري + 2 SK Box).
           </p>
         </div>
 
-        <!-- Base Price & Global Discount -->
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">سعر البوكس الأساسي (SAR)</label>
-            <div class="relative">
-              <input type="number" id="globalUnitPrice" value="2000" min="0" step="50" oninput="applyGlobalUnitPrice(this.value)" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:outline-none font-en">
-              <span class="absolute left-3 top-2.5 text-[11px] font-bold text-slate-400">SAR</span>
-            </div>
+            <input type="number" id="globalUnitPrice" value="2000" min="0" step="50" oninput="applyGlobalUnitPrice(this.value)" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-bold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
           </div>
-
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">تطبيق خصم عام (%)</label>
-            <div class="relative">
-              <input type="number" id="globalDiscount" value="0" min="0" max="100" step="0.5" oninput="applyGlobalDiscount(this.value)" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-800 focus:border-[#1D6E7F] focus:outline-none font-en">
-              <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-400">%</span>
-            </div>
+            <input type="number" id="globalDiscount" value="0" min="0" max="100" step="0.5" oninput="applyGlobalDiscount(this.value)" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-bold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
           </div>
         </div>
 
-        <!-- Add Row, Toggle SK Box Column & VAT Note Controls -->
-        <div class="pt-1 space-y-2">
-          <div class="flex items-center justify-between gap-2">
-            <button onclick="addOfferRow()" class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#F3F8F9] hover:bg-[#e4f1f4] text-[#1D6E7F] font-bold text-xs border border-[#1D6E7F]/20 transition">
-              <span>+ إضافة صف جديد</span>
-            </button>
-            <button id="toggleSkColBtn" onclick="toggleSkBonusColumn()" class="flex-1 flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-pink-50 hover:bg-pink-100 text-[#9E2A63] font-bold text-xs border border-[#9E2A63]/20 transition">
-              <span id="toggleSkColBtnText">إخفاء/تصفير بونص SK Box</span>
-            </button>
-          </div>
-
-          <label class="flex items-center gap-2 cursor-pointer bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 select-none">
-            <input type="checkbox" id="vatNoteToggle" onchange="syncMetadata()" class="rounded text-[#1D6E7F] focus:ring-[#1D6E7F] w-4 h-4">
-            <span>تغيير ملاحظة الشروط إلى شامل الضريبة (Include 15% VAT)</span>
-          </label>
+        <div class="flex items-center gap-2">
+          <button onclick="addOfferRow()" class="flex-1 py-2 px-3 rounded-xl bg-[#F3F8F9] hover:bg-[#e4f1f4] text-[#1D6E7F] font-bold text-xs border border-[#1D6E7F]/20">+ إضافة صف جديد</button>
+          <button onclick="toggleSkBonusColumn()" class="flex-1 py-2 px-3 rounded-xl bg-pink-50 hover:bg-pink-100 text-[#9E2A63] font-bold text-xs border border-[#9E2A63]/20">إظهار/إخفاء SK Box</button>
         </div>
+
+        <label class="flex items-center gap-2 cursor-pointer bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 text-xs font-bold text-slate-700 select-none">
+          <input type="checkbox" id="vatNoteToggle" onchange="syncMetadata()" class="rounded text-[#1D6E7F] w-4 h-4">
+          <span>تغيير ملاحظة الشروط إلى شامل الضريبة (Include 15% VAT)</span>
+        </label>
       </div>
 
-      <!-- 3. Client & Quotation Details Card (Inputs in English for A4 Sheet) -->
-      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#1D6E7F]"></span>
-            بيانات العميل وعرض السعر (English)
-          </h2>
-        </div>
+      <!-- 2. Client & Quotation Details -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200/80 space-y-3">
+        <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-sm sm:text-base border-b border-slate-100 pb-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#1D6E7F]"></span>
+          بيانات العميل وعرض السعر (English)
+        </h2>
 
         <div>
           <label class="block text-xs font-bold text-slate-600 mb-1">اسم العميل / المنشأة (To / Client Name)</label>
-          <input type="text" id="clientNameInput" dir="ltr" value="Elite Dermatology & Aesthetic Clinics" onfocus="handleAutoClearInput(this, 'Elite Dermatology & Aesthetic Clinics', 'displayClientName')" oninput="syncMetadata()" placeholder="Enter Client or Hospital Name..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+          <input type="text" id="clientNameInput" dir="ltr" value="Elite Dermatology & Aesthetic Clinics" onfocus="autoClearDefault(this, 'Elite Dermatology & Aesthetic Clinics', 'displayClientName')" oninput="syncMetadata()" placeholder="Enter Client Name..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-2 gap-2.5">
           <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">عناية الدكتور (Attention / Doctor)</label>
-            <input type="text" id="attentionInput" dir="ltr" value="Dr. Medical Director / Procurement" onfocus="handleAutoClearInput(this, 'Dr. Medical Director / Procurement', 'displayAttention')" oninput="syncMetadata()" placeholder="Doctor or Dept..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+            <label class="block text-xs font-bold text-slate-600 mb-1">عناية الدكتور (Attention)</label>
+            <input type="text" id="attentionInput" dir="ltr" value="Dr. Medical Director / Procurement" onfocus="autoClearDefault(this, 'Dr. Medical Director / Procurement', 'displayAttention')" oninput="syncMetadata()" placeholder="Doctor / Dept..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">المدينة (City)</label>
-            <input type="text" id="cityInput" dir="ltr" value="Riyadh, KSA" oninput="syncMetadata()" placeholder="Riyadh, KSA" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
+            <input type="text" id="cityInput" dir="ltr" value="Riyadh, KSA" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
           </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-2.5">
+        <div class="grid grid-cols-3 gap-2">
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">المرجع (Ref)</label>
             <input type="text" id="quoteRefInput" dir="ltr" value="QT-2026-101" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-2.5 py-2 text-xs font-bold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
@@ -380,9 +204,9 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-2 gap-2.5">
           <div>
-            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الموقّع (Signatory Name)</label>
+            <label class="block text-xs font-bold text-slate-600 mb-1">اسم الموقّع (Signatory)</label>
             <input type="text" id="signatoryNameInput" dir="ltr" value="Ahmed Musallam" oninput="syncMetadata()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 font-en focus:border-[#1D6E7F] focus:outline-none">
           </div>
           <div>
@@ -397,434 +221,472 @@
 • Quotation validity: 15 days from the date of issue.
 • Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</textarea>
         </div>
+
+        <!-- Safe Top Margin Calibration & Optional Preview Fallback -->
+        <div class="pt-2 border-t border-slate-100 space-y-2">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-600">إزاحة المحتوى عن الترويسة (Top):</span>
+            <span id="topOffsetLabel" class="font-bold text-[#1D6E7F] font-en">46mm</span>
+          </div>
+          <input type="range" id="topOffsetSlider" min="30" max="75" value="46" oninput="updateTopOffset(this.value)" class="w-full accent-[#1D6E7F] cursor-pointer">
+          <div class="flex items-center justify-between">
+            <label class="text-[11px] font-bold text-slate-500 hover:text-[#1D6E7F] cursor-pointer">
+              <span>تحديد صورة بديلة للمعاينة المؤقتة...</span>
+              <input type="file" accept="image/*" onchange="handleTempLetterhead(event)" class="hidden">
+            </label>
+            <button id="resetLetterheadBtn" onclick="resetLetterhead()" class="hidden text-[11px] font-bold text-rose-600 hover:underline">العودة إلى letterhead.jpg</button>
+          </div>
+        </div>
       </div>
 
-      <!-- 4. Live Effective Cost Analyzer Card -->
-      <div class="bg-gradient-to-br from-[#1D6E7F] to-[#14505d] rounded-2xl p-5 text-white shadow-md space-y-3">
+      <!-- 3. Live Effective Cost Analyzer (LTR for clean English numbers) -->
+      <div class="bg-gradient-to-br from-[#1D6E7F] to-[#14505d] rounded-2xl p-4 sm:p-5 text-white shadow-md space-y-2.5">
         <div class="flex items-center justify-between">
-          <h3 class="font-bold text-sm flex items-center gap-2">
-            <svg class="w-4 h-4 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-            </svg>
-            تحليل تكلفة البوكس الفعلية للعميل
-          </h3>
+          <h3 class="font-bold text-sm">تحليل تكلفة البوكس الفعلية للعميل</h3>
           <span class="text-[10px] bg-white/15 px-2 py-0.5 rounded-full">حساب تبادلي فوري</span>
         </div>
-        <div id="liveSummaryList" class="space-y-2 text-xs">
-          <!-- Populated dynamically by JS -->
-        </div>
-        <p class="text-[11px] text-teal-100/80 pt-1 border-t border-white/10">
-          * <strong>SK Box</strong> هدية ترويجية بقيمة <strong>0 SAR</strong> ولا تدخل في حسبة السعر أو متوسط تكلفة البوكس الفعلية.
+        <div id="liveSummaryList" dir="ltr" class="space-y-2 text-xs font-en"></div>
+        <p class="text-[11px] text-teal-100/85 pt-1 border-t border-white/10">
+          * <strong>SK Box</strong> هدية ترويجية بقيمة <strong>0 SAR</strong> ولا تدخل في حسبة السعر أو عدد بوكسات الإكسوزوم.
         </p>
       </div>
 
-      <!-- 5. Local Quotation Archive & Instant Excel/CSV Export (No Security Warnings) -->
-      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200/80 space-y-3">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
-          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-base">
+      <!-- 4. Local Quotation Archive & Excel/CSV Export -->
+      <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200/80 space-y-3">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+          <h2 class="font-extrabold text-slate-800 flex items-center gap-2 text-sm sm:text-base">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
             سجل العروض وتصدير Excel
           </h2>
-          <span id="savedQuotesCountBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-            0 محفوظ
-          </span>
+          <span id="savedQuotesCountBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">0 محفوظ</span>
         </div>
-
-        <p class="text-[11px] text-slate-600 leading-relaxed">
-          يتم حفظ كل عرض تلقائياً في متصفحك عند الطباعة أو بالضغط على حفظ، مع إمكانية تصدير السجل كملف <strong>Excel / CSV</strong> بضغطة واحدة.
-        </p>
-
         <div class="grid grid-cols-2 gap-2">
-          <button onclick="saveCurrentQuoteToLog(true)" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs transition cursor-pointer">
-            <span>💾 حفظ في السجل</span>
-          </button>
-          <button onclick="exportQuotesToExcelCSV()" class="flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition cursor-pointer">
-            <span>📊 تصدير Excel</span>
-          </button>
+          <button onclick="saveCurrentQuoteToLog(true)" class="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs">💾 حفظ في السجل</button>
+          <button onclick="exportQuotesToExcelCSV()" class="py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm">📊 تصدير Excel</button>
         </div>
-
-        <div class="flex items-center justify-between pt-1 border-t border-slate-100 text-[11px]">
-          <button onclick="toggleArchiveDrawer()" class="font-bold text-[#1D6E7F] hover:underline">
-            عرض / استرجاع العروض السابقة
-          </button>
-          <button onclick="clearSavedQuotesLog()" class="font-bold text-rose-500 hover:underline">
-            مسح السجل
-          </button>
+        <div class="flex items-center justify-between text-[11px] pt-1 border-t border-slate-100">
+          <button onclick="toggleArchiveDrawer()" class="font-bold text-[#1D6E7F] hover:underline">عرض العروض السابقة</button>
+          <button onclick="clearSavedQuotesLog()" class="font-bold text-rose-500 hover:underline">مسح السجل</button>
         </div>
-
-        <!-- Collapsible Saved Quotes List -->
-        <div id="archiveListContainer" class="hidden max-h-48 overflow-y-auto space-y-1.5 pt-2 border-t border-slate-100">
-          <!-- Populated dynamically -->
-        </div>
+        <div id="archiveListContainer" class="hidden max-h-44 overflow-y-auto space-y-1.5 pt-1"></div>
       </div>
 
     </aside>
 
-    <!-- CENTER/LEFT: SINGLE A4 PAPER LIVE PREVIEW -->
-    <main class="print-wrapper flex-1 flex flex-col items-center justify-start overflow-x-auto pb-12">
-
-      <!-- Helper Banner Above A4 (No-print) -->
-      <div class="no-print w-full max-w-[210mm] mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 bg-white/80 backdrop-blur px-4 py-2 rounded-xl border border-slate-200/80">
-        <span class="flex items-center gap-1.5 font-semibold">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          معاينة ورقة A4 الرسمية — انقر على أي رقم داخل الجدول للتعديل المباشر
-        </span>
-        <span class="text-slate-400 font-en">A4 Portrait (210mm × 297mm)</span>
+    <!-- A4 QUOTATION SHEET LIVE PREVIEW -->
+    <main id="previewViewport" class="print-wrapper flex-1 flex flex-col items-center justify-start overflow-x-hidden pb-10">
+      <div class="no-print w-full max-w-[210mm] mb-2.5 flex items-center justify-between text-xs text-slate-600 bg-white/85 px-3.5 py-2 rounded-xl border border-slate-200/80">
+        <span class="font-semibold">معاينة ورقة A4 الرسمية — انقر على أي رقم داخل الجدول للتعديل المباشر</span>
+        <span class="text-slate-400 font-en">A4 (210mm × 297mm)</span>
       </div>
 
-      <!-- ========================================================================= -->
-      <!-- OFFICIAL SINGLE-PAGE A4 QUOTATION SHEET (PRINTED ON letterhead.jpg)        -->
-      <!-- ========================================================================= -->
-      <div id="a4Container" class="a4-sheet" dir="ltr" style="--custom-top-offset: 46mm;">
+      <div id="a4ScaleStage" class="a4-scale-stage">
+        <div id="a4Container" class="a4-sheet" dir="ltr" style="--top-offset: 46mm;">
+          <div class="relative z-10 flex flex-col">
 
-        <!-- MAIN QUOTATION CONTENT (100% ENGLISH) -->
-        <div class="relative z-10 flex flex-col">
-
-          <!-- Document Title Banner -->
-          <div class="flex items-center justify-between bg-[#F3F8F9]/95 border-l-4 border-[#1D6E7F] px-4 py-2 rounded-r-lg mb-3.5">
-            <div>
-              <h3 class="text-[17px] font-extrabold text-[#1D6E7F] tracking-wide uppercase">
-                PRICE QUOTATION
-              </h3>
-              <p class="text-[11px] text-slate-600 font-semibold">
-                Product Line: <span class="text-[#9E2A63] font-bold">Cell HD Exo Smart Kit</span> &bull; Category: <span id="displaySegmentBadge" class="text-slate-800 font-bold">Dermatology Clinic</span>
-              </p>
-            </div>
-            <div class="text-right text-xs space-y-0.5">
+            <!-- Title Banner (NO Category) -->
+            <div class="flex items-center justify-between bg-[#F3F8F9]/95 border-l-4 border-[#1D6E7F] px-4 py-2 rounded-r-lg mb-3">
               <div>
-                <span class="font-bold text-slate-500">Ref No.: </span>
-                <span id="displayQuoteRef" contenteditable="true" oninput="syncFromSheet('quoteRefInput', this)" class="font-extrabold text-[#1D6E7F] outline-none focus:bg-white rounded px-1">QT-2026-101</span>
+                <h3 class="text-[17px] font-extrabold text-[#1D6E7F] tracking-wide uppercase">PRICE QUOTATION</h3>
+                <p class="text-[11px] text-slate-600 font-semibold">
+                  Product Line: <span class="text-[#9E2A63] font-bold">Cell HD Exo Smart Kit</span>
+                </p>
               </div>
-              <div>
-                <span class="font-bold text-slate-500">Date: </span>
-                <span id="displayQuoteDate" class="font-bold text-slate-800">November 16, 2026</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Customer & Quotation Meta Grid -->
-          <div class="grid grid-cols-12 gap-3 mb-3.5 text-xs">
-            <!-- Client Info Box -->
-            <div class="col-span-8 border border-slate-200 rounded-xl p-2.5 bg-white/95 space-y-1">
-              <div class="flex items-center gap-2">
-                <span class="text-slate-500 font-bold w-32 shrink-0">To / Client Name:</span>
-                <span id="displayClientName" contenteditable="true" onfocus="handleAutoClearSheet(this, 'Elite Dermatology & Aesthetic Clinics', 'clientNameInput')" oninput="syncFromSheet('clientNameInput', this)" class="font-extrabold text-slate-900 text-[12.5px] outline-none focus:bg-[#F3F8F9] rounded px-1 min-w-[140px]">Elite Dermatology & Aesthetic Clinics</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-slate-500 font-bold w-32 shrink-0">Attention / Doctor:</span>
-                <span id="displayAttention" contenteditable="true" onfocus="handleAutoClearSheet(this, 'Dr. Medical Director / Procurement', 'attentionInput')" oninput="syncFromSheet('attentionInput', this)" class="font-semibold text-slate-800 outline-none focus:bg-[#F3F8F9] rounded px-1 min-w-[140px]">Dr. Medical Director / Procurement</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <span class="text-slate-500 font-bold w-32 shrink-0">City:</span>
-                <span id="displayCity" contenteditable="true" oninput="syncFromSheet('cityInput', this)" class="font-semibold text-slate-700 outline-none focus:bg-[#F3F8F9] rounded px-1">Riyadh, KSA</span>
+              <div class="text-right text-xs space-y-0.5">
+                <div>
+                  <span class="font-bold text-slate-500">Ref No.: </span>
+                  <span id="displayQuoteRef" contenteditable="true" oninput="syncFromSheet('quoteRefInput', this)" class="font-extrabold text-[#1D6E7F] outline-none focus:bg-white rounded px-1">QT-2026-101</span>
+                </div>
+                <div>
+                  <span class="font-bold text-slate-500">Date: </span>
+                  <span id="displayQuoteDate" class="font-bold text-slate-800">November 17, 2026</span>
+                </div>
               </div>
             </div>
 
-            <!-- Category & Currency Box -->
-            <div class="col-span-4 border border-slate-200 rounded-xl p-2.5 bg-white/95 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-bold">Category:</span>
-                <span id="displaySegmentShort" class="font-bold text-[#9E2A63]">Dermatology Clinic</span>
+            <!-- Client & Registration Meta Grid (Explicitly "Registration: Madma", NO Category) -->
+            <div class="grid grid-cols-12 gap-3 mb-3 text-xs">
+              <div class="col-span-8 border border-slate-200 rounded-xl p-2.5 bg-white/95 space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-500 font-bold w-32 shrink-0">To / Client Name:</span>
+                  <span id="displayClientName" contenteditable="true" onfocus="autoClearSheet(this, 'Elite Dermatology & Aesthetic Clinics', 'clientNameInput')" oninput="syncFromSheet('clientNameInput', this)" class="font-extrabold text-slate-900 text-[12.5px] outline-none focus:bg-[#F3F8F9] rounded px-1 min-w-[140px]">Elite Dermatology & Aesthetic Clinics</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-500 font-bold w-32 shrink-0">Attention / Doctor:</span>
+                  <span id="displayAttention" contenteditable="true" onfocus="autoClearSheet(this, 'Dr. Medical Director / Procurement', 'attentionInput')" oninput="syncFromSheet('attentionInput', this)" class="font-semibold text-slate-800 outline-none focus:bg-[#F3F8F9] rounded px-1 min-w-[140px]">Dr. Medical Director / Procurement</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-500 font-bold w-32 shrink-0">City:</span>
+                  <span id="displayCity" contenteditable="true" oninput="syncFromSheet('cityInput', this)" class="font-semibold text-slate-700 outline-none focus:bg-[#F3F8F9] rounded px-1">Riyadh, KSA</span>
+                </div>
               </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-bold">Currency:</span>
-                <span class="font-bold text-slate-800">SAR</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-slate-500 font-bold">Validity:</span>
-                <span id="displayValidity" contenteditable="true" oninput="syncFromSheet('validityInput', this)" class="font-bold text-slate-800 outline-none focus:bg-[#F3F8F9] rounded px-1">15 Days</span>
+
+              <div class="col-span-4 border border-slate-200 rounded-xl p-2.5 bg-white/95 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 font-bold">Registration:</span>
+                  <span id="displayRegistration" contenteditable="true" class="font-extrabold text-[#9E2A63] outline-none focus:bg-[#F3F8F9] rounded px-1">Madma</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 font-bold">Currency:</span>
+                  <span class="font-bold text-slate-800">SAR</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-500 font-bold">Validity:</span>
+                  <span id="displayValidity" contenteditable="true" oninput="syncFromSheet('validityInput', this)" class="font-bold text-slate-800 outline-none focus:bg-[#F3F8F9] rounded px-1">15 Days</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <!-- Introductory Line -->
-          <p class="text-xs text-slate-700 leading-relaxed mb-3 font-medium">
-            We are pleased to submit our special price quotation for <strong class="text-[#9E2A63]">Cell HD Exo Smart Kit</strong> as detailed below:
-          </p>
+            <!-- Introductory Text -->
+            <p class="text-xs text-slate-700 leading-relaxed mb-2.5 font-medium">
+              We are pleased to submit our special price quotation for <strong class="text-[#9E2A63]">Cell HD Exo Smart Kit</strong> as detailed below:
+            </p>
 
-          <!-- Interactive Editable Quotation Table (NO Package Column, Dynamic SK Box Bonus Column + Total Exo Qty) -->
-          <div class="mb-3.5">
-            <table class="w-full border-collapse text-[11px]">
-              <thead id="quotationTableHead">
-                <!-- Dynamically rendered by JS -->
-              </thead>
-              <tbody id="quotationTableBody" class="divide-y divide-slate-200 bg-white/95">
-                <!-- Dynamically rendered by JS -->
-              </tbody>
-            </table>
-          </div>
+            <!-- INTERACTIVE PRICING TABLE -->
+            <div class="mb-3">
+              <table class="w-full border-collapse text-[11px] border border-slate-200 rounded-lg overflow-hidden">
+                <thead id="quotationTableHead"></thead>
+                <tbody id="quotationTableBody" class="divide-y divide-slate-200 bg-white/95"></tbody>
+              </table>
+              <div class="no-print no-preview mt-1.5 flex justify-end">
+                <button onclick="addOfferRow()" class="text-[11px] font-bold text-[#1D6E7F] hover:underline bg-[#F3F8F9] px-2.5 py-1 rounded border border-[#1D6E7F]/25">
+                  + Add Option / Row
+                </button>
+              </div>
+            </div>
 
-          <!-- Terms & Conditions Box -->
-          <div class="bg-slate-50/95 border border-slate-200/90 rounded-xl p-3 mb-4">
-            <h4 class="text-[11px] font-extrabold text-[#1D6E7F] mb-1 uppercase tracking-wide">Terms & Conditions:</h4>
-            <p id="displayTerms" class="text-[10.5px] text-slate-700 whitespace-pre-line leading-relaxed">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+            <!-- Terms & Conditions -->
+            <div class="bg-slate-50/95 border border-slate-200/90 rounded-xl p-2.5 mb-3.5">
+              <h4 class="text-[11px] font-extrabold text-[#1D6E7F] mb-1 uppercase tracking-wide">Terms & Conditions:</h4>
+              <p id="displayTerms" class="text-[10.5px] text-slate-700 whitespace-pre-line leading-relaxed">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
 • Quotation validity: 15 days from the date of issue.
 • Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</p>
-          </div>
-
-          <!-- Single Clean Signature Block -->
-          <div class="flex justify-between items-end pt-1 px-1 text-xs">
-            <div>
-              <p class="font-semibold text-slate-700">Best Regards,</p>
-              <p id="displaySignatoryName" class="font-extrabold text-[#1D6E7F] text-[13px] mt-0.5">Ahmed Musallam</p>
-              <p id="displaySignatoryTitle" class="font-bold text-slate-600 text-[11px]">Sales Manager &mdash; Sales Department</p>
-              <p class="font-extrabold text-slate-800 text-[11px]">Rawai Aljamal Alhaditha Co.</p>
-              <div class="mt-6 border-b border-dashed border-slate-300 w-48"></div>
-              <span class="text-[9.5px] text-slate-400">Authorized Signature & Official Stamp</span>
             </div>
 
-            <div class="border border-dashed border-slate-300 rounded-xl px-4 py-2.5 text-center w-52 bg-white/85">
-              <span class="block text-[10px] font-bold text-slate-500 uppercase">Client Acceptance (PO)</span>
-              <div class="mt-6 border-b border-slate-300"></div>
-              <span class="text-[9px] text-slate-400">Authorized Signature / Stamp</span>
-            </div>
-          </div>
+            <!-- Signature Block -->
+            <div class="flex justify-between items-end pt-1 px-1 text-xs">
+              <div>
+                <p class="font-semibold text-slate-700">Best Regards,</p>
+                <p id="displaySignatoryName" class="font-extrabold text-[#1D6E7F] text-[13px] mt-0.5">Ahmed Musallam</p>
+                <p id="displaySignatoryTitle" class="font-bold text-slate-600 text-[11px]">Sales Manager &mdash; Sales Department</p>
+                <p class="font-extrabold text-slate-800 text-[11px]">Rawai Aljamal Alhaditha Co.</p>
+                <div class="mt-6 border-b border-dashed border-slate-300 w-48"></div>
+                <span class="text-[9.5px] text-slate-400">Authorized Signature & Official Stamp</span>
+              </div>
 
+              <div class="border border-dashed border-slate-300 rounded-xl px-4 py-2.5 text-center w-52 bg-white/85">
+                <span class="block text-[10px] font-bold text-slate-500 uppercase">Client Acceptance (PO)</span>
+                <div class="mt-6 border-b border-slate-300"></div>
+                <span class="text-[9px] text-slate-400">Authorized Signature / Stamp</span>
+              </div>
+            </div>
+
+          </div>
         </div>
-
       </div>
-      <!-- END OF SINGLE A4 SHEET -->
-
     </main>
   </div>
 
-  <!-- INTERACTIVE QUOTATION ENGINE -->
   <script>
-    // Segment Presets
+    const ORIGINAL_PAGE_TITLE = document.title;
+    const STORAGE_KEY_QUOTES = 'rawai_cell_hd_exo_quotations_v2';
+    const STORAGE_KEY_REF = 'rawai_cell_hd_exo_last_ref_v2';
+
     const SEGMENT_PRESETS = {
       clinics: {
-        label: 'Dermatology Clinic',
+        label: 'Dermatology Clinics',
         hint: 'الافتراضي للعيادات: (7 بوكس + 3 فري + 2 SK Box) و (15 بوكس + 10 فري + 2 SK Box).',
         rows: [
-          {
-            id: 1,
-            product: 'Cell HD Exo Smart Kit',
-            paidQty: 7,
-            freeBonus: 3,
-            skBonus: 2,
-            unitPrice: 2000,
-            discountPercent: 0
-          },
-          {
-            id: 2,
-            product: 'Cell HD Exo Smart Kit',
-            paidQty: 15,
-            freeBonus: 10,
-            skBonus: 2,
-            unitPrice: 2000,
-            discountPercent: 0
-          }
+          { product: 'Cell HD Exo Smart Kit', paidQty: 7, freeBonus: 3, skBonus: 2, unitPrice: 2000, discountPercent: 0 },
+          { product: 'Cell HD Exo Smart Kit', paidQty: 15, freeBonus: 10, skBonus: 2, unitPrice: 2000, discountPercent: 0 }
         ]
       },
       hospitals: {
-        label: 'Hospital',
-        hint: 'الافتراضي للمستشفيات: (30 بوكس + 10 فري)، (50 بوكس + 20 فري)، و (100 بوكس + 100 فري) مع إخفاء عمود SK Box Bonus تلقائياً.',
+        label: 'Hospitals',
+        hint: 'الافتراضي للمستشفيات: (30 بوكس + 10 فري)، (50 بوكس + 20 فري)، و (100 بوكس + 100 فري) مع إخفاء عمود SK Box تلقائياً.',
         rows: [
-          {
-            id: 1,
-            product: 'Cell HD Exo Smart Kit',
-            paidQty: 30,
-            freeBonus: 10,
-            skBonus: 0,
-            unitPrice: 2000,
-            discountPercent: 0
-          },
-          {
-            id: 2,
-            product: 'Cell HD Exo Smart Kit',
-            paidQty: 50,
-            freeBonus: 20,
-            skBonus: 0,
-            unitPrice: 2000,
-            discountPercent: 0
-          },
-          {
-            id: 3,
-            product: 'Cell HD Exo Smart Kit',
-            paidQty: 100,
-            freeBonus: 100,
-            skBonus: 0,
-            unitPrice: 2000,
-            discountPercent: 0
-          }
+          { product: 'Cell HD Exo Smart Kit', paidQty: 30, freeBonus: 10, skBonus: 0, unitPrice: 2000, discountPercent: 0 },
+          { product: 'Cell HD Exo Smart Kit', paidQty: 50, freeBonus: 20, skBonus: 0, unitPrice: 2000, discountPercent: 0 },
+          { product: 'Cell HD Exo Smart Kit', paidQty: 100, freeBonus: 100, skBonus: 0, unitPrice: 2000, discountPercent: 0 }
         ]
       }
     };
 
-    // Application State
     let offerRows = [];
     let currentZoom = 1.0;
+    let userManualZoom = false;
     let isCleanPreview = false;
-    let lastHadSkColumn = true;
-    const STORAGE_KEY_QUOTES = 'rawai_cell_hd_exo_quotations_v1';
-    const STORAGE_KEY_REF = 'rawai_cell_hd_exo_last_ref_v1';
 
-    // Check if any row has skBonus > 0
+    function round2(n) { return Math.round((Number(n) + Number.EPSILON) * 100) / 100; }
+    function formatMoney(n) { return Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+    function calcRow(r) {
+      const paid = Math.max(0, Number(r.paidQty) || 0);
+      const free = Math.max(0, Number(r.freeBonus) || 0);
+      const sk = Math.max(0, Number(r.skBonus) || 0);
+      const price = Math.max(0, Number(r.unitPrice) || 0);
+      const disc = Math.min(100, Math.max(0, Number(r.discountPercent) || 0));
+      const totalExoQty = paid + free; // SK Box excluded from Exo Qty & price
+      const netTotal = round2(paid * price * (1 - disc / 100));
+      const effectivePerBox = totalExoQty > 0 ? round2(netTotal / totalExoQty) : 0;
+      return { paid, free, sk, price, disc, totalExoQty, netTotal, effectivePerBox };
+    }
+
+    function formatEnglishDate(isoStr) {
+      if (!isoStr) return '';
+      const parts = isoStr.split('-');
+      if (parts.length !== 3) return isoStr;
+      const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    function initTodayDate() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      document.getElementById('quoteDateInput').value = `${yyyy}-${mm}-${dd}`;
+    }
+
+    function loadNextRefNumber() {
+      const savedRef = localStorage.getItem(STORAGE_KEY_REF);
+      if (savedRef) document.getElementById('quoteRefInput').value = savedRef;
+    }
+
+    function incrementRefNumber(currentRef) {
+      const match = String(currentRef).match(/^(.*?)(\d+)$/);
+      if (match) {
+        const nextNum = String(Number(match[2]) + 1).padStart(match[2].length, '0');
+        const nextRef = `${match[1]}${nextNum}`;
+        localStorage.setItem(STORAGE_KEY_REF, nextRef);
+        return nextRef;
+      }
+      return currentRef;
+    }
+
+    function autoClearDefault(inputEl, defaultText, displayId) {
+      if (inputEl.value.trim() === defaultText) {
+        inputEl.value = '';
+        const disp = document.getElementById(displayId);
+        if (disp) disp.textContent = '';
+      }
+    }
+
+    function autoClearSheet(spanEl, defaultText, inputId) {
+      if (spanEl.textContent.trim() === defaultText) {
+        spanEl.textContent = '';
+        const inp = document.getElementById(inputId);
+        if (inp) inp.value = '';
+      }
+    }
+
+    function syncFromSheet(inputId, spanEl) {
+      const inp = document.getElementById(inputId);
+      if (inp) inp.value = spanEl.textContent.trim();
+    }
+
+    function syncMetadata() {
+      const client = document.getElementById('clientNameInput').value.trim();
+      const attn = document.getElementById('attentionInput').value.trim();
+      const city = document.getElementById('cityInput').value.trim();
+      const ref = document.getElementById('quoteRefInput').value.trim();
+      const dateVal = document.getElementById('quoteDateInput').value;
+      const validity = document.getElementById('validityInput').value.trim();
+      const sigName = document.getElementById('signatoryNameInput').value.trim();
+      const sigTitle = document.getElementById('signatoryTitleInput').value.trim();
+      const vatIncluded = document.getElementById('vatNoteToggle').checked;
+      const termsBox = document.getElementById('termsInput');
+
+      if (vatIncluded && termsBox.value.includes('exclude 15% VAT')) {
+        termsBox.value = termsBox.value.replace('exclude 15% VAT', 'include 15% VAT');
+      } else if (!vatIncluded && termsBox.value.includes('include 15% VAT')) {
+        termsBox.value = termsBox.value.replace('include 15% VAT', 'exclude 15% VAT');
+      }
+
+      document.getElementById('displayClientName').textContent = client || '—';
+      document.getElementById('displayAttention').textContent = attn || '—';
+      document.getElementById('displayCity').textContent = city || '—';
+      document.getElementById('displayQuoteRef').textContent = ref || '—';
+      document.getElementById('displayQuoteDate').textContent = formatEnglishDate(dateVal);
+      document.getElementById('displayValidity').textContent = validity || '15 Days';
+      document.getElementById('displaySignatoryName').textContent = sigName || 'Ahmed Musallam';
+      document.getElementById('displaySignatoryTitle').innerHTML = `${sigTitle || 'Sales Manager'} &mdash; Sales Department`;
+      document.getElementById('displayTerms').textContent = termsBox.value;
+    }
+
     function hasAnySkBonus() {
       return offerRows.some(r => (Number(r.skBonus) || 0) > 0);
     }
 
-    // Format Currency with 2 decimals
-    function formatCurrency(num) {
-      if (isNaN(num) || num === null) return '0.00';
-      return Number(num).toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-      });
+    function renderQuotationTable() {
+      const showSkCol = hasAnySkBonus();
+      const thead = document.getElementById('quotationTableHead');
+      const tbody = document.getElementById('quotationTableBody');
+
+      thead.innerHTML = `
+        <tr class="bg-[#1D6E7F] text-white text-[10px] uppercase tracking-wider">
+          <th class="py-2 px-1.5 text-center w-7">#</th>
+          <th class="py-2 px-2 text-left">Product Description</th>
+          <th class="py-2 px-1.5 text-center w-14">Paid Qty</th>
+          <th class="py-2 px-1.5 text-center w-16">Free Bonus</th>
+          ${showSkCol ? `<th class="py-2 px-1.5 text-center w-16 bg-[#9E2A63]">SK Box Bonus</th>` : ''}
+          <th class="py-2 px-1.5 text-center w-16">Total Exo Qty</th>
+          <th class="py-2 px-1.5 text-center w-20">Unit Price (SAR)</th>
+          <th class="py-2 px-1.5 text-center w-16">Discount (%)</th>
+          <th class="py-2 px-2 text-right w-24">Net Total (SAR)</th>
+          <th class="no-print no-preview py-2 px-1 text-center w-7"></th>
+        </tr>
+      `;
+
+      tbody.innerHTML = offerRows.map((row, idx) => {
+        const c = calcRow(row);
+        return `
+          <tr class="hover:bg-slate-50/80 transition">
+            <td class="py-2 px-1.5 text-center font-bold text-slate-600">${idx + 1}</td>
+            <td class="py-2 px-2 font-bold text-slate-800">
+              <input type="text" value="${row.product}" onchange="updateRowField(${idx}, 'product', this.value)" class="q-input w-full font-bold text-slate-800 text-[11px]">
+            </td>
+            <td class="py-2 px-1 text-center">
+              <input type="number" min="0" value="${c.paid}" onchange="updateRowField(${idx}, 'paidQty', this.value)" class="q-input w-12 text-center font-bold text-slate-900 text-[11px]">
+            </td>
+            <td class="py-2 px-1 text-center">
+              <input type="number" min="0" value="${c.free}" onchange="updateRowField(${idx}, 'freeBonus', this.value)" class="q-input w-12 text-center font-bold text-emerald-700 text-[11px]">
+            </td>
+            ${showSkCol ? `
+              <td class="py-2 px-1 text-center bg-pink-50/40">
+                <input type="number" min="0" value="${c.sk}" onchange="updateRowField(${idx}, 'skBonus', this.value)" class="q-input w-12 text-center font-bold text-[#9E2A63] text-[11px]" title="0-Cost Gift">
+              </td>
+            ` : ''}
+            <td class="py-2 px-1.5 text-center font-extrabold text-[#1D6E7F] bg-[#F3F8F9]/60">${c.totalExoQty}</td>
+            <td class="py-2 px-1 text-center">
+              <input type="number" min="0" step="10" value="${c.price}" onchange="updateRowField(${idx}, 'unitPrice', this.value)" class="q-input w-16 text-center font-semibold text-slate-800 text-[11px]">
+            </td>
+            <td class="py-2 px-1 text-center">
+              <input type="number" min="0" max="100" step="0.1" value="${c.disc}" onchange="updateRowField(${idx}, 'discountPercent', this.value)" class="q-input w-14 text-center font-bold text-amber-700 text-[11px]">
+            </td>
+            <td class="py-2 px-1.5 text-right">
+              <input type="number" min="0" step="1" value="${c.netTotal}" onchange="updateRowNetTotal(${idx}, this.value)" class="q-input w-22 text-right font-extrabold text-slate-900 text-[11px]">
+            </td>
+            <td class="no-print no-preview py-2 px-1 text-center">
+              ${offerRows.length > 1 ? `<button onclick="removeOfferRow(${idx})" class="text-rose-500 hover:text-rose-700 font-bold text-xs px-1" title="حذف الصف">&times;</button>` : ''}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      updateLiveSidebarSummary();
     }
 
-    function round2(num) {
-      return Math.round((Number(num) + Number.EPSILON) * 100) / 100;
-    }
-
-    // Compute Row Totals (SK Box is 0 SAR and excluded from Exo Box totals & effective cost)
-    function computeRow(row) {
-      const paid = Math.max(0, Number(row.paidQty) || 0);
-      const free = Math.max(0, Number(row.freeBonus) || 0);
-      const sk = Math.max(0, Number(row.skBonus) || 0);
-      const price = Math.max(0, Number(row.unitPrice) || 0);
-      const disc = Math.min(100, Math.max(0, Number(row.discountPercent) || 0));
-
-      // Total Exo Smart Kit Boxes strictly excludes SK Box (SK Box = 0 SAR gift)
-      const totalExoBoxes = paid + free;
-      const grossTotal = round2(paid * price);
-      const netTotal = round2(grossTotal * (1 - disc / 100));
-      const effectiveCostPerBox = totalExoBoxes > 0 ? round2(netTotal / totalExoBoxes) : 0;
-
-      return {
-        totalExoBoxes,
-        skBoxes: sk,
-        grossTotal,
-        netTotal,
-        effectiveCostPerBox
-      };
-    }
-
-    // Initialize on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('quoteDateInput').value = today;
-
-      const savedNextRef = localStorage.getItem(STORAGE_KEY_REF);
-      if (savedNextRef) {
-        document.getElementById('quoteRefInput').value = savedNextRef;
+    function updateRowField(index, field, rawVal) {
+      if (!offerRows[index]) return;
+      if (field === 'product') {
+        offerRows[index].product = rawVal.trim() || 'Cell HD Exo Smart Kit';
+      } else {
+        let num = Number(rawVal) || 0;
+        if (field === 'discountPercent') num = Math.min(100, Math.max(0, round2(num)));
+        else num = Math.max(0, num);
+        offerRows[index][field] = num;
       }
-
-      syncMetadata();
-      loadSegmentPreset('clinics');
-      refreshArchiveUI();
-    });
-
-    // =========================================================================
-    // LETTERHEAD BACKGROUND CONTROLS (Default: letterhead.jpg in same folder)
-    // =========================================================================
-    function handleLetterheadUpload(event) {
-      const file = event.target.files && event.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const a4 = document.getElementById('a4Container');
-        a4.style.backgroundImage = `url("${e.target.result}")`;
-
-        const badge = document.getElementById('letterheadStatusBadge');
-        badge.textContent = `معاينة مؤقتة: ${file.name.slice(0, 16)}`;
-        badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800';
-
-        document.getElementById('resetLetterheadBtn').classList.remove('hidden');
-      };
-      reader.readAsDataURL(file);
+      renderQuotationTable();
     }
 
-    function resetToDefaultLetterhead() {
-      const a4 = document.getElementById('a4Container');
-      a4.style.backgroundImage = "url('letterhead.jpg')";
+    // Bidirectional Sync: Editing Net Total automatically recalculates Discount (%)
+    function updateRowNetTotal(index, rawNet) {
+      const row = offerRows[index];
+      if (!row) return;
+      const paid = Math.max(0, Number(row.paidQty) || 0);
+      const price = Math.max(0, Number(row.unitPrice) || 0);
+      const gross = paid * price;
+      const targetNet = Math.max(0, Number(rawNet) || 0);
 
-      const fileInput = document.getElementById('letterheadFileInput');
-      if (fileInput) fileInput.value = '';
-
-      const badge = document.getElementById('letterheadStatusBadge');
-      badge.textContent = 'letterhead.jpg';
-      badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-en';
-
-      document.getElementById('resetLetterheadBtn').classList.add('hidden');
+      if (gross > 0) {
+        const computedDisc = round2(((gross - targetNet) / gross) * 100);
+        row.discountPercent = Math.min(100, Math.max(0, computedDisc));
+      } else {
+        row.discountPercent = 0;
+      }
+      renderQuotationTable();
     }
 
-    function updateTopOffset(mmVal) {
-      const val = Number(mmVal) || 46;
-      const a4 = document.getElementById('a4Container');
-      a4.style.setProperty('--custom-top-offset', `${val}mm`);
-      document.getElementById('topOffsetValueLabel').textContent = `${val} mm`;
+    function updateLiveSidebarSummary() {
+      const container = document.getElementById('liveSummaryList');
+      if (!container) return;
+      container.innerHTML = offerRows.map((row, idx) => {
+        const c = calcRow(row);
+        const skText = c.sk > 0 ? ` + ${c.sk} SK Gift` : '';
+        return `
+          <div class="bg-white/10 rounded-xl p-2.5 flex items-center justify-between gap-2">
+            <div>
+              <div class="font-bold text-white">Option #${idx + 1} (${c.totalExoQty} Exo Boxes)</div>
+              <div class="text-[11px] text-teal-100">${c.paid} Paid + ${c.free} Free${skText}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[10px] text-teal-200 uppercase">Effective / Box</div>
+              <div class="font-extrabold text-sm text-amber-300">SAR ${formatMoney(c.effectivePerBox)}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
     }
 
-    // =========================================================================
-    // SEGMENT & ROW ENGINE
-    // =========================================================================
     function handleSegmentChange() {
-      const selected = document.getElementById('segmentSelect').value;
-      loadSegmentPreset(selected);
+      const seg = document.getElementById('segmentSelect').value;
+      loadSegmentPreset(seg);
     }
 
     function resetSegmentDefaults() {
-      const selected = document.getElementById('segmentSelect').value;
       document.getElementById('globalUnitPrice').value = 2000;
       document.getElementById('globalDiscount').value = 0;
-      loadSegmentPreset(selected);
+      handleSegmentChange();
     }
 
     function loadSegmentPreset(segmentKey) {
-      const preset = SEGMENT_PRESETS[segmentKey];
+      const preset = SEGMENT_PRESETS[segmentKey] || SEGMENT_PRESETS.clinics;
       const basePrice = Math.max(0, Number(document.getElementById('globalUnitPrice').value) || 2000);
       const baseDisc = Math.min(100, Math.max(0, Number(document.getElementById('globalDiscount').value) || 0));
-
       document.getElementById('segmentHint').textContent = preset.hint;
-      document.getElementById('displaySegmentBadge').textContent = preset.label;
-      document.getElementById('displaySegmentShort').textContent = preset.label;
 
-      offerRows = preset.rows.map((r, idx) => ({
+      offerRows = preset.rows.map(r => ({
         ...r,
-        id: Date.now() + idx,
         unitPrice: basePrice,
         discountPercent: baseDisc
       }));
-
       renderQuotationTable();
     }
 
     function applyGlobalUnitPrice(val) {
-      const newPrice = Math.max(0, Number(val) || 0);
-      offerRows.forEach(r => r.unitPrice = newPrice);
+      const p = Math.max(0, Number(val) || 0);
+      offerRows.forEach(r => r.unitPrice = p);
       renderQuotationTable();
     }
 
     function applyGlobalDiscount(val) {
-      const newDisc = Math.min(100, Math.max(0, Number(val) || 0));
-      offerRows.forEach(r => r.discountPercent = newDisc);
+      const d = Math.min(100, Math.max(0, round2(Number(val) || 0)));
+      offerRows.forEach(r => r.discountPercent = d);
       renderQuotationTable();
     }
 
     function addOfferRow() {
       const basePrice = Math.max(0, Number(document.getElementById('globalUnitPrice').value) || 2000);
-      const defaultSk = hasAnySkBonus() ? 1 : 0;
+      const baseDisc = Math.min(100, Math.max(0, Number(document.getElementById('globalDiscount').value) || 0));
+      const defaultSk = hasAnySkBonus() ? 2 : 0;
       offerRows.push({
-        id: Date.now(),
         product: 'Cell HD Exo Smart Kit',
         paidQty: 10,
         freeBonus: 5,
         skBonus: defaultSk,
         unitPrice: basePrice,
-        discountPercent: 0
+        discountPercent: baseDisc
       });
       renderQuotationTable();
     }
 
-    function removeOfferRow(id) {
+    function removeOfferRow(index) {
       if (offerRows.length <= 1) return;
-      offerRows = offerRows.filter(r => r.id !== id);
+      offerRows.splice(index, 1);
       renderQuotationTable();
     }
 
-    // Toggle SK Box Bonus Column Visibility & Values
     function toggleSkBonusColumn() {
       if (hasAnySkBonus()) {
         offerRows.forEach(r => r.skBonus = 0);
@@ -834,315 +696,67 @@
       renderQuotationTable();
     }
 
-    // Update Standard Cell Field (Recalculates Total Qty & Net Total)
-    function updateRowField(id, field, rawValue) {
-      const row = offerRows.find(r => r.id === id);
-      if (!row) return;
-
-      if (field === 'product') {
-        row.product = rawValue;
-      } else {
-        const numVal = Math.max(0, parseFloat(rawValue) || 0);
-        if (field === 'discountPercent') {
-          row.discountPercent = Math.min(100, round2(numVal));
-        } else {
-          row[field] = numVal;
-        }
-      }
-
-      // If SK Box Bonus column visibility toggles between hidden and visible
-      const showSkNow = hasAnySkBonus();
-      if (field === 'skBonus' && showSkNow !== lastHadSkColumn) {
-        const activeId = document.activeElement ? document.activeElement.id : null;
-        renderQuotationTable();
-        if (activeId) {
-          const el = document.getElementById(activeId);
-          if (el) {
-            el.focus();
-            el.select();
-          }
-        }
-        return;
-      }
-
-      const m = computeRow(row);
-      const totalQtyCell = document.getElementById(`total-qty-${id}`);
-      if (totalQtyCell) {
-        totalQtyCell.textContent = m.totalExoBoxes;
-      }
-
-      const netInput = document.getElementById(`net-input-${id}`);
-      if (netInput) {
-        netInput.value = m.netTotal.toFixed(2);
-      }
-
-      updateLiveSidebarSummary();
+    // Letterhead Controls
+    function updateTopOffset(mm) {
+      document.getElementById('topOffsetLabel').textContent = `${mm}mm`;
+      document.getElementById('a4Container').style.setProperty('--top-offset', `${mm}mm`);
     }
 
-    // Bidirectional Sync: User edits Net Total -> Recalculate Discount (%)
-    function updateRowNetTotal(id, rawNetValue) {
-      const row = offerRows.find(r => r.id === id);
-      if (!row) return;
-
-      const grossTotal = (Number(row.paidQty) || 0) * (Number(row.unitPrice) || 0);
-      let enteredNet = Math.max(0, parseFloat(rawNetValue) || 0);
-
-      if (grossTotal > 0) {
-        if (enteredNet > grossTotal) {
-          enteredNet = grossTotal;
-        }
-        const computedDisc = round2((1 - (enteredNet / grossTotal)) * 100);
-        row.discountPercent = Math.min(100, Math.max(0, computedDisc));
-      } else {
-        row.discountPercent = 0;
-      }
-
-      const discInput = document.getElementById(`disc-input-${id}`);
-      if (discInput) {
-        discInput.value = row.discountPercent;
-      }
-
-      updateLiveSidebarSummary();
+    function handleTempLetterhead(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        document.getElementById('a4Container').style.backgroundImage = `url('${ev.target.result}')`;
+        document.getElementById('resetLetterheadBtn').classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
     }
 
-    // Render Table (NO Package Column, Dynamic SK Box Bonus Column + Total Qty)
-    function renderQuotationTable() {
-      const thead = document.getElementById('quotationTableHead');
-      const tbody = document.getElementById('quotationTableBody');
-      const showSkCol = hasAnySkBonus();
-      lastHadSkColumn = showSkCol;
-
-      // Update sidebar SK Box toggle button text
-      const skBtnText = document.getElementById('toggleSkColBtnText');
-      if (skBtnText) {
-        skBtnText.textContent = showSkCol ? 'إخفاء/تصفير بونص SK Box' : '+ إظهار بونص SK Box';
-      }
-
-      thead.innerHTML = `
-        <tr class="text-white text-center font-bold" style="background-color: #1D6E7F;">
-          <th class="py-2 px-1 border border-[#165765] rounded-tl-lg w-[4%]">#</th>
-          <th class="py-2 px-1.5 border border-[#165765] ${showSkCol ? 'w-[22%]' : 'w-[27%]'}">Product Description</th>
-          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Paid Qty<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
-          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Free Bonus<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
-          ${showSkCol ? `
-            <th class="py-2 px-1 border border-[#165765] w-[10%]">SK Box Bonus<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
-          ` : ''}
-          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Total Qty<br><span class="text-[8.5px] font-normal opacity-90">(Box)</span></th>
-          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[10%]' : 'w-[11%]'}">Unit Price<br><span class="text-[8.5px] font-normal opacity-90">(SAR)</span></th>
-          <th class="py-2 px-1 border border-[#165765] ${showSkCol ? 'w-[9%]' : 'w-[10%]'}">Discount<br><span class="text-[8.5px] font-normal opacity-90">(%)</span></th>
-          <th class="py-2 px-1.5 border border-[#165765] rounded-tr-lg ${showSkCol ? 'w-[15%]' : 'w-[15%]'}">Net Total<br><span class="text-[8.5px] font-normal opacity-90">(SAR)</span></th>
-          <th class="no-print no-preview py-2 px-1 bg-slate-700 w-[3%]" title="Remove Row">&times;</th>
-        </tr>
-      `;
-
-      tbody.innerHTML = '';
-
-      offerRows.forEach((row, index) => {
-        const m = computeRow(row);
-        const tr = document.createElement('tr');
-        tr.className = 'hover:bg-[#F3F8F9]/60 transition-colors text-center';
-
-        tr.innerHTML = `
-          <!-- 1. Row Index (#) -->
-          <td class="py-2 px-1 border border-slate-200 font-bold text-slate-600 bg-slate-50/60">
-            ${index + 1}
-          </td>
-
-          <!-- 2. Product Description -->
-          <td class="py-2 px-1 border border-slate-200 font-bold text-slate-800">
-            <input type="text" value="${escapeHtml(row.product)}"
-              oninput="updateRowField(${row.id}, 'product', this.value)"
-              class="quote-input w-full text-center font-bold text-slate-800 text-[10.5px]" />
-          </td>
-
-          <!-- 3. Paid Qty (Box) -->
-          <td class="py-2 px-1 border border-slate-200">
-            <input type="number" min="0" step="1" value="${row.paidQty}"
-              oninput="updateRowField(${row.id}, 'paidQty', this.value)"
-              class="quote-input w-full text-center font-bold text-slate-900 text-[11px]" />
-          </td>
-
-          <!-- 4. Free Bonus (Box) -->
-          <td class="py-2 px-1 border border-slate-200 bg-emerald-50/40">
-            <input type="number" min="0" step="1" value="${row.freeBonus}"
-              oninput="updateRowField(${row.id}, 'freeBonus', this.value)"
-              class="quote-input w-full text-center font-bold text-emerald-700 text-[11px]" />
-          </td>
-
-          <!-- 5. Conditional SK Box Bonus -->
-          ${showSkCol ? `
-            <td class="py-2 px-1 border border-slate-200 bg-pink-50/40">
-              <input id="sk-input-${row.id}" type="number" min="0" step="1" value="${row.skBonus}"
-                oninput="updateRowField(${row.id}, 'skBonus', this.value)"
-                class="quote-input w-full text-center font-bold text-[#9E2A63] text-[11px]" />
-            </td>
-          ` : ''}
-
-          <!-- 6. Total Exo Qty (Box) - Excludes SK Box -->
-          <td id="total-qty-${row.id}" class="py-2 px-1 border border-slate-200 font-extrabold text-slate-800 bg-slate-50/70 text-[11px]">
-            ${m.totalExoBoxes}
-          </td>
-
-          <!-- 7. Unit Price (SAR) -->
-          <td class="py-2 px-1 border border-slate-200">
-            <input type="number" min="0" step="50" value="${row.unitPrice}"
-              oninput="updateRowField(${row.id}, 'unitPrice', this.value)"
-              class="quote-input w-full text-center font-semibold text-slate-800 text-[11px]" />
-          </td>
-
-          <!-- 8. Discount (%) -->
-          <td class="py-2 px-1 border border-slate-200">
-            <input id="disc-input-${row.id}" type="number" min="0" max="100" step="0.5" value="${row.discountPercent}"
-              oninput="updateRowField(${row.id}, 'discountPercent', this.value)"
-              class="quote-input w-full text-center font-bold text-[#9E2A63] text-[11px]" />
-          </td>
-
-          <!-- 9. Net Total (SAR) - Bidirectional with Discount (%) -->
-          <td class="py-2 px-1 border border-slate-200 bg-[#F3F8F9]/90">
-            <input id="net-input-${row.id}" type="number" min="0" step="10" value="${m.netTotal.toFixed(2)}"
-              oninput="updateRowNetTotal(${row.id}, this.value)"
-              class="quote-input w-full text-center font-extrabold text-[#1D6E7F] text-[11px]" />
-          </td>
-
-          <!-- 10. Delete Row Action (Hidden on Print & Official Preview) -->
-          <td class="no-print no-preview py-2 px-1 border border-slate-200 text-center">
-            <button onclick="removeOfferRow(${row.id})" title="حذف الصف"
-              class="text-rose-500 hover:text-rose-700 font-bold text-sm leading-none px-1 rounded hover:bg-rose-50 transition ${offerRows.length <= 1 ? 'opacity-30 cursor-not-allowed' : ''}"
-              ${offerRows.length <= 1 ? 'disabled' : ''}>
-              &times;
-            </button>
-          </td>
-        `;
-
-        tbody.appendChild(tr);
-      });
-
-      updateLiveSidebarSummary();
+    function resetLetterhead() {
+      document.getElementById('a4Container').style.backgroundImage = `url('letterhead.jpg')`;
+      document.getElementById('resetLetterheadBtn').classList.add('hidden');
     }
 
-    // Update Arabic Sidebar Cost Analyzer (Strict LTR for English numbers & breakdown)
-    function updateLiveSidebarSummary() {
-      const container = document.getElementById('liveSummaryList');
-      if (!container) return;
-
-      container.innerHTML = offerRows.map((row, index) => {
-        const m = computeRow(row);
-        const skNote = (Number(row.skBonus) || 0) > 0 ? ` <span class="text-pink-200">(+ ${row.skBonus} SK Box Free)</span>` : '';
-
-        return `
-          <div dir="ltr" class="bg-white/10 rounded-xl p-2.5 flex items-center justify-between gap-2 border border-white/10 text-left font-en">
-            <div>
-              <div class="font-bold text-white text-xs">Option #${index + 1}</div>
-              <div class="text-[11px] text-teal-100 mt-0.5">${row.paidQty} Paid + ${row.freeBonus} Free = <strong class="text-white">${m.totalExoBoxes} Exo Boxes</strong>${skNote}</div>
-            </div>
-            <div class="text-right shrink-0">
-              <div class="text-[10px] text-pink-200">Effective / Exo Box</div>
-              <div class="font-extrabold text-sm text-white">SAR ${formatCurrency(m.effectiveCostPerBox)}</div>
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // Auto-clear default placeholder text on click/focus so user can type immediately
-    function handleAutoClearInput(inputEl, defaultText, displayId) {
-      if (inputEl.value.trim() === defaultText) {
-        inputEl.value = '';
-        const disp = document.getElementById(displayId);
-        if (disp) disp.textContent = '';
-      }
-    }
-
-    function handleAutoClearSheet(spanEl, defaultText, inputId) {
-      if (spanEl.textContent.trim() === defaultText) {
-        spanEl.textContent = '';
-        const inp = document.getElementById(inputId);
-        if (inp) inp.value = '';
-      }
-    }
-
-    // Format Date in English (e.g., November 16, 2026)
-    function formatEnglishDate(isoDateStr) {
-      if (!isoDateStr) return '';
-      const parts = isoDateStr.split('-');
-      if (parts.length !== 3) return isoDateStr;
-      const d = new Date(Number(parts[0]), Number(parts[1]) - 1, Number(parts[2]));
-      return d.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
-
-    // Sync inline edits on A4 back to sidebar inputs
-    function syncFromSheet(inputId, el) {
-      const inputEl = document.getElementById(inputId);
-      if (inputEl) {
-        inputEl.value = el.textContent;
-      }
-    }
-
-    // Sync English Metadata Inputs to A4 Paper
-    function syncMetadata() {
-      const clientVal = document.getElementById('clientNameInput').value;
-      const attentionVal = document.getElementById('attentionInput').value;
-      document.getElementById('displayClientName').textContent = clientVal !== '' ? clientVal : (document.activeElement?.id === 'clientNameInput' ? '' : '—');
-      document.getElementById('displayAttention').textContent = attentionVal !== '' ? attentionVal : (document.activeElement?.id === 'attentionInput' ? '' : '—');
-      document.getElementById('displayCity').textContent = document.getElementById('cityInput').value || 'Riyadh, KSA';
-      document.getElementById('displayQuoteRef').textContent = document.getElementById('quoteRefInput').value || 'QT-2026-101';
-      document.getElementById('displayQuoteDate').textContent = formatEnglishDate(document.getElementById('quoteDateInput').value);
-      document.getElementById('displayValidity').textContent = document.getElementById('validityInput').value || '15 Days';
-      document.getElementById('displaySignatoryName').textContent = document.getElementById('signatoryNameInput').value || 'Ahmed Musallam';
-
-      const titleVal = document.getElementById('signatoryTitleInput').value || 'Sales Manager';
-      document.getElementById('displaySignatoryTitle').innerHTML = `${escapeHtml(titleVal)} &mdash; Sales Department`;
-
-      let termsText = document.getElementById('termsInput').value || '';
-      const vatIncluded = document.getElementById('vatNoteToggle').checked;
-      if (vatIncluded) {
-        termsText = termsText.replace('exclude 15% VAT', 'include 15% VAT');
-      } else {
-        termsText = termsText.replace('include 15% VAT', 'exclude 15% VAT');
-      }
-      document.getElementById('displayTerms').textContent = termsText;
-    }
-
-    // Toggle Clean Official Preview Mode
+    // Preview & Responsive Auto-Scaling
     function togglePreviewMode() {
       isCleanPreview = !isCleanPreview;
-      const a4 = document.getElementById('a4Container');
-      const btnText = document.getElementById('previewToggleText');
-
-      if (isCleanPreview) {
-        a4.classList.add('preview-clean');
-        btnText.textContent = 'العودة لوضع التعديل';
-      } else {
-        a4.classList.remove('preview-clean');
-        btnText.textContent = 'معاينة رسمية نهائية';
-      }
+      document.getElementById('a4Container').classList.toggle('preview-clean', isCleanPreview);
+      document.getElementById('previewToggleText').textContent = isCleanPreview ? 'العودة لوضع التعديل' : 'معاينة رسمية نهائية';
     }
 
-    // Zoom A4 Sheet
-    function adjustZoom(delta) {
-      currentZoom = Math.min(1.3, Math.max(0.6, round2(currentZoom + delta)));
+    function applyScaleToA4(scaleVal) {
+      currentZoom = Math.min(1.25, Math.max(0.32, round2(scaleVal)));
       const a4 = document.getElementById('a4Container');
+      const stage = document.getElementById('a4ScaleStage');
       a4.style.transform = `scale(${currentZoom})`;
       a4.style.transformOrigin = 'top center';
+      stage.style.height = `${Math.ceil((a4.offsetHeight || 1122) * currentZoom)}px`;
       document.getElementById('zoomLabel').textContent = `${Math.round(currentZoom * 100)}%`;
     }
 
-    // Build Clean PDF Filename from Client Name
-    const ORIGINAL_PAGE_TITLE = 'مولد عروض أسعار Cell HD Exo Smart Kit | شركة روائع الجمال الحديثة';
-
-    function getDynamicPdfTitle() {
-      const rawClient = (document.getElementById('clientNameInput')?.value || '').trim();
-      // Remove characters not allowed in Windows/Mac filenames
-      const cleanClient = rawClient.replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim();
-      const clientPart = cleanClient || 'Client';
-      return `Quotation - ${clientPart} - Cell HD Exo Smart Kit`;
+    function fitA4ToScreen(resetManual = true) {
+      if (resetManual) userManualZoom = false;
+      const viewport = document.getElementById('previewViewport');
+      const a4 = document.getElementById('a4Container');
+      if (!viewport || !a4) return;
+      const availW = Math.max(280, viewport.clientWidth - 16);
+      const natW = a4.offsetWidth || 794;
+      applyScaleToA4(availW < natW ? availW / natW : 1.0);
     }
 
-    // Support both button click and Ctrl+P shortcut for automatic PDF file naming
+    function adjustZoom(delta) {
+      userManualZoom = true;
+      applyScaleToA4(currentZoom + delta);
+    }
+
+    // Dynamic PDF Filename
+    function getDynamicPdfTitle() {
+      const rawClient = (document.getElementById('clientNameInput').value || 'Client').trim();
+      const safeClient = rawClient.replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, ' ').trim() || 'Client';
+      return `Quotation - ${safeClient} - Cell HD Exo Smart Kit`;
+    }
+
     window.addEventListener('beforeprint', () => {
       document.title = getDynamicPdfTitle();
     });
@@ -1151,172 +765,105 @@
       document.title = ORIGINAL_PAGE_TITLE;
     });
 
-    // Print / Save as PDF + Auto-log to Local Archive
     function printQuotation() {
       saveCurrentQuoteToLog(false);
-
       const a4 = document.getElementById('a4Container');
+      const stage = document.getElementById('a4ScaleStage');
       const prevTransform = a4.style.transform;
+      const prevHeight = stage.style.height;
+
       a4.style.transform = 'scale(1)';
+      stage.style.height = 'auto';
       document.title = getDynamicPdfTitle();
 
       setTimeout(() => {
         window.print();
         a4.style.transform = prevTransform;
+        stage.style.height = prevHeight;
         document.title = ORIGINAL_PAGE_TITLE;
-      }, 100);
+      }, 120);
     }
 
-    // =========================================================================
-    // LOCAL QUOTATION ARCHIVE & INSTANT EXCEL/CSV EXPORT
-    // =========================================================================
+    // LocalStorage Archive & Excel/CSV Export
     function getSavedQuotes() {
       try {
         return JSON.parse(localStorage.getItem(STORAGE_KEY_QUOTES) || '[]');
-      } catch (e) {
+      } catch {
         return [];
       }
     }
 
-    function incrementRefNumber(currentRef) {
-      const match = String(currentRef).match(/^(.*?)(\d+)$/);
-      if (!match) return currentRef;
-      const prefix = match[1];
-      const numStr = match[2];
-      const nextNum = String(Number(numStr) + 1).padStart(numStr.length, '0');
-      return `${prefix}${nextNum}`;
-    }
-
-    function saveCurrentQuoteToLog(manualTrigger = false) {
-      const refNo = (document.getElementById('quoteRefInput').value || 'QT-2026-101').trim();
-      const dateVal = document.getElementById('quoteDateInput').value || new Date().toISOString().split('T')[0];
-      const clientName = (document.getElementById('clientNameInput').value || 'Client').trim();
-      const attention = (document.getElementById('attentionInput').value || '').trim();
-      const city = (document.getElementById('cityInput').value || 'Riyadh, KSA').trim();
-      const segment = document.getElementById('segmentSelect').value;
-      const categoryLabel = SEGMENT_PRESETS[segment]?.label || 'Dermatology Clinic';
-      const signatory = (document.getElementById('signatoryNameInput').value || 'Ahmed Musallam').trim();
-
-      const itemsSnapshot = offerRows.map((r, idx) => {
-        const m = computeRow(r);
-        return {
-          optionNo: idx + 1,
-          product: r.product,
-          paidQty: Number(r.paidQty) || 0,
-          freeBonus: Number(r.freeBonus) || 0,
-          skBonus: Number(r.skBonus) || 0,
-          totalExoBoxes: m.totalExoBoxes,
-          unitPrice: Number(r.unitPrice) || 0,
-          discountPercent: Number(r.discountPercent) || 0,
-          netTotal: m.netTotal,
-          effectiveCostPerBox: m.effectiveCostPerBox
-        };
-      });
-
+    function saveCurrentQuoteToLog(showFeedback) {
+      const refNo = document.getElementById('quoteRefInput').value.trim() || 'QT-2026-101';
+      const clientName = document.getElementById('clientNameInput').value.trim() || 'Client';
       const entry = {
-        uid: Date.now(),
-        savedAt: new Date().toLocaleString('en-GB'),
+        id: Date.now(),
+        savedAt: new Date().toISOString(),
         refNo,
-        date: dateVal,
+        date: document.getElementById('quoteDateInput').value,
         clientName,
-        attention,
-        city,
-        segment,
-        categoryLabel,
-        signatory,
-        items: itemsSnapshot
+        attention: document.getElementById('attentionInput').value.trim(),
+        city: document.getElementById('cityInput').value.trim(),
+        registration: document.getElementById('displayRegistration').textContent.trim(),
+        segment: document.getElementById('segmentSelect').value,
+        items: offerRows.map(r => ({ ...r, ...calcRow(r) }))
       };
 
-      const existing = getSavedQuotes();
-      // Replace if same Ref No. already saved, otherwise prepend
-      const filtered = existing.filter(q => q.refNo !== refNo);
-      filtered.unshift(entry);
-      localStorage.setItem(STORAGE_KEY_QUOTES, JSON.stringify(filtered));
+      const logs = getSavedQuotes();
+      const existingIdx = logs.findIndex(q => q.refNo === refNo && q.clientName === clientName);
+      if (existingIdx >= 0) logs[existingIdx] = entry;
+      else logs.unshift(entry);
 
-      // Increment Ref No. if saved manually or if it's a brand-new Ref No.
-      const isNewRef = !existing.some(q => q.refNo === refNo);
-      if (manualTrigger || isNewRef) {
-        const nextRef = incrementRefNumber(refNo);
-        localStorage.setItem(STORAGE_KEY_REF, nextRef);
-        if (manualTrigger) {
-          document.getElementById('quoteRefInput').value = nextRef;
-          syncMetadata();
-        }
+      localStorage.setItem(STORAGE_KEY_QUOTES, JSON.stringify(logs));
+      const nextRef = incrementRefNumber(refNo);
+      if (showFeedback) {
+        document.getElementById('quoteRefInput').value = nextRef;
+        syncMetadata();
       }
-
       refreshArchiveUI();
-
-      if (manualTrigger) {
-        const badge = document.getElementById('savedQuotesCountBadge');
-        badge.textContent = '✓ تم الحفظ!';
-        setTimeout(() => refreshArchiveUI(), 1400);
-      }
     }
 
     function refreshArchiveUI() {
-      const quotes = getSavedQuotes();
-      const badge = document.getElementById('savedQuotesCountBadge');
-      if (badge) {
-        badge.textContent = `${quotes.length} محفوظ`;
-      }
-
-      const listContainer = document.getElementById('archiveListContainer');
-      if (!listContainer) return;
-
-      if (quotes.length === 0) {
-        listContainer.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-2">لا توجد عروض محفوظة في السجل بعد.</p>`;
+      const logs = getSavedQuotes();
+      document.getElementById('savedQuotesCountBadge').textContent = `${logs.length} محفوظ`;
+      const listEl = document.getElementById('archiveListContainer');
+      if (!logs.length) {
+        listEl.innerHTML = `<p class="text-[11px] text-slate-400 text-center py-2">لا توجد عروض محفوظة بعد.</p>`;
         return;
       }
-
-      listContainer.innerHTML = quotes.map(q => `
-        <div class="flex items-center justify-between gap-2 bg-slate-50 hover:bg-[#F3F8F9] p-2 rounded-lg border border-slate-200/80 text-xs">
-          <div class="min-w-0 flex-1">
-            <div class="font-bold text-slate-800 truncate font-en">${escapeHtml(q.clientName)}</div>
-            <div class="text-[10px] text-slate-500 font-en">${escapeHtml(q.refNo)} &bull; ${escapeHtml(q.date)}</div>
+      listEl.innerHTML = logs.map(q => `
+        <div class="flex items-center justify-between bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1.5 text-[11px]">
+          <div class="truncate">
+            <span class="font-bold text-[#1D6E7F] font-en">${q.refNo}</span> —
+            <span class="font-semibold text-slate-800">${q.clientName}</span>
           </div>
-          <button onclick="loadQuoteFromLog(${q.uid})" class="shrink-0 px-2 py-1 rounded bg-[#1D6E7F] text-white text-[10px] font-bold hover:opacity-90">
-            فتح
-          </button>
+          <button onclick="loadQuoteFromArchive(${q.id})" class="text-[#9E2A63] font-bold hover:underline shrink-0 mr-2">فتح</button>
         </div>
       `).join('');
     }
 
     function toggleArchiveDrawer() {
-      const container = document.getElementById('archiveListContainer');
-      if (container) {
-        container.classList.toggle('hidden');
-        refreshArchiveUI();
-      }
+      document.getElementById('archiveListContainer').classList.toggle('hidden');
     }
 
-    function loadQuoteFromLog(uid) {
-      const quotes = getSavedQuotes();
-      const found = quotes.find(q => q.uid === uid);
+    function loadQuoteFromArchive(id) {
+      const found = getSavedQuotes().find(q => q.id === id);
       if (!found) return;
-
       document.getElementById('quoteRefInput').value = found.refNo;
       document.getElementById('quoteDateInput').value = found.date;
       document.getElementById('clientNameInput').value = found.clientName;
-      document.getElementById('attentionInput').value = found.attention || '';
-      document.getElementById('cityInput').value = found.city || 'Riyadh, KSA';
+      document.getElementById('attentionInput').value = found.attention;
+      document.getElementById('cityInput').value = found.city;
+      document.getElementById('displayRegistration').textContent = found.registration || 'Madma';
       document.getElementById('segmentSelect').value = found.segment || 'clinics';
-      document.getElementById('signatoryNameInput').value = found.signatory || 'Ahmed Musallam';
-
-      const preset = SEGMENT_PRESETS[found.segment || 'clinics'];
-      document.getElementById('segmentHint').textContent = preset.hint;
-      document.getElementById('displaySegmentBadge').textContent = preset.label;
-      document.getElementById('displaySegmentShort').textContent = preset.label;
-
-      offerRows = found.items.map((item, idx) => ({
-        id: Date.now() + idx,
-        product: item.product || 'Cell HD Exo Smart Kit',
-        paidQty: item.paidQty,
-        freeBonus: item.freeBonus,
-        skBonus: item.skBonus,
-        unitPrice: item.unitPrice,
-        discountPercent: item.discountPercent
+      offerRows = found.items.map(it => ({
+        product: it.product || 'Cell HD Exo Smart Kit',
+        paidQty: it.paidQty,
+        freeBonus: it.freeBonus,
+        skBonus: it.skBonus,
+        unitPrice: it.unitPrice,
+        discountPercent: it.discountPercent
       }));
-
       syncMetadata();
       renderQuotationTable();
     }
@@ -1327,86 +874,56 @@
     }
 
     function exportQuotesToExcelCSV() {
-      let quotes = getSavedQuotes();
-      // If log is empty, include current quote automatically so the file is never empty
-      if (quotes.length === 0) {
-        saveCurrentQuoteToLog(false);
-        quotes = getSavedQuotes();
-      }
+      const logs = getSavedQuotes();
+      if (!logs.length) saveCurrentQuoteToLog(false);
+      const data = getSavedQuotes();
 
       const headers = [
-        'Saved Timestamp',
-        'Ref No.',
-        'Quotation Date',
-        'Client Name',
-        'Attention / Doctor',
-        'City',
-        'Category',
-        'Option #',
-        'Product Description',
-        'Paid Qty (Box)',
-        'Free Bonus (Box)',
-        'SK Box Bonus (0 SAR Gift)',
-        'Total Exo Qty (Paid + Free)',
-        'Unit Price (SAR)',
-        'Discount (%)',
-        'Net Total (SAR)',
-        'Effective Cost / Exo Box (SAR)',
-        'Signatory'
+        'Ref No', 'Date', 'Client Name', 'Attention', 'City', 'Registration',
+        'Option #', 'Product', 'Paid Qty', 'Free Bonus', 'SK Box Bonus',
+        'Total Exo Qty', 'Unit Price (SAR)', 'Discount (%)', 'Net Total (SAR)', 'Effective Cost/Box (SAR)'
       ];
 
-      const csvRows = [headers.join(',')];
-
-      quotes.forEach(q => {
-        q.items.forEach(item => {
-          const rowValues = [
-            q.savedAt,
-            q.refNo,
-            q.date,
-            q.clientName,
-            q.attention,
-            q.city,
-            q.categoryLabel,
-            `Option #${item.optionNo}`,
-            item.product,
-            item.paidQty,
-            item.freeBonus,
-            item.skBonus,
-            item.totalExoBoxes,
-            item.unitPrice.toFixed(2),
-            `${item.discountPercent}%`,
-            item.netTotal.toFixed(2),
-            item.effectiveCostPerBox.toFixed(2),
-            q.signatory
-          ].map(val => `"${String(val ?? '').replace(/"/g, '""')}"`);
-
-          csvRows.push(rowValues.join(','));
+      const rows = [headers.join(',')];
+      data.forEach(q => {
+        q.items.forEach((it, idx) => {
+          const c = calcRow(it);
+          const line = [
+            q.refNo, q.date, q.clientName, q.attention, q.city, q.registration || 'Madma',
+            `Option #${idx + 1}`, it.product, c.paid, c.free, c.sk,
+            c.totalExoQty, c.price, c.disc, c.netTotal, c.effectivePerBox
+          ].map(v => `"${String(v ?? '').replace(/"/g, '""')}"`);
+          rows.push(line.join(','));
         });
       });
 
-      // UTF-8 BOM (\uFEFF) ensures Excel opens Arabic & English cleanly without garbled text
-      const csvContent = '\uFEFF' + csvRows.join('\r\n');
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const blob = new Blob(['\uFEFF' + rows.join('\n')], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
-
-      const link = document.createElement('a');
-      const todayStr = new Date().toISOString().split('T')[0];
-      link.href = url;
-      link.download = `Cell_HD_Exo_Smart_Kit_Quotations_${todayStr}.csv`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Cell_HD_Exo_Smart_Kit_Quotations_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
     }
 
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;');
-    }
+    // Boot Application
+    window.addEventListener('DOMContentLoaded', () => {
+      initTodayDate();
+      loadNextRefNumber();
+      syncMetadata();
+      loadSegmentPreset('clinics');
+      refreshArchiveUI();
+      fitA4ToScreen(false);
+
+      const viewport = document.getElementById('previewViewport');
+      if (window.ResizeObserver && viewport) {
+        new ResizeObserver(() => {
+          if (!userManualZoom) fitA4ToScreen(false);
+        }).observe(viewport);
+      }
+    });
   </script>
 </body>
 </html>
