@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>مولد عروض الأسعار — Cell HD Exo Smart Kit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,343 +13,15 @@
       --primary: #1D6E7F;
       --primary-dark: #145260;
       --accent: #9E2A5B;
-      --bg-app: #EEF3F5;
-      --card-bg: #FFFFFF;
-      --border: #D5E0E5;
-      --text-main: #1A2B32;
-      --text-muted: #5A6E78;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Cairo', sans-serif;
-      background-color: var(--bg-app);
-      color: var(--text-main);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background-color: #EEF3F5;
+      color: #1A2B32;
     }
+    .font-en { font-family: 'Plus Jakarta Sans', sans-serif; }
 
-    /* Top Header Bar */
-    .top-bar {
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-    }
-
-    .brand-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-icon {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: #FFF;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 18px;
-    }
-
-    .brand-title h1 {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      line-height: 1.2;
-    }
-
-    .brand-title p {
-      font-size: 11.5px;
-      color: var(--text-muted);
-    }
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .zoom-controls {
-      display: flex;
-      align-items: center;
-      background: #F4F8FA;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 3px 6px;
-      gap: 6px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .zoom-btn {
-      background: none;
-      border: none;
-      color: var(--primary-dark);
-      font-weight: 800;
-      cursor: pointer;
-      padding: 2px 6px;
-      font-size: 14px;
-      border-radius: 4px;
-    }
-
-    .zoom-btn:hover {
-      background: #E2ECEF;
-    }
-
-    .btn {
-      border: none;
-      border-radius: 9px;
-      padding: 9px 15px;
-      font-family: 'Cairo', sans-serif;
-      font-weight: 700;
-      font-size: 13px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: #FFFFFF;
-      box-shadow: 0 3px 10px rgba(29, 110, 127, 0.25);
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-outline {
-      background: #FFFFFF;
-      color: var(--primary-dark);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      background: #F4F8FA;
-    }
-
-    .btn-outline.active {
-      background: #E6F4F7;
-      border-color: var(--primary);
-      color: var(--primary-dark);
-    }
-
-    /* Main Workspace */
-    .workspace {
-      display: flex;
-      flex: 1;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1440px;
-      width: 100%;
-      margin: 0 auto;
-      align-items: flex-start;
-    }
-
-    /* Sidebar Controls */
-    .sidebar {
-      width: 380px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 15px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #EEF3F5;
-    }
-
-    .card-title {
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dot-indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .form-group.full {
-      grid-column: span 2;
-    }
-
-    label {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: var(--text-muted);
-    }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="date"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: 'Plus Jakarta Sans', 'Cairo', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text-main);
-      background: #FAFCFD;
-      transition: border-color 0.15s;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      background: #FFFFFF;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 88px;
-      line-height: 1.5;
-      direction: ltr;
-      text-align: left;
-    }
-
-    /* Live Analysis Card */
-    .analysis-card {
-      background: linear-gradient(135deg, #165967, #1E7486);
-      color: #FFFFFF;
-      border: none;
-    }
-
-    .analysis-card .card-header {
-      border-bottom-color: rgba(255, 255, 255, 0.15);
-    }
-
-    .analysis-card .card-title {
-      color: #FFFFFF;
-    }
-
-    .analysis-item {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      direction: ltr;
-    }
-
-    .analysis-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .analysis-left {
-      text-align: left;
-    }
-
-    .analysis-opt {
-      font-size: 12.5px;
-      font-weight: 800;
-      color: #FFFFFF;
-    }
-
-    .analysis-breakdown {
-      font-size: 11px;
-      color: #CBE7ED;
-      margin-top: 2px;
-    }
-
-    .analysis-right {
-      text-align: right;
-    }
-
-    .analysis-label {
-      font-size: 10px;
-      color: #CBE7ED;
-      text-transform: uppercase;
-    }
-
-    .analysis-val {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #FFFFFF;
-    }
-
-    /* Preview Container (Strict A4 Scaling on Mobile & Desktop) */
-    .preview-area {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    .paper-outer-wrapper {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      overflow: hidden;
-      padding-bottom: 24px;
-    }
-
-    /* A4 Sheet Fixed Dimensions */
+    /* Strict Fixed A4 Sheet Dimensions (210mm x 297mm) */
     #quotationPaper {
       width: 210mm !important;
       min-width: 210mm !important;
@@ -361,8 +34,8 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       background-position: center;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
       padding: 46mm 16mm 34mm 16mm;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -373,167 +46,9 @@
       position: relative;
       transform-origin: top center !important;
       flex-shrink: 0 !important;
+      box-sizing: border-box;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
-    }
-
-    /* Quotation Header Box */
-    .qt-banner {
-      background: rgba(244, 249, 250, 0.94);
-      border-left: 4.5px solid var(--primary);
-      border-radius: 6px;
-      padding: 11px 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-      border-top: 1px solid #DCE7EC;
-      border-right: 1px solid #DCE7EC;
-      border-bottom: 1px solid #DCE7EC;
-    }
-
-    .qt-banner-left h2 {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      letter-spacing: 0.4px;
-      margin-bottom: 2px;
-    }
-
-    .qt-banner-left p {
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #4A606A;
-    }
-
-    .qt-banner-left span {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .qt-banner-right {
-      text-align: right;
-      font-size: 11.5px;
-      line-height: 1.55;
-    }
-
-    .qt-banner-right strong {
-      color: var(--primary-dark);
-      font-weight: 800;
-    }
-
-    /* Client Info Grid */
-    .client-grid {
-      display: grid;
-      grid-template-columns: 1.45fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .info-box {
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid #DCE7EC;
-      border-radius: 8px;
-      padding: 10px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .info-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 8px;
-      font-size: 11.5px;
-    }
-
-    .info-row.left-align {
-      justify-content: flex-start;
-    }
-
-    .info-label {
-      color: #5A6E78;
-      font-weight: 600;
-      min-width: 112px;
-      flex-shrink: 0;
-    }
-
-    .info-value {
-      color: #13232A;
-      font-weight: 700;
-      outline: none;
-      border-bottom: 1px dashed transparent;
-      padding: 1px 3px;
-      border-radius: 3px;
-    }
-
-    .info-value[contenteditable="true"]:hover,
-    .info-value[contenteditable="true"]:focus {
-      background: #F0F8FA;
-      border-bottom-color: var(--primary);
-    }
-
-    .madma-highlight {
-      color: var(--accent);
-      font-weight: 800;
-    }
-
-    .intro-line {
-      font-size: 11.5px;
-      color: #2E424B;
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    .intro-line strong {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    /* Quotation Table */
-    .qt-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 10px;
-      background: rgba(255, 255, 255, 0.96);
-      font-size: 11px;
-    }
-
-    .qt-table th {
-      background-color: var(--primary);
-      color: #FFFFFF;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 8px 6px;
-      text-align: center;
-      font-size: 9.8px;
-      letter-spacing: 0.3px;
-      border: 1px solid var(--primary);
-    }
-
-    .qt-table th.sk-col {
-      background-color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .qt-table th.text-left {
-      text-align: left;
-      padding-left: 10px;
-    }
-
-    .qt-table td {
-      padding: 7px 6px;
-      border: 1px solid #DCE7EC;
-      text-align: center;
-      vertical-align: middle;
-      font-weight: 700;
-      color: #1A2B32;
-    }
-
-    .qt-table td.text-left {
-      text-align: left;
-      padding-left: 10px;
     }
 
     .tbl-input {
@@ -548,163 +63,10 @@
       text-align: center;
       color: #1A2B32;
     }
-
-    .tbl-input.desc-input {
-      text-align: left;
-      padding-left: 7px;
-      min-width: 135px;
-    }
-
-    .tbl-input.bonus-val {
-      color: #157F56;
-    }
-
-    .tbl-input.sk-val {
-      color: var(--accent);
-    }
-
-    .tbl-input.net-val {
-      color: var(--primary-dark);
-      font-weight: 800;
-      background: #EFF7F9;
-    }
-
     .tbl-input:focus {
       outline: none;
       border-color: var(--primary);
       background: #FFFFFF;
-    }
-
-    .del-row-btn {
-      background: #FEECEC;
-      color: #C93B3B;
-      border: none;
-      border-radius: 4px;
-      width: 22px;
-      height: 22px;
-      font-weight: 800;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .del-row-btn:hover {
-      background: #FAD2D2;
-    }
-
-    .table-controls {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 12px;
-    }
-
-    .add-row-btn {
-      background: #F0F7F9;
-      color: var(--primary-dark);
-      border: 1px dashed var(--primary);
-      border-radius: 6px;
-      padding: 5px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    .add-row-btn:hover {
-      background: #E1F0F4;
-    }
-
-    /* Terms & Conditions Box */
-    .terms-box {
-      background: rgba(248, 251, 252, 0.94);
-      border: 1px solid #DCE7EC;
-      border-radius: 8px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
-    }
-
-    .terms-title {
-      font-size: 11px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .terms-content {
-      font-size: 10.5px;
-      color: #384C54;
-      line-height: 1.6;
-      white-space: pre-line;
-      outline: none;
-    }
-
-    /* Signatures Footer */
-    .signatures-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: auto;
-      padding-top: 6px;
-    }
-
-    .sender-sign {
-      font-size: 11px;
-      line-height: 1.45;
-    }
-
-    .sender-sign .regards {
-      color: #5A6E78;
-      font-weight: 600;
-    }
-
-    .sender-sign .name {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--primary-dark);
-    }
-
-    .sender-sign .role {
-      font-weight: 700;
-      color: #2E424B;
-    }
-
-    .sender-sign .company {
-      font-weight: 700;
-      color: #1A2B32;
-    }
-
-    .sender-sign .stamp-note {
-      margin-top: 14px;
-      font-size: 9.5px;
-      color: #7A8E98;
-      border-top: 1px solid #CBD8DF;
-      padding-top: 3px;
-      display: inline-block;
-      min-width: 170px;
-    }
-
-    .client-accept-box {
-      border: 1px dashed #B8CAD3;
-      border-radius: 8px;
-      padding: 10px 18px;
-      text-align: center;
-      min-width: 210px;
-      background: rgba(255, 255, 255, 0.92);
-    }
-
-    .client-accept-title {
-      font-size: 10px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      margin-bottom: 24px;
-    }
-
-    .client-accept-line {
-      border-top: 1px solid #B8CAD3;
-      font-size: 9.5px;
-      color: #6E828C;
-      padding-top: 3px;
     }
 
     /* Clean Official Preview Mode */
@@ -713,57 +75,29 @@
       background: transparent !important;
       padding: 2px !important;
     }
-    body.clean-mode .tbl-input.net-val {
-      background: transparent !important;
-    }
-    body.clean-mode .no-print-col,
-    body.clean-mode .table-controls {
-      display: none !important;
+    body.clean-mode .no-preview { display: none !important; }
+
+    /* Custom Toast Notification (No alert/confirm) */
+    #toastBanner {
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
-    /* Responsive Mobile Layout */
-    @media (max-width: 960px) {
-      .workspace {
-        flex-direction: column;
-        padding: 12px;
-        gap: 14px;
-      }
-      .sidebar {
-        width: 100%;
-      }
-      .top-bar {
-        padding: 10px 12px;
-      }
-      .brand-title h1 {
-        font-size: 15px;
-      }
-    }
-
-    /* Print Styles */
     @media print {
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
-      body {
-        background: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .top-bar,
-      .sidebar,
-      .no-print-col,
-      .table-controls {
-        display: none !important;
-      }
-      .workspace,
-      .preview-area,
-      .paper-outer-wrapper {
-        display: block !important;
-        padding: 0 !important;
-        margin: 0 !important;
+      @page { size: A4 portrait; margin: 0; }
+      html, body {
         width: 210mm !important;
         height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #FFFFFF !important;
+      }
+      .no-print, .no-preview { display: none !important; }
+      #workspaceContainer, #previewArea, #paperOuterWrapper {
+        display: block !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
         overflow: visible !important;
       }
       #quotationPaper {
@@ -778,144 +112,167 @@
         background: transparent !important;
         padding: 0 !important;
       }
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+      input[type=number] { -moz-appearance: textfield; }
     }
   </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <!-- Top Bar -->
-  <header class="top-bar">
-    <div class="brand-title">
-      <div class="brand-icon">R</div>
+  <!-- Toast Message Box -->
+  <div id="toastBanner" class="no-print fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-[#145260] text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl shadow-lg opacity-0 pointer-events-none"></div>
+
+  <!-- Top Header Bar -->
+  <header class="no-print bg-white border-b border-[#D5E0E5] px-4 py-3 flex items-center justify-between flex-wrap gap-3 sticky top-0 z-40 shadow-sm">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1D6E7F] to-[#145260] text-white flex items-center justify-center font-extrabold text-lg">R</div>
       <div>
-        <h1>مولد عروض الأسعار — Cell HD Exo Smart Kit</h1>
-        <p>شركة روائع الجمال الحديثة • طباعة A4 رسمية على letterhead.jpg</p>
+        <h1 class="text-sm sm:text-base font-extrabold text-[#145260] leading-tight">مولد عروض الأسعار — <span class="font-en">Cell HD Exo Smart Kit</span></h1>
+        <p class="text-[11px] text-[#5A6E78]">شركة روائع الجمال الحديثة • طباعة A4 رسمية على letterhead.jpg</p>
       </div>
     </div>
 
-    <div class="top-actions">
-      <div class="zoom-controls">
-        <button class="zoom-btn" onclick="adjustZoom(-0.08)" title="تصغير">-</button>
-        <span id="zoomLabel">100%</span>
-        <button class="zoom-btn" onclick="adjustZoom(0.08)" title="تكبير">+</button>
-        <button class="zoom-btn" onclick="fitPaperToScreen()" style="color: var(--primary); font-size: 12px;">ملاءمة</button>
+    <div class="flex items-center gap-2 flex-wrap">
+      <div class="flex items-center bg-[#F4F8FA] border border-[#D5E0E5] rounded-lg px-1.5 py-1 gap-1.5 text-xs font-bold">
+        <button onclick="adjustZoom(-0.08)" class="px-2 py-0.5 text-[#145260] hover:bg-[#E2ECEF] rounded font-extrabold">-</button>
+        <span id="zoomLabel" class="font-en min-w-[38px] text-center">100%</span>
+        <button onclick="adjustZoom(0.08)" class="px-2 py-0.5 text-[#145260] hover:bg-[#E2ECEF] rounded font-extrabold">+</button>
+        <button onclick="fitPaperToScreen(true)" class="px-2 py-0.5 text-[#1D6E7F] hover:bg-[#E2ECEF] rounded text-[11px]">ملاءمة</button>
       </div>
 
-      <button class="btn btn-outline" id="cleanPreviewBtn" onclick="toggleCleanPreview()">
-        👁️ معاينة رسمية نهائية
+      <button id="cleanPreviewBtn" onclick="toggleCleanPreview()" class="px-3.5 py-2 rounded-xl border border-[#D5E0E5] bg-white text-[#145260] hover:bg-[#F4F8FA] text-xs font-bold">
+        معاينة رسمية نهائية
       </button>
 
-      <button class="btn btn-primary" onclick="handlePrintPDF()">
-        🖨️ Print / Save as PDF
+      <button onclick="handlePrintPDF()" class="px-4 py-2 rounded-xl bg-[#1D6E7F] hover:bg-[#145260] text-white text-xs font-bold shadow-sm font-en">
+        Print / Save as PDF
       </button>
     </div>
   </header>
 
   <!-- Main Workspace -->
-  <main class="workspace">
+  <main id="workspaceContainer" class="flex-1 flex flex-col lg:flex-row gap-5 p-3 sm:p-5 max-w-[1440px] w-full mx-auto items-start">
 
     <!-- Control Sidebar -->
-    <aside class="sidebar">
+    <aside class="no-print w-full lg:w-[380px] shrink-0 flex flex-col gap-3.5">
 
       <!-- Category & Pricing Presets -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title"><span class="dot-indicator"></span> إعدادات الفئة والبونص الافتراضي</div>
-          <button class="btn btn-outline" style="padding: 4px 9px; font-size: 11px;" onclick="applyCategoryPreset()">استعادة الافتراضي</button>
+      <div class="bg-white border border-[#D5E0E5] rounded-2xl p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-[#EEF3F5]">
+          <h2 class="text-sm font-extrabold text-[#145260] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#9E2A5B]"></span>
+            إعدادات الفئة والبونص الافتراضي
+          </h2>
+          <button onclick="applyCategoryPreset()" class="px-2.5 py-1 rounded-lg border border-[#D5E0E5] text-[11px] font-bold text-[#145260] hover:bg-[#F4F8FA]">استعادة الافتراضي</button>
         </div>
 
-        <div class="form-grid">
-          <div class="form-group full">
-            <label>اختر نوع الجهة (يحدد البونص الافتراضي):</label>
-            <select id="categorySelect" onchange="applyCategoryPreset()">
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="col-span-2">
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">اختر نوع الجهة (يحدد البونص الافتراضي):</label>
+            <select id="categorySelect" onchange="applyCategoryPreset()" class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-bold focus:outline-none focus:border-[#1D6E7F]">
               <option value="clinics">عيادات الجلدية (Dermatology Clinics)</option>
               <option value="hospitals">المستشفيات (Hospitals)</option>
             </select>
           </div>
 
-          <div class="form-group">
-            <label>سعر البوكس الأساسي (SAR)</label>
-            <input type="number" id="basePriceInput" value="2000" min="0" step="50" oninput="updateAllPrices(this.value)" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">سعر البوكس الأساسي (SAR)</label>
+            <input type="number" id="basePriceInput" value="2000" min="0" step="50" oninput="updateAllPrices(this.value)" class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-bold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>تطبيق خصم عام (%)</label>
-            <input type="number" id="globalDiscountInput" value="0" min="0" max="100" step="0.5" oninput="applyGlobalDiscount(this.value)" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">تطبيق خصم عام (%)</label>
+            <input type="number" id="globalDiscountInput" value="0" min="0" max="100" step="0.5" oninput="applyGlobalDiscount(this.value)" class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-bold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group full" style="margin-top: 2px;">
-            <button class="btn btn-outline" style="width: 100%; font-size: 12px;" onclick="toggleSkColumnManual()">
-              🔄 إظهار / إخفاء عمود SK Box Bonus
+          <div class="col-span-2 mt-1">
+            <button onclick="toggleSkColumnManual()" class="w-full py-2 px-3 rounded-lg border border-[#D5E0E5] bg-white hover:bg-[#F4F8FA] text-xs font-bold text-[#145260]">
+              إظهار / إخفاء عمود SK Box Bonus
             </button>
           </div>
         </div>
       </div>
 
       <!-- Client & Quotation Details -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title"><span class="dot-indicator"></span> بيانات العميل والعرض</div>
+      <div class="bg-white border border-[#D5E0E5] rounded-2xl p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-[#EEF3F5]">
+          <h2 class="text-sm font-extrabold text-[#145260] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#9E2A5B]"></span>
+            بيانات العميل والعرض
+          </h2>
         </div>
 
-        <div class="form-grid">
-          <div class="form-group full">
-            <label>اسم العميل / العيادة / المستشفى (Client Name)</label>
-            <input type="text" id="clientNameInput" value="Elite Dermatology & Aesthetic Clinics"
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="col-span-2">
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">اسم العميل / العيادة / المستشفى (Client Name)</label>
+            <input type="text" id="clientNameInput" dir="ltr" value="Elite Dermatology & Aesthetic Clinics"
                    onfocus="clearDefaultOnFocus(this, 'Elite Dermatology & Aesthetic Clinics')"
-                   oninput="syncText('clientNameInput', 'paperClientName')" />
+                   oninput="syncText('clientNameInput', 'paperClientName')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>عناية الدكتور / المسؤول</label>
-            <input type="text" id="doctorNameInput" value="Dr. Medical Director / Procurement"
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">عناية الدكتور / المسؤول</label>
+            <input type="text" id="doctorNameInput" dir="ltr" value="Dr. Medical Director / Procurement"
                    onfocus="clearDefaultOnFocus(this, 'Dr. Medical Director / Procurement')"
-                   oninput="syncText('doctorNameInput', 'paperDoctorName')" />
+                   oninput="syncText('doctorNameInput', 'paperDoctorName')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>المدينة (City)</label>
-            <input type="text" id="cityInput" value="Riyadh, KSA"
-                   oninput="syncText('cityInput', 'paperCity')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">المدينة (City)</label>
+            <input type="text" id="cityInput" dir="ltr" value="Riyadh, KSA"
+                   oninput="syncText('cityInput', 'paperCity')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>رقم المرجع (Ref No.)</label>
-            <input type="text" id="refNoInput" value="QT-2026-101"
-                   oninput="syncText('refNoInput', 'paperRefNo')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">رقم المرجع (Ref No.)</label>
+            <input type="text" id="refNoInput" dir="ltr" value="QT-2026-101"
+                   oninput="syncText('refNoInput', 'paperRefNo')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>التاريخ (تلقائي وقابل للتعديل)</label>
-            <input type="date" id="dateInput" onchange="updatePaperDate()" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">التاريخ (تلقائي وقابل للتعديل)</label>
+            <input type="date" id="dateInput" dir="ltr" onchange="updatePaperDate()"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>الصلاحية (Validity)</label>
-            <input type="text" id="validityInput" value="15 Days"
-                   oninput="syncText('validityInput', 'paperValidity')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">الصلاحية (Validity)</label>
+            <input type="text" id="validityInput" dir="ltr" value="15 Days"
+                   oninput="syncText('validityInput', 'paperValidity')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>Registration</label>
-            <input type="text" id="registrationInput" value="Madma"
-                   oninput="syncText('registrationInput', 'paperRegistration')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">Registration</label>
+            <input type="text" id="registrationInput" dir="ltr" value="Madma"
+                   oninput="syncText('registrationInput', 'paperRegistration')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>اسم الموقّع (Signatory)</label>
-            <input type="text" id="signatoryInput" value="Ahmed Musallam"
-                   oninput="syncText('signatoryInput', 'paperSignatory')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">اسم الموقّع (Signatory)</label>
+            <input type="text" id="signatoryInput" dir="ltr" value="Ahmed Musallam"
+                   oninput="syncText('signatoryInput', 'paperSignatory')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group">
-            <label>المسمى الوظيفي (Title)</label>
-            <input type="text" id="titleInput" value="Sales Manager"
-                   oninput="syncText('titleInput', 'paperTitle')" />
+          <div>
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">المسمى الوظيفي (Title)</label>
+            <input type="text" id="titleInput" dir="ltr" value="Sales Manager"
+                   oninput="syncText('titleInput', 'paperTitle')"
+                   class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en focus:outline-none focus:border-[#1D6E7F]" />
           </div>
 
-          <div class="form-group full">
-            <label>الشروط والأحكام (اضغط Enter لإضافة نقطة جديدة تلقائياً)</label>
-            <textarea id="termsInput" oninput="syncTerms()" onkeydown="handleTermsEnter(event)">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+          <div class="col-span-2">
+            <label class="block text-[11.5px] font-bold text-[#5A6E78] mb-1">الشروط والأحكام (اضغط Enter لإضافة نقطة جديدة)</label>
+            <textarea id="termsInput" dir="ltr" rows="4" oninput="syncTerms()" onkeydown="handleTermsEnter(event)"
+                      class="w-full px-2.5 py-2 rounded-lg border border-[#D5E0E5] bg-[#FAFCFD] text-xs font-semibold font-en leading-relaxed focus:outline-none focus:border-[#1D6E7F]">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+• Payment Terms: 50% cash in advance, 50% within 45 days.
 • Quotation validity: 15 days from the date of issue.
 • Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</textarea>
           </div>
@@ -923,123 +280,140 @@
       </div>
 
       <!-- Live Cost Analysis -->
-      <div class="card analysis-card">
-        <div class="card-header">
-          <div class="card-title">📊 تحليل تكلفة البوكس الفعلية للعميل</div>
+      <div class="rounded-2xl p-4 text-white shadow-sm bg-gradient-to-br from-[#165967] to-[#1E7486]">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/15">
+          <h2 class="text-sm font-extrabold">تحليل تكلفة البوكس الفعلية للعميل</h2>
         </div>
-        <div id="liveAnalysisContainer"></div>
+        <div id="liveAnalysisContainer" class="space-y-2"></div>
+        <p class="text-[11px] text-[#CBE7ED] mt-2.5 pt-2 border-t border-white/15">
+          * <strong>SK Box Bonus</strong> هدية بقيمة 0 SAR ولا تدخل في السعر أو إجمالي الكمية.
+        </p>
       </div>
 
       <!-- Local Archive & Excel Export -->
-      <div class="card">
-        <div class="card-header">
-          <div class="card-title"><span class="dot-indicator"></span> أرشيف العروض وتصدير Excel</div>
-          <span id="savedCountBadge" style="font-size: 11px; font-weight: 800; color: var(--primary); background: #E6F4F7; padding: 2px 8px; border-radius: 12px;">0 محفوظ</span>
+      <div class="bg-white border border-[#D5E0E5] rounded-2xl p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-[#EEF3F5]">
+          <h2 class="text-sm font-extrabold text-[#145260] flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-[#9E2A5B]"></span>
+            أرشيف العروض وتصدير Excel
+          </h2>
+          <span id="savedCountBadge" class="text-[11px] font-extrabold text-[#1D6E7F] bg-[#E6F4F7] px-2.5 py-0.5 rounded-full">0 محفوظ</span>
         </div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <button class="btn btn-outline" style="flex: 1; font-size: 12px;" onclick="saveQuotationToArchive(true)">💾 حفظ العرض الحالي</button>
-          <button class="btn btn-primary" style="flex: 1; font-size: 12px;" onclick="exportArchiveToExcel()">📥 تصدير Excel</button>
+        <div class="flex gap-2">
+          <button onclick="saveQuotationToArchive(true)" class="flex-1 py-2 px-3 rounded-xl border border-[#D5E0E5] bg-white hover:bg-[#F4F8FA] text-xs font-bold text-[#145260]">حفظ العرض الحالي</button>
+          <button onclick="exportArchiveToExcel()" class="flex-1 py-2 px-3 rounded-xl bg-[#1D6E7F] hover:bg-[#145260] text-white text-xs font-bold">تصدير Excel</button>
         </div>
       </div>
 
     </aside>
 
-    <!-- A4 Paper Preview -->
-    <section class="preview-area">
-      <div class="paper-outer-wrapper" id="paperOuterWrapper">
+    <!-- A4 Paper Preview Area -->
+    <section id="previewArea" class="flex-1 flex flex-col items-center justify-start overflow-x-hidden w-full">
+      <div id="paperOuterWrapper" class="w-full flex justify-center items-start overflow-hidden pb-6">
         <div id="quotationPaper">
 
           <div>
             <!-- Banner -->
-            <div class="qt-banner">
-              <div class="qt-banner-left">
-                <h2>PRICE QUOTATION</h2>
-                <p>Product Line: <span>Cell HD Exo Smart Kit</span></p>
+            <div class="bg-[#F4F9FA]/95 border border-[#DCE7EC] border-l-[4.5px] border-l-[#1D6E7F] rounded-md px-4 py-2.5 flex justify-between items-center mb-3">
+              <div>
+                <h2 class="text-[18px] font-extrabold text-[#145260] tracking-wide leading-tight">PRICE QUOTATION</h2>
+                <p class="text-[11.5px] font-semibold text-[#4A606A]">Product Line: <span class="text-[#9E2A5B] font-bold">Cell HD Exo Smart Kit</span></p>
               </div>
-              <div class="qt-banner-right">
-                <div>Ref No.: <strong id="paperRefNo">QT-2026-101</strong></div>
-                <div>Date: <strong id="paperDate">November 22, 2026</strong></div>
+              <div class="text-right text-[11.5px] leading-snug">
+                <div>Ref No.: <strong id="paperRefNo" class="text-[#145260] font-extrabold">QT-2026-101</strong></div>
+                <div>Date: <strong id="paperDate" class="text-[#145260] font-extrabold">November 22, 2026</strong></div>
               </div>
             </div>
 
-            <!-- Client Info -->
-            <div class="client-grid">
-              <div class="info-box">
-                <div class="info-row left-align">
-                  <span class="info-label">To / Client Name:</span>
-                  <span class="info-value" id="paperClientName" contenteditable="true"
+            <!-- Client Info Grid (Registration: Madma, NO Category) -->
+            <div class="grid grid-cols-[1.45fr_1fr] gap-3 mb-3">
+              <div class="bg-white/95 border border-[#DCE7EC] rounded-lg px-3.5 py-2.5 flex flex-col gap-1.5">
+                <div class="flex items-baseline gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold min-w-[112px] shrink-0">To / Client Name:</span>
+                  <span id="paperClientName" contenteditable="true"
                         onfocus="clearDefaultOnFocus(this, 'Elite Dermatology & Aesthetic Clinics')"
-                        oninput="syncFromPaper('paperClientName', 'clientNameInput')">Elite Dermatology & Aesthetic Clinics</span>
+                        oninput="syncFromPaper('paperClientName', 'clientNameInput')"
+                        class="text-[#13232A] font-bold outline-none focus:bg-[#F0F8FA] rounded px-1">Elite Dermatology & Aesthetic Clinics</span>
                 </div>
-                <div class="info-row left-align">
-                  <span class="info-label">Attention / Doctor:</span>
-                  <span class="info-value" id="paperDoctorName" contenteditable="true"
+                <div class="flex items-baseline gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold min-w-[112px] shrink-0">Attention / Doctor:</span>
+                  <span id="paperDoctorName" contenteditable="true"
                         onfocus="clearDefaultOnFocus(this, 'Dr. Medical Director / Procurement')"
-                        oninput="syncFromPaper('paperDoctorName', 'doctorNameInput')">Dr. Medical Director / Procurement</span>
+                        oninput="syncFromPaper('paperDoctorName', 'doctorNameInput')"
+                        class="text-[#13232A] font-bold outline-none focus:bg-[#F0F8FA] rounded px-1">Dr. Medical Director / Procurement</span>
                 </div>
-                <div class="info-row left-align">
-                  <span class="info-label">City:</span>
-                  <span class="info-value" id="paperCity" contenteditable="true"
-                        oninput="syncFromPaper('paperCity', 'cityInput')">Riyadh, KSA</span>
+                <div class="flex items-baseline gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold min-w-[112px] shrink-0">City:</span>
+                  <span id="paperCity" contenteditable="true"
+                        oninput="syncFromPaper('paperCity', 'cityInput')"
+                        class="text-[#13232A] font-bold outline-none focus:bg-[#F0F8FA] rounded px-1">Riyadh, KSA</span>
                 </div>
               </div>
 
-              <div class="info-box">
-                <div class="info-row">
-                  <span class="info-label" style="min-width: 85px;">Registration:</span>
-                  <span class="info-value madma-highlight" id="paperRegistration" contenteditable="true"
-                        oninput="syncFromPaper('paperRegistration', 'registrationInput')">Madma</span>
+              <div class="bg-white/95 border border-[#DCE7EC] rounded-lg px-3.5 py-2.5 flex flex-col gap-1.5">
+                <div class="flex items-baseline justify-between gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold">Registration:</span>
+                  <span id="paperRegistration" contenteditable="true"
+                        oninput="syncFromPaper('paperRegistration', 'registrationInput')"
+                        class="text-[#9E2A5B] font-extrabold outline-none focus:bg-[#F0F8FA] rounded px-1">Madma</span>
                 </div>
-                <div class="info-row">
-                  <span class="info-label" style="min-width: 85px;">Currency:</span>
-                  <span class="info-value">SAR</span>
+                <div class="flex items-baseline justify-between gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold">Currency:</span>
+                  <span class="text-[#13232A] font-bold">SAR</span>
                 </div>
-                <div class="info-row">
-                  <span class="info-label" style="min-width: 85px;">Validity:</span>
-                  <span class="info-value" id="paperValidity" contenteditable="true"
-                        oninput="syncFromPaper('paperValidity', 'validityInput')">15 Days</span>
+                <div class="flex items-baseline justify-between gap-2 text-[11.5px]">
+                  <span class="text-[#5A6E78] font-semibold">Validity:</span>
+                  <span id="paperValidity" contenteditable="true"
+                        oninput="syncFromPaper('paperValidity', 'validityInput')"
+                        class="text-[#13232A] font-bold outline-none focus:bg-[#F0F8FA] rounded px-1">15 Days</span>
                 </div>
               </div>
             </div>
 
-            <p class="intro-line">
-              We are pleased to submit our special price quotation for <strong>Cell HD Exo Smart Kit</strong> as detailed below:
+            <p class="text-[11.5px] text-[#2E424B] mb-2.5 font-medium">
+              We are pleased to submit our special price quotation for <strong class="text-[#9E2A5B] font-bold">Cell HD Exo Smart Kit</strong> as detailed below:
             </p>
 
             <!-- Quotation Table -->
-            <table class="qt-table">
+            <table class="w-full border-collapse mb-2.5 bg-white/95 text-[11px]">
               <thead id="quotationTableHead"></thead>
               <tbody id="quotationTableBody"></tbody>
             </table>
 
-            <div class="table-controls">
-              <button class="add-row-btn" onclick="addNewRow()">+ Add Option / Row</button>
+            <div class="no-print no-preview flex justify-end mb-3">
+              <button onclick="addNewRow()" class="bg-[#F0F7F9] hover:bg-[#E1F0F4] text-[#145260] border border-dashed border-[#1D6E7F] rounded-md px-3 py-1 text-[11px] font-bold">
+                + Add Option / Row
+              </button>
             </div>
 
             <!-- Terms & Conditions -->
-            <div class="terms-box">
-              <div class="terms-title">TERMS & CONDITIONS:</div>
-              <div class="terms-content" id="paperTerms" contenteditable="true"
+            <div class="bg-[#F8FBFC]/95 border border-[#DCE7EC] rounded-lg px-3.5 py-2.5 mb-3">
+              <div class="text-[11px] font-extrabold text-[#145260] mb-1 uppercase tracking-wide">TERMS & CONDITIONS:</div>
+              <div id="paperTerms" contenteditable="true"
                    onkeydown="handlePaperTermsEnter(event)"
-                   oninput="syncTermsFromPaper()">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+                   oninput="syncTermsFromPaper()"
+                   class="text-[10.5px] text-[#384C54] leading-relaxed whitespace-pre-line outline-none">• All prices are in Saudi Riyals (SAR) and exclude 15% VAT.
+• Payment Terms: 50% cash in advance, 50% within 45 days.
 • Quotation validity: 15 days from the date of issue.
 • Delivery: Free delivery within Riyadh / across KSA upon official Purchase Order (PO).</div>
             </div>
           </div>
 
-          <!-- Signatures -->
-          <div class="signatures-row">
-            <div class="sender-sign">
-              <div class="regards">Best Regards,</div>
-              <div class="name" id="paperSignatory">Ahmed Musallam</div>
-              <div class="role"><span id="paperTitle">Sales Manager</span> — Sales Department</div>
-              <div class="company">Rawai Aljamal Alhaditha Co.</div>
-              <div class="stamp-note">Authorized Signature & Official Stamp</div>
+          <!-- Signatures Footer -->
+          <div class="flex justify-between items-end mt-auto pt-1.5">
+            <div class="text-[11px] leading-snug">
+              <div class="text-[#5A6E78] font-semibold">Best Regards,</div>
+              <div id="paperSignatory" class="text-[13px] font-extrabold text-[#145260]">Ahmed Musallam</div>
+              <div class="font-bold text-[#2E424B]"><span id="paperTitle">Sales Manager</span> — Sales Department</div>
+              <div class="font-bold text-[#1A2B32]">Rawai Aljamal Alhaditha Co.</div>
+              <div class="mt-4 text-[9.5px] text-[#7A8E98] border-t border-[#CBD8DF] pt-1 inline-block min-w-[175px]">
+                Authorized Signature & Official Stamp
+              </div>
             </div>
 
-            <div class="client-accept-box">
-              <div class="client-accept-title">CLIENT ACCEPTANCE (PO)</div>
-              <div class="client-accept-line">Authorized Signature / Stamp</div>
+            <div class="border border-dashed border-[#B8CAD3] rounded-lg px-4 py-2.5 text-center min-w-[210px] bg-white/95">
+              <div class="text-[10px] font-extrabold text-[#145260] mb-6">CLIENT ACCEPTANCE (PO)</div>
+              <div class="border-t border-[#B8CAD3] text-[9.5px] text-[#6E828C] pt-1">Authorized Signature / Stamp</div>
             </div>
           </div>
 
@@ -1053,16 +427,29 @@
     let rows = [];
     let forceShowSkColumn = null;
     let currentZoom = 1;
+    let manualZoomActive = false;
     const originalDocTitle = document.title;
+    const STORAGE_KEY = 'rawai_cell_hd_exo_archive_v1';
 
-    // Initialize Date Automatically
+    function showToast(msg) {
+      const el = document.getElementById('toastBanner');
+      el.textContent = msg;
+      el.classList.remove('opacity-0', 'translate-y-2');
+      el.classList.add('opacity-100', 'translate-y-0');
+      clearTimeout(el._timer);
+      el._timer = setTimeout(() => {
+        el.classList.remove('opacity-100', 'translate-y-0');
+        el.classList.add('opacity-0', 'translate-y-2');
+      }, 2600);
+    }
+
+    // Initialize Today's Date Automatically
     function initTodayDate() {
       const today = new Date();
       const yyyy = today.getFullYear();
       const mm = String(today.getMonth() + 1).padStart(2, '0');
       const dd = String(today.getDate()).padStart(2, '0');
-      const dateInput = document.getElementById('dateInput');
-      dateInput.value = `${yyyy}-${mm}-${dd}`;
+      document.getElementById('dateInput').value = `${yyyy}-${mm}-${dd}`;
       updatePaperDate();
     }
 
@@ -1070,8 +457,7 @@
       const val = document.getElementById('dateInput').value;
       if (!val) return;
       const [y, m, d] = val.split('-').map(Number);
-      const dateObj = new Date(y, m - 1, d);
-      const formatted = dateObj.toLocaleDateString('en-US', {
+      const formatted = new Date(y, m - 1, d).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -1079,47 +465,41 @@
       document.getElementById('paperDate').textContent = formatted;
     }
 
-    // Clear default placeholder text on first click/focus
+    // Auto-clear default placeholder text on first focus
     function clearDefaultOnFocus(el, defaultText) {
       if (el.tagName === 'INPUT') {
         if (el.value.trim() === defaultText) {
           el.value = '';
           el.dispatchEvent(new Event('input'));
         }
-      } else {
-        if (el.textContent.trim() === defaultText) {
-          el.textContent = '';
-          el.dispatchEvent(new Event('input'));
-        }
+      } else if (el.textContent.trim() === defaultText) {
+        el.textContent = '';
+        el.dispatchEvent(new Event('input'));
       }
     }
 
     function syncText(sourceId, targetId) {
-      const val = document.getElementById(sourceId).value;
-      document.getElementById(targetId).textContent = val;
+      document.getElementById(targetId).textContent = document.getElementById(sourceId).value;
     }
 
     function syncFromPaper(paperId, inputId) {
-      const val = document.getElementById(paperId).textContent;
-      document.getElementById(inputId).value = val;
+      document.getElementById(inputId).value = document.getElementById(paperId).textContent;
     }
 
-    // Auto Bullet Point on Enter in Terms & Conditions (Textarea)
+    // Auto Bullet Point on Enter in Terms & Conditions
     function handleTermsEnter(e) {
       if (e.key === 'Enter') {
         e.preventDefault();
-        const textarea = e.target;
-        const start = textarea.selectionStart;
-        const end = textarea.selectionEnd;
-        const val = textarea.value;
+        const ta = e.target;
+        const start = ta.selectionStart;
+        const end = ta.selectionEnd;
         const insertStr = '\n• ';
-        textarea.value = val.substring(0, start) + insertStr + val.substring(end);
-        textarea.selectionStart = textarea.selectionEnd = start + insertStr.length;
+        ta.value = ta.value.substring(0, start) + insertStr + ta.value.substring(end);
+        ta.selectionStart = ta.selectionEnd = start + insertStr.length;
         syncTerms();
       }
     }
 
-    // Auto Bullet Point on Enter directly on A4 Paper Terms
     function handlePaperTermsEnter(e) {
       if (e.key === 'Enter') {
         e.preventDefault();
@@ -1129,16 +509,20 @@
     }
 
     function syncTerms() {
-      const val = document.getElementById('termsInput').value;
-      document.getElementById('paperTerms').textContent = val;
+      document.getElementById('paperTerms').textContent = document.getElementById('termsInput').value;
     }
 
     function syncTermsFromPaper() {
-      const val = document.getElementById('paperTerms').innerText;
-      document.getElementById('termsInput').value = val;
+      document.getElementById('termsInput').value = document.getElementById('paperTerms').innerText;
     }
 
-    // Presets
+    // Category Presets
+    function createRowObj(desc, qty, bonus, skBonus, price, discount) {
+      const gross = qty * price;
+      const netTotal = Math.round(gross * (1 - discount / 100) * 100) / 100;
+      return { desc, qty, bonus, skBonus, price, discount, netTotal };
+    }
+
     function applyCategoryPreset() {
       const cat = document.getElementById('categorySelect').value;
       const basePrice = parseFloat(document.getElementById('basePriceInput').value) || 2000;
@@ -1160,12 +544,6 @@
       renderTable();
     }
 
-    function createRowObj(desc, qty, bonus, skBonus, price, discount) {
-      const gross = qty * price;
-      const netTotal = Math.round(gross * (1 - discount / 100) * 100) / 100;
-      return { desc, qty, bonus, skBonus, price, discount, netTotal };
-    }
-
     function shouldShowSkColumn() {
       if (forceShowSkColumn !== null) return forceShowSkColumn;
       return rows.some(r => Number(r.skBonus) > 0);
@@ -1182,60 +560,58 @@
       const tbody = document.getElementById('quotationTableBody');
 
       thead.innerHTML = `
-        <tr>
-          <th style="width: 28px;">#</th>
-          <th class="text-left">Product Description</th>
-          <th style="width: 58px;">Paid Qty</th>
-          <th style="width: 62px;">Free Bonus</th>
-          ${showSk ? '<th class="sk-col" style="width: 68px;">SK Box Bonus</th>' : ''}
-          <th style="width: 62px;">Total Qty</th>
-          <th style="width: 74px;">Unit Price</th>
-          <th style="width: 62px;">Disc %</th>
-          <th style="width: 86px;">Net Total</th>
-          <th class="no-print-col" style="width: 30px;"></th>
+        <tr class="text-white uppercase text-[9.8px] tracking-wide">
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[28px]">#</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-2.5 text-left">Product Description</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[58px]">Paid Qty</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[64px]">Free Bonus</th>
+          ${showSk ? '<th class="sk-col bg-[#9E2A5B] border border-[#9E2A5B] py-2 px-1.5 text-center w-[68px]">SK Box Bonus</th>' : ''}
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[62px]">Total Qty</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[74px]">Unit Price</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[62px]">Disc %</th>
+          <th class="bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1.5 text-center w-[88px]">Net Total</th>
+          <th class="no-print no-preview bg-[#1D6E7F] border border-[#1D6E7F] py-2 px-1 text-center w-[30px]"></th>
         </tr>
       `;
 
       tbody.innerHTML = '';
       rows.forEach((row, idx) => {
-        // Total Qty counts only Exo boxes (Paid + Free Bonus), SK Box is 0-cost gift
         const totalExoQty = (Number(row.qty) || 0) + (Number(row.bonus) || 0);
-
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td>${idx + 1}</td>
-          <td class="text-left">
-            <input type="text" class="tbl-input desc-input" value="${row.desc}"
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center font-bold">${idx + 1}</td>
+          <td class="border border-[#DCE7EC] py-1.5 px-2 text-left">
+            <input type="text" class="tbl-input text-left pl-2 min-w-[135px]" value="${row.desc}"
                    oninput="updateRowField(${idx}, 'desc', this.value)" />
           </td>
-          <td>
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
             <input type="number" class="tbl-input" value="${row.qty}" min="1"
                    oninput="updateRowNumeric(${idx}, 'qty', this.value)" />
           </td>
-          <td>
-            <input type="number" class="tbl-input bonus-val" value="${row.bonus}" min="0"
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
+            <input type="number" class="tbl-input text-[#157F56]" value="${row.bonus}" min="0"
                    oninput="updateRowNumeric(${idx}, 'bonus', this.value)" />
           </td>
           ${showSk ? `
-          <td>
-            <input type="number" class="tbl-input sk-val" value="${row.skBonus}" min="0"
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
+            <input type="number" class="tbl-input text-[#9E2A5B]" value="${row.skBonus}" min="0"
                    oninput="updateRowNumeric(${idx}, 'skBonus', this.value)" />
           </td>` : ''}
-          <td id="totalQtyCell_${idx}" style="font-weight: 800; color: var(--primary-dark);">${totalExoQty}</td>
-          <td>
+          <td id="totalQtyCell_${idx}" class="border border-[#DCE7EC] py-1.5 px-1.5 text-center font-extrabold text-[#145260]">${totalExoQty}</td>
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
             <input type="number" class="tbl-input" value="${row.price}" min="0" step="10"
                    oninput="updateRowNumeric(${idx}, 'price', this.value)" />
           </td>
-          <td>
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
             <input type="number" class="tbl-input" id="discInput_${idx}" value="${row.discount}" min="0" max="100" step="0.1"
                    oninput="updateRowDiscount(${idx}, this.value)" />
           </td>
-          <td>
-            <input type="number" class="tbl-input net-val" id="netInput_${idx}" value="${row.netTotal}" min="0" step="10"
+          <td class="border border-[#DCE7EC] py-1.5 px-1.5 text-center">
+            <input type="number" class="tbl-input bg-[#EFF7F9] text-[#145260] font-extrabold" id="netInput_${idx}" value="${row.netTotal}" min="0" step="10"
                    oninput="updateRowNetTotal(${idx}, this.value)" />
           </td>
-          <td class="no-print-col">
-            <button class="del-row-btn" onclick="deleteRow(${idx})" title="حذف الصف">×</button>
+          <td class="no-print no-preview border border-[#DCE7EC] py-1.5 px-1 text-center">
+            <button onclick="deleteRow(${idx})" class="bg-[#FEECEC] hover:bg-[#FAD2D2] text-[#C93B3B] rounded w-5 h-5 font-extrabold text-xs leading-none" title="حذف الصف">×</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1254,8 +630,7 @@
 
       if (field === 'skBonus') {
         const currentVisible = document.querySelectorAll('.sk-col').length > 0;
-        const nextVisible = shouldShowSkColumn();
-        if (currentVisible !== nextVisible) {
+        if (currentVisible !== shouldShowSkColumn()) {
           renderTable();
           return;
         }
@@ -1288,12 +663,7 @@
       const net = parseFloat(val) || 0;
       rows[idx].netTotal = net;
       const gross = rows[idx].qty * rows[idx].price;
-      if (gross > 0) {
-        const calcDisc = ((gross - net) / gross) * 100;
-        rows[idx].discount = Math.round(calcDisc * 100) / 100;
-      } else {
-        rows[idx].discount = 0;
-      }
+      rows[idx].discount = gross > 0 ? Math.round(((gross - net) / gross) * 10000) / 100 : 0;
       const discEl = document.getElementById(`discInput_${idx}`);
       if (discEl) discEl.value = rows[idx].discount;
       updateLiveAnalysis();
@@ -1301,20 +671,18 @@
 
     function updateAllPrices(val) {
       const price = parseFloat(val) || 0;
-      rows.forEach((r, idx) => {
+      rows.forEach(r => {
         r.price = price;
-        const gross = r.qty * r.price;
-        r.netTotal = Math.round(gross * (1 - r.discount / 100) * 100) / 100;
+        r.netTotal = Math.round(r.qty * r.price * (1 - r.discount / 100) * 100) / 100;
       });
       renderTable();
     }
 
     function applyGlobalDiscount(val) {
       const disc = parseFloat(val) || 0;
-      rows.forEach((r) => {
+      rows.forEach(r => {
         r.discount = disc;
-        const gross = r.qty * r.price;
-        r.netTotal = Math.round(gross * (1 - r.discount / 100) * 100) / 100;
+        r.netTotal = Math.round(r.qty * r.price * (1 - r.discount / 100) * 100) / 100;
       });
       renderTable();
     }
@@ -1334,64 +702,57 @@
 
     function updateLiveAnalysis() {
       const container = document.getElementById('liveAnalysisContainer');
-      container.innerHTML = '';
-
-      rows.forEach((r, idx) => {
+      container.innerHTML = rows.map((r, idx) => {
         const totalExo = (Number(r.qty) || 0) + (Number(r.bonus) || 0);
         const effCost = totalExo > 0 ? (Number(r.netTotal) / totalExo) : 0;
         const skText = Number(r.skBonus) > 0 ? ` + ${r.skBonus} SK Gift` : '';
-
-        const item = document.createElement('div');
-        item.className = 'analysis-item';
-        item.innerHTML = `
-          <div class="analysis-left">
-            <div class="analysis-opt">Option #${idx + 1} (${totalExo} Exo Boxes)</div>
-            <div class="analysis-breakdown">${r.qty} Paid + ${r.bonus} Free${skText}</div>
-          </div>
-          <div class="analysis-right">
-            <div class="analysis-label">Effective / Box</div>
-            <div class="analysis-val">SAR ${effCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+        return `
+          <div dir="ltr" class="bg-white/10 border border-white/15 rounded-xl px-3 py-2 flex justify-between items-center font-en">
+            <div class="text-left">
+              <div class="text-xs font-extrabold text-white">Option #${idx + 1} (${totalExo} Exo Boxes)</div>
+              <div class="text-[11px] text-[#CBE7ED]">${r.qty} Paid + ${r.bonus} Free${skText}</div>
+            </div>
+            <div class="text-right">
+              <div class="text-[10px] text-[#CBE7ED] uppercase">Effective / Box</div>
+              <div class="text-sm font-extrabold text-white">SAR ${effCost.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div>
+            </div>
           </div>
         `;
-        container.appendChild(item);
-      });
+      }).join('');
     }
 
-    // Strict A4 Scaling for Mobile & Small Screens
+    // Strict A4 Scaling on Mobile & Small Screens
     function applyPaperZoom(scale) {
       currentZoom = Math.max(0.3, Math.min(1.4, scale));
       const paper = document.getElementById('quotationPaper');
       const wrapper = document.getElementById('paperOuterWrapper');
       paper.style.transform = `scale(${currentZoom})`;
       document.getElementById('zoomLabel').textContent = `${Math.round(currentZoom * 100)}%`;
-
-      // Adjust wrapper height so there's no giant whitespace below scaled A4
-      const scaledHeight = 1123 * currentZoom;
-      wrapper.style.height = `${scaledHeight + 16}px`;
+      wrapper.style.height = `${Math.ceil(1123 * currentZoom) + 16}px`;
     }
 
     function adjustZoom(delta) {
+      manualZoomActive = true;
       applyPaperZoom(currentZoom + delta);
     }
 
-    function fitPaperToScreen() {
+    function fitPaperToScreen(resetManual = false) {
+      if (resetManual) manualZoomActive = false;
       const wrapper = document.getElementById('paperOuterWrapper');
-      const availableWidth = wrapper.clientWidth - 16;
-      const a4PixelWidth = 794; // 210mm at 96dpi
-      if (availableWidth < a4PixelWidth) {
-        applyPaperZoom(availableWidth / a4PixelWidth);
-      } else {
-        applyPaperZoom(1);
-      }
+      const availableWidth = Math.max(260, wrapper.clientWidth - 16);
+      const a4PixelWidth = 794;
+      applyPaperZoom(availableWidth < a4PixelWidth ? availableWidth / a4PixelWidth : 1);
     }
 
     function toggleCleanPreview() {
       document.body.classList.toggle('clean-mode');
       const btn = document.getElementById('cleanPreviewBtn');
-      btn.classList.toggle('active');
+      const active = document.body.classList.contains('clean-mode');
+      btn.classList.toggle('bg-[#E6F4F7]', active);
+      btn.classList.toggle('border-[#1D6E7F]', active);
     }
 
-    // Automatic PDF Naming + Print + Auto Archive
+    // Dynamic PDF Title & Print
     function preparePdfFilename() {
       const clientRaw = document.getElementById('clientNameInput').value.trim() || 'Client';
       const safeClient = clientRaw.replace(/[\\/:*?"<>|]/g, '-');
@@ -1412,22 +773,19 @@
     }
 
     // LocalStorage Archive & Excel CSV Export
-    const STORAGE_KEY = 'rawai_exo_quotations_v1';
-
     function getArchive() {
       try {
         return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-      } catch (e) {
+      } catch {
         return [];
       }
     }
 
     function updateArchiveBadge() {
-      const list = getArchive();
-      document.getElementById('savedCountBadge').textContent = `${list.length} محفوظ`;
+      document.getElementById('savedCountBadge').textContent = `${getArchive().length} محفوظ`;
     }
 
-    function saveQuotationToArchive(showAlert) {
+    function saveQuotationToArchive(notify) {
       const archive = getArchive();
       const entry = {
         timestamp: new Date().toLocaleString('en-GB'),
@@ -1443,18 +801,12 @@
       archive.push(entry);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(archive));
       updateArchiveBadge();
-
-      if (showAlert) {
-        alert(`تم حفظ عرض السعر (${entry.refNo}) في الأرشيف بنجاح!`);
-      }
+      if (notify) showToast(`تم حفظ عرض السعر (${entry.refNo}) في الأرشيف بنجاح!`);
     }
 
     function exportArchiveToExcel() {
+      if (getArchive().length === 0) saveQuotationToArchive(false);
       const archive = getArchive();
-      if (archive.length === 0) {
-        saveQuotationToArchive(false);
-      }
-      const finalArchive = getArchive();
 
       const headers = [
         'Saved At', 'Ref No.', 'Quotation Date', 'Client Name', 'Doctor / Attention',
@@ -1464,8 +816,7 @@
       ];
 
       const csvRows = [headers.join(',')];
-
-      finalArchive.forEach(q => {
+      archive.forEach(q => {
         q.items.forEach((item, idx) => {
           const totalExo = (Number(item.qty) || 0) + (Number(item.bonus) || 0);
           const eff = totalExo > 0 ? (Number(item.netTotal) / totalExo).toFixed(2) : 0;
@@ -1498,8 +849,11 @@
       const a = document.createElement('a');
       a.href = url;
       a.download = `Cell_HD_Exo_Smart_Kit_Quotations_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      showToast('تم تصدير سجل العروض إلى ملف Excel بنجاح');
     }
 
     // Boot
@@ -1507,10 +861,19 @@
       initTodayDate();
       applyCategoryPreset();
       updateArchiveBadge();
-      fitPaperToScreen();
+      fitPaperToScreen(false);
+
+      const wrapper = document.getElementById('paperOuterWrapper');
+      if (window.ResizeObserver && wrapper) {
+        new ResizeObserver(() => {
+          if (!manualZoomActive) fitPaperToScreen(false);
+        }).observe(wrapper);
+      }
     });
 
-    window.addEventListener('resize', fitPaperToScreen);
+    window.addEventListener('resize', () => {
+      if (!manualZoomActive) fitPaperToScreen(false);
+    });
   </script>
 </body>
 </html>
